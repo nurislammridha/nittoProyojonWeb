@@ -19,6 +19,13 @@ import ts4 from "./asset/image/largeSlider/banner1.jpg";
 import ts5 from "./asset/image/largeSlider/banner2.jpg";
 import ts6 from "./asset/image/largeSlider/banner3.jpg";
 import productImg from "./asset/image/product/bike.png";
+import facebook from "./asset/image/icon/facebook.png";
+import twitter from "./asset/image/icon/twitter.png";
+import linkedin from "./asset/image/icon/linkedin.png";
+import youtube from "./asset/image/icon/youtube.png";
+import instagram from "./asset/image/icon/instagram.png";
+import appStore from "./asset/image/icon/appStore.png";
+import googlePlay from "./asset/image/icon/googlePlay.png";
 import categoryImage from "./asset/image/product/categoryImage.jpg";
 // Owl Carousel....
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -395,20 +402,97 @@ function App() {
             </div>
           ))}
         </div>
-        <div>loremdzvsdgfsf sgsrrgfrfe</div>
-        <div>loremdzvsdgfsf sgsrrgfrfe</div>
-        <div>loremdzvsdgfsf sgsrrgfrfe</div>
-        <div>loremdzvsdgfsf sgsrrgfrfe</div>
-        <div>loremdzvsdgfsf sgsrrgfrfe</div>
-        <div>loremdzvsdgfsf sgsrrgfrfe</div>
-        <div>loremdzvsdgfsf sgsrrgfrfe</div>
-        <div>loremdzvsdgfsf sgsrrgfrfe</div>
-        <div>loremdzvsdgfsf sgsrrgfrfe</div>
-        <div>loremdzvsdgfsf sgsrrgfrfe</div>
-        <div>loremdzvsdgfsf sgsrrgfrfe</div>
-        <div>loremdzvsdgfsf sgsrrgfrfe</div>
       </div>
-      <div className="footer"></div>
+      <div className="footer">
+        <div className="footer_top">
+          <div className="row">
+            <div className="col-sm-3">
+              <ul>
+                <li>
+                  <h6>Customer Services</h6>
+                </li>
+                <li>
+                  <a>NittoProyojon Store</a>
+                </li>
+                <li>
+                  <a>Frequently Asked Questions</a>
+                </li>
+                <li>
+                  <a>Terms and Conditions</a>
+                </li>
+                <li>
+                  <a>Provacy Policy</a>
+                </li>
+              </ul>
+            </div>
+            <div className="col-sm-3">
+              <ul>
+                <li>
+                  <h6>NittoProyojon</h6>
+                </li>
+                <li>
+                  <a>About NittoProyojon</a>
+                </li>
+                <li>
+                  <a>Shipping and Delivery</a>
+                </li>
+                <li>
+                  <a>Customer Care</a>
+                </li>
+                <li>
+                  <a>Careers</a>
+                </li>
+              </ul>
+            </div>
+            <div className="col-sm-3">
+              <ul>
+                <li>
+                  <h6>Contact Us</h6>
+                </li>
+                <li>Mograbazar, Bagerhat</li>
+                <li>
+                  <a>
+                    <i className="fa fa-phone"></i>+8801753109207
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <i className="fa fa-envelope"></i>info@nittoProyojon.com
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <i className="fa fa-rss"></i>blog.nittoProyojon.com
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div className="col-sm-3">
+              <h6 className="follow_us">Follow Us</h6>
+              <div className="social_icon">
+                <img src={facebook} />
+                <img src={instagram} />
+                <img src={linkedin} />
+                <img src={youtube} />
+                <img src={twitter} />
+              </div>
+              <h4 className="follow_us">Download Our Mobile Apps</h4>
+              <div className="app_store">
+                <img src={appStore} />
+                <img src={googlePlay} />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="footer_bottom">
+          <h6 className="text-center text-muted">
+            <span className="text-center">
+              &copy; 2022 All right reserved by NittoProyojon
+            </span>
+            {/* <span>Design & Developed By Mridha Tech</span> */}
+          </h6>
+        </div>
+      </div>
     </>
   );
 }

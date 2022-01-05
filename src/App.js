@@ -26,6 +26,7 @@ import youtube from "./asset/image/icon/youtube.png";
 import instagram from "./asset/image/icon/instagram.png";
 import appStore from "./asset/image/icon/appStore.png";
 import googlePlay from "./asset/image/icon/googlePlay.png";
+import shoppingBag from "./asset/image/icon/shoppingBag.png";
 import categoryImage from "./asset/image/product/categoryImage.jpg";
 // Owl Carousel....
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -506,6 +507,50 @@ function App() {
             </span>
             {/* <span>Design & Developed By Mridha Tech</span> */}
           </h6>
+        </div>
+      </div>
+      <div className="cart_sm">
+        <div className="top">0 Items</div>
+        <div className="middle">
+          <img src={shoppingBag} />
+        </div>
+        <div className="bottom">$1238</div>
+      </div>
+      <div className="cart_lg">
+        <div className="top">
+          <div>
+            <img src={shoppingBag} />
+            <span>8 Items</span>
+          </div>
+          <div className="cross">
+            <a>
+              {" "}
+              <i className="fa fa-times"></i>
+            </a>
+          </div>
+        </div>
+        <div className="middle">
+          xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg
+          dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf
+          xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg
+          dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf
+          xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg
+          dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf
+          xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg
+          dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf
+          xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg
+          dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf
+          xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg
+          dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf
+          xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg
+          dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf
+          xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg
+          dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf
+          xdgdfgdf vdsfg dfdsf dsfsdf
+        </div>
+        <div className="bottom">
+          <a className="btn btn-success btn-sm">Order Now</a>{" "}
+          <span>Total $1234</span>
         </div>
       </div>
     </>

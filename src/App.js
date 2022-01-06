@@ -26,7 +26,10 @@ import youtube from "./asset/image/icon/youtube.png";
 import instagram from "./asset/image/icon/instagram.png";
 import appStore from "./asset/image/icon/appStore.png";
 import googlePlay from "./asset/image/icon/googlePlay.png";
-import shoppingBag from "./asset/image/icon/shoppingBag.png";
+import shoppingBag from "./asset/image/icon/shoppingBag.jpg";
+import deletesvg from "./asset/image/icon/delete.svg";
+import plus from "./asset/image/icon/plus.svg";
+import minus from "./asset/image/icon/minus.svg";
 import categoryImage from "./asset/image/product/categoryImage.jpg";
 // Owl Carousel....
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -516,7 +519,7 @@ function App() {
         </div>
         <div className="bottom">$1238</div>
       </div>
-      <div className="cart_lg">
+      <div className="cart_lg d-none">
         <div className="top">
           <div>
             <img src={shoppingBag} />
@@ -530,23 +533,45 @@ function App() {
           </div>
         </div>
         <div className="middle">
-          xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg
-          dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf
-          xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg
-          dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf
-          xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg
-          dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf
-          xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg
-          dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf
-          xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg
-          dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf
-          xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg
-          dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf
-          xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg
-          dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf
-          xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg
-          dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf xdgdfgdf vdsfg dfdsf dsfsdf
-          xdgdfgdf vdsfg dfdsf dsfsdf
+          <ul className="">
+            {[1, 2, 3, 4, 5, 6, 7, 7, 3].map((item, index) => (
+              <li>
+                <div className="single_cart">
+                  <div className="cart_img">
+                    <img src={productImg} alt="image" />
+                  </div>
+                  <div className="cart_title">
+                    <h6>
+                      Aci Salt 1kg asci salt 1 kg example products example
+                    </h6>
+                    <span>$40X3 = $123</span>
+                  </div>
+                  <div className="cart_counter">
+                    <div className="cart_counter_inner">
+                      <div className="cart_increase">
+                        <a>
+                          {" "}
+                          <img src={plus} />
+                        </a>
+                      </div>
+                      <div className="cart_counter_number">2</div>
+                      <div className="cart_increase">
+                        <a>
+                          <img src={minus} />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="cart_close">
+                    <a>
+                      <img src={deletesvg} alt="" />
+                    </a>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
         <div className="bottom">
           <a className="btn btn-success btn-sm">Order Now</a>{" "}

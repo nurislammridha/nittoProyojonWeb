@@ -5,6 +5,7 @@ import HomeProducts from "./modules/homeProducts/HomeProducts";
 import Footer from "./modules/footer/Footer";
 import Cart from "./modules/cart/Cart";
 import Header from "./modules/header/Header";
+import AllProducts from "./modules/allProducts/AllProducts";
 function App() {
   let option = {
     responsive: {
@@ -27,7 +28,7 @@ function App() {
   return (
     <>
       <Header />
-      <div className="body">
+      {/* <div className="body">
         <div className="cat_banner">
           <Categories />
           <HeroCarousel />
@@ -36,7 +37,8 @@ function App() {
           <p></p>
         </div>
         <HomeProducts />
-      </div>
+      </div> */}
+      <AllProducts />
       <Footer />
       <Cart />
     </>

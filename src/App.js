@@ -1,4 +1,5 @@
 import "../src/asset/css/main.css";
+import "../src/asset/css/mobile.css";
 import Categories from "./modules/categories/Categories";
 import HeroCarousel from "./modules/heroCarousel/HeroCarousel";
 import HomeProducts from "./modules/homeProducts/HomeProducts";

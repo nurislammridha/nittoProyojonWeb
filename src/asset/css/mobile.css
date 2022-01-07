@@ -1,0 +1,102 @@
+@media only screen and (max-width: 600px) {
+  .header_top .left {
+    display: none;
+  }
+  .header_top .right {
+    display: none;
+  }
+  .header_top .middle {
+    font-size: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .header_middle {
+    display: none;
+  }
+  .header_middle_mobile {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #445268;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #fff;
+  }
+  .header_middle_mobile .menu {
+    color: #fff;
+    font-size: 20px;
+  }
+  .header_middle_mobile img {
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+  }
+  .header_middle_mobile .right {
+    display: flex;
+  }
+  .header_middle_mobile .help {
+    background-color: #fff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    color: #28a745;
+  }
+  .header_middle_mobile .user {
+    background-color: #fff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    color: #28a745;
+    margin-left: 4px;
+  }
+  .header_bottom {
+    display: none;
+  }
+  .header_bottom_mobile {
+    display: block;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    background-color: #313d51;
+    border-bottom: 1px solid #fff;
+  }
+  /* Mega Search bar design */
+  .header_bottom_mobile .form-control {
+    border: 1px solid #28a745;
+    background-color: white !important;
+    letter-spacing: 0.025em;
+    font-weight: 500;
+    font-size: 0.875rem;
+    height: 40px !important;
+
+    padding: 0px 10px;
+
+    border-radius: 10px !important;
+    outline: none !important;
+  }
+  .header_bottom_mobile .input-group-text {
+    display: flex;
+    align-items: center;
+    padding-right: 29px;
+    padding-left: 29px;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: white;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 10px;
+    position: absolute;
+    right: 0px;
+    height: 40px !important;
+    z-index: 999;
+    cursor: pointer;
+  }
+}

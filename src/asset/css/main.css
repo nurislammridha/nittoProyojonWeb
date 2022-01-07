@@ -37,6 +37,9 @@
   padding-top: 8px;
   border-bottom: 1px solid #fff;
 }
+.header_middle_mobile {
+  display: none;
+}
 .header_middle .logo {
   height: 40px;
   cursor: pointer;
@@ -134,6 +137,9 @@
   border-bottom: 1px solid #fff;
   display: grid;
   grid-template-columns: 250px auto;
+}
+.header_bottom_mobile {
+  display: none;
 }
 .header_bottom_left {
   font-size: 25px;

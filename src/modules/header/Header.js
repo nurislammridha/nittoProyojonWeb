@@ -79,6 +79,23 @@ const Header = () => {
             </div>
           </div>
         </div>
+        {/* Midlle for mobile design  */}
+        <div className="header_middle_mobile">
+          <div className="menu">
+            <i className="fa fa-bars"></i>
+          </div>
+          <div className="logo">
+            <img src={logo} className="" />
+          </div>
+          <div className="right">
+            <div className="help">
+              <i className="fa fa-question-circle"></i>
+            </div>
+            <div className="user">
+              <i className="fa fa-user"></i>
+            </div>
+          </div>
+        </div>
         <div className="header_bottom">
           <div className="header_bottom_left">
             <div className="categories">
@@ -132,6 +149,29 @@ const Header = () => {
               </ul>
             </div>
           </div>
+        </div>
+        {/* header boottom design for mobile  */}
+        <div className="header_bottom_mobile">
+          <InputGroup className="search_bar_topNav">
+            <FormControl
+              placeholder="Search For..."
+              aria-label="Recipient's username"
+              aria-describedby="basic-addon2"
+              // value={search}
+              // onChange={(e) => setSearch(e.target.value)}
+              // onKeyPress={(event) => {
+              //   if (event.key === "Enter") {
+              //     handleSearch(search);
+              //   }
+              // }}
+            />
+            <InputGroup.Text
+              className="search_group_btn"
+              // onClick={() => handleSearch(search)}
+            >
+              <i className="fa fa-search"></i> <span>Search</span>
+            </InputGroup.Text>
+          </InputGroup>
         </div>
       </div>
     </>

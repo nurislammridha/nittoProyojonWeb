@@ -5,7 +5,7 @@ import { FormControl, InputGroup } from "react-bootstrap";
 const Header = () => {
   return (
     <>
-      <div className="header">
+      <div className="header sticky-top">
         <div className="header_top">
           <div className="d-flex justify-content-between">
             <div className="left">

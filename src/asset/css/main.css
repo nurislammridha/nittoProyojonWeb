@@ -454,6 +454,7 @@
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  z-index: 9999;
 }
 .cart_lg .top {
   background-color: #313d51;

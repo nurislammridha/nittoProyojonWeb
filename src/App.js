@@ -28,7 +28,7 @@ function App() {
   return (
     <>
       <Header />
-      {/* <div className="body">
+      <div className="body">
         <div className="cat_banner">
           <Categories />
           <HeroCarousel />
@@ -37,8 +37,8 @@ function App() {
           <p></p>
         </div>
         <HomeProducts />
-      </div> */}
-      <AllProducts />
+      </div>
+      {/* <AllProducts /> */}
       <Footer />
       <Cart />
     </>

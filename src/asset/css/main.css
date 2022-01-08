@@ -299,7 +299,12 @@
 }
 .product_parent {
   display: grid;
-  grid-template-columns: 250px auto auto auto auto auto;
+  grid-template-columns: 250px auto;
+  grid-column-gap: 5px;
+}
+.parent_single_product {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
   grid-column-gap: 5px;
 }
 .product_parent img {

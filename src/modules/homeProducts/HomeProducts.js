@@ -16,27 +16,29 @@ const HomeProducts = () => {
                   <a className="btn view_all">View All</a>
                 </a>
               </div>
-              {[1, 2, 3, 4, 5].map((item, index) => (
-                <div className="single_product">
-                  <div className="product_img">
-                    <img src={productImg} />
-                  </div>
-                  <div className="product_content">
-                    <div className="product_title text-muted">
-                      ACI salt white 1Kg white 1Kg
+              <div className="parent_single_product">
+                {[1, 2, 3, 4, 5].map((item, index) => (
+                  <div className="single_product">
+                    <div className="product_img">
+                      <img src={productImg} />
                     </div>
-                    <div className="product_price">
-                      <del className="mrp">$123</del>
-                      <div className="discount">$123</div>
+                    <div className="product_content">
+                      <div className="product_title text-muted">
+                        ACI salt white 1Kg white 1Kg
+                      </div>
+                      <div className="product_price">
+                        <del className="mrp">$123</del>
+                        <div className="discount">$123</div>
+                      </div>
+                    </div>
+                    <div className="add_cart">
+                      <a className="btn btn-outline-success d-block">
+                        Add to Card
+                      </a>
                     </div>
                   </div>
-                  <div className="add_cart">
-                    <a className="btn btn-outline-success d-block">
-                      Add to Card
-                    </a>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
 
               {/* <div className="single_product">
                 <div className="product_img">

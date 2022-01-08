@@ -109,20 +109,31 @@
     height: 125px;
     overflow: hidden;
   }
-  .border_top {
+  .border_top,
+  .product_list {
     padding-left: 10px;
     padding-right: 10px;
   }
   .product_parent {
-    display: grid;
-    grid-template-columns: 100% auto auto;
-    grid-column-gap: 5px;
+    display: block;
+    /* grid-template-columns: 100% auto auto; */
+    /* grid-column-gap: 5px; */
+  }
+  .category_img {
+    width: 100%;
+    height: 150px;
   }
   .product_parent img {
     width: 100%;
     height: 100%;
   }
   .product_parent > div:last-child {
+    display: none;
+  }
+  .single_product {
+    display: flex;
+  }
+  .cart_sm {
     display: none;
   }
 }

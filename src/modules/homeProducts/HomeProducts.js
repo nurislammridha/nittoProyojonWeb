@@ -2,6 +2,7 @@ import React from "react";
 import productImg from "../../asset/image/product/bike.png";
 import categoryImage from "../../asset/image/product/categoryImage.jpg";
 const HomeProducts = () => {
+  console.log(`window.innerWidth`, window.innerWidth);
   return (
     <>
       <div className="product_list">
@@ -17,27 +18,31 @@ const HomeProducts = () => {
                 </a>
               </div>
               <div className="parent_single_product">
-                {[1, 2, 3, 4, 5].map((item, index) => (
-                  <div className="single_product">
-                    <div className="product_img">
-                      <img src={productImg} />
-                    </div>
-                    <div className="product_content">
-                      <div className="product_title text-muted">
-                        ACI salt white 1Kg white 1Kg
+                {[1, 2, 3, 4, 5].map((index, item) =>
+                  window.innerWidth <= 600 && index === 4 ? (
+                    ""
+                  ) : (
+                    <div className="single_product">
+                      <div className="product_img">
+                        <img src={productImg} />
                       </div>
-                      <div className="product_price">
-                        <del className="mrp">$123</del>
-                        <div className="discount">$123</div>
+                      <div className="product_content">
+                        <div className="product_title text-muted">
+                          ACI salt white 1Kg white 1Kg
+                        </div>
+                        <div className="product_price">
+                          <del className="mrp">$123</del>
+                          <div className="discount">$123</div>
+                        </div>
+                      </div>
+                      <div className="add_cart">
+                        <a className="btn btn-outline-success d-block">
+                          Add to Card
+                        </a>
                       </div>
                     </div>
-                    <div className="add_cart">
-                      <a className="btn btn-outline-success d-block">
-                        Add to Card
-                      </a>
-                    </div>
-                  </div>
-                ))}
+                  )
+                )}
               </div>
 
               {/* <div className="single_product">

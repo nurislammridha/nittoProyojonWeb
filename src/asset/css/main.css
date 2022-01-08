@@ -416,6 +416,9 @@
 .body {
 }
 /* small caart */
+.cart_mobile {
+  display: none;
+}
 .cart_sm {
   display: inline-block;
   width: 80px;

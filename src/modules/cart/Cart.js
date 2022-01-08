@@ -73,6 +73,19 @@ const Cart = () => {
           <span>Total $1234</span>
         </div>
       </div>
+      <div className="cart_mobile">
+        <div className="message_fb">
+          <i className="fa fa-facebook"></i>
+        </div>
+        <div className="place_order">
+          <a>
+            <h6 className="text-center">Order Now</h6>
+          </a>
+        </div>
+        <div className="mobile_cart">
+          <img src={shoppingBag} />
+        </div>
+      </div>
     </>
   );
 };

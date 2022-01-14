@@ -1,12 +1,11 @@
 import "../src/asset/css/main.css";
 import "../src/asset/css/mobile.css";
-import Categories from "./modules/categories/Categories";
-import HeroCarousel from "./modules/heroCarousel/HeroCarousel";
-import HomeProducts from "./modules/homeProducts/HomeProducts";
 import Footer from "./modules/footer/Footer";
 import Cart from "./modules/cart/Cart";
 import Header from "./modules/header/Header";
 import AllProducts from "./modules/allProducts/AllProducts";
+import HomeProductsContainer from "./modules/homeProducts/views/HomeProductsContainer";
+import { Routes, Route, Link } from "react-router-dom";
 function App() {
   let option = {
     responsive: {
@@ -29,17 +28,10 @@ function App() {
   return (
     <>
       <Header />
-      {/* <div className="body">
-        <div className="cat_banner">
-          <Categories />
-          <HeroCarousel />
-        </div>
-        <div className="border_top">
-          <p></p>
-        </div>
-        <HomeProducts />
-      </div> */}
-      <AllProducts />
+      <Routes>
+        <Route path="/" element={<HomeProductsContainer />} />
+        <Route path="all-products" element={<AllProducts />} />
+      </Routes>
       <Footer />
       <Cart />
     </>

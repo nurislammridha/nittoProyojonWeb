@@ -273,6 +273,9 @@
 .category ul li a {
   cursor: pointer;
 }
+.category ul li a label {
+  cursor: pointer;
+}
 .category ul li:hover {
   color: #fff;
   background-color: #28a745;
@@ -432,6 +435,7 @@
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  cursor: pointer;
 }
 .cart_sm .top {
   background-color: #28a745;

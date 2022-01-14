@@ -1,6 +1,6 @@
 import React from "react";
-import productImg from "../../asset/image/product/bike.png";
-import categoryImage from "../../asset/image/product/categoryImage.jpg";
+import productImg from "../../../asset/image/product/bike.png";
+import categoryImage from "../../../asset/image/product/categoryImage.jpg";
 const HomeProducts = () => {
   console.log(`window.innerWidth`, window.innerWidth);
   return (

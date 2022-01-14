@@ -1,19 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../asset/image/logo/logo.png";
 import categoryIcon from "../../asset/image/icon/categoryIcon.png";
 import { FormControl, InputGroup } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 const Header = () => {
+  const navigate = useNavigate();
+  const [isCategoryHover, setIsCategoryHover] = useState(false);
+  const hanldeAllProduct = () => {
+    navigate("/all-products");
+  };
   return (
     <>
       <div className="header sticky-top">
         <div className="header_top">
           <div className="d-flex justify-content-between">
             <div className="left">
-              <a
-                className=""
-                href="https://play.google.com/store/apps/details?id=com.ghuriexpress.ghuri"
-                target="_blank"
-              >
+              <a className="" href="" target="_blank">
                 {" "}
                 <i className="fa fa-download"></i>
                 <span className="">NittoProyojon App</span>
@@ -36,7 +38,9 @@ const Header = () => {
           <div className="row m-0 p-0">
             <div className="col-sm-2 m-0 p-0">
               <div className="logo">
-                <img src={logo} className="" />
+                <a onClick={() => navigate("/")}>
+                  <img src={logo} className="" />
+                </a>
               </div>
             </div>
             <div className="col-sm-7 m-0 pl-2">
@@ -97,27 +101,34 @@ const Header = () => {
           </div>
         </div>
         <div className="header_bottom">
-          <div className="header_bottom_left">
+          <div
+            className="header_bottom_left"
+            onMouseOver={() => setIsCategoryHover(true)}
+            onMouseLeave={() => setIsCategoryHover(false)}
+          >
             <div className="categories">
               <i className="fa fa-bars"></i>
               <a>Categories</a>
               <i className="fa fa-arrow-down"></i>
             </div>
-            {/* ==========Hover categories  =============*/}
-            <div className="hover_categories d-none">
-              <ul>
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 3, 4, 5, 6, 3, 4, 6].map(
-                  (item, index) => (
-                    <li>
-                      <a>
-                        <img src={categoryIcon} />
-                        <span>Fish and carry</span>
-                      </a>
-                    </li>
-                  )
-                )}
-              </ul>
-            </div>
+            {/* ==========Hover categories  for pc=============*/}
+            {isCategoryHover && (
+              <div className="hover_categories ">
+                <ul>
+                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 3, 4, 5, 6, 3, 4, 6].map(
+                    (item, index) => (
+                      <li>
+                        <a onClick={() => hanldeAllProduct()}>
+                          <img src={categoryIcon} />
+                          <span>Fish and carry</span>
+                        </a>
+                      </li>
+                    )
+                  )}
+                </ul>
+              </div>
+            )}
+
             {/* ==========Hover categories  ==============*/}
           </div>
           <div className="header_bottom_right">

@@ -1,13 +1,18 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import categoryIcon from "../../asset/image/icon/categoryIcon.png";
 const Categories = () => {
+  const navigate = useNavigate();
+  const hanldeAllProduct = () => {
+    navigate("/all-products");
+  };
   return (
     <>
       <div className="category">
         <ul>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 23, 3].map((item, index) => (
             <li>
-              <a>
+              <a onClick={() => hanldeAllProduct()}>
                 <img src={categoryIcon} />
                 <label>Fish & carry </label>
               </a>

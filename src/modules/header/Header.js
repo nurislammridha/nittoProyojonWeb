@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 const Header = () => {
   const navigate = useNavigate();
   const [isCategoryHover, setIsCategoryHover] = useState(false);
+  const [isMobileCategory, setIsMobileCategory] = useState(false);
+
   const hanldeAllProduct = () => {
     navigate("/all-products");
   };
@@ -86,10 +88,16 @@ const Header = () => {
         {/* Midlle for mobile design  */}
         <div className="header_middle_mobile">
           <div className="menu">
-            <i className="fa fa-bars"></i>
+            <a onClick={() => setIsMobileCategory(!isMobileCategory)}>
+              {" "}
+              <i className="fa fa-bars"></i>
+            </a>
           </div>
           <div className="logo">
-            <img src={logo} className="" />
+            <a onClick={() => navigate("/")}>
+              {" "}
+              <img src={logo} className="" />
+            </a>
           </div>
           <div className="right">
             <div className="help">
@@ -185,6 +193,24 @@ const Header = () => {
           </InputGroup>
         </div>
       </div>
+      {/* for mobile categories  */}
+      {isMobileCategory && (
+        <div className="mobile_category">
+          <ul>
+            {[
+              1, 2, 3, 4, 5, 6, 7, 8, 9, 2, 5, 4, 3, 3, 3, 3, 3, 4, 3, 4, 3, 4,
+              3, 4, 3, 4, 3, 3,
+            ].map((item, index) => (
+              <li>
+                <a onClick={() => hanldeAllProduct()}>
+                  <img src={categoryIcon} />
+                  <label>Fish & carry </label>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </>
   );
 };

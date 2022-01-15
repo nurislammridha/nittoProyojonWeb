@@ -7,8 +7,8 @@ const Categories = () => {
   const categoryList = useSelector((state) => state.categoryInfo.categoryList);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const hanldeAllProduct = () => {
-    navigate("/all-products");
+  const hanldeAllProduct = (id) => {
+    navigate(`/all-products/${id}`);
   };
   useEffect(() => {
     dispatch(GetCategoryList());
@@ -23,7 +23,7 @@ const Categories = () => {
             categoryList.length > 0 &&
             categoryList.map((item, index) => (
               <li>
-                <a onClick={() => hanldeAllProduct()}>
+                <a onClick={() => hanldeAllProduct(item._id)}>
                   <img src={categoryIcon} />
                   <label>{item.categoryName}</label>
                 </a>
@@ -31,22 +31,6 @@ const Categories = () => {
             ))}
         </ul>
       </div>
-      {/* for mobile categories  */}
-      {/* <div className="mobile_category d-none">
-        <ul>
-          {[
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 2, 5, 4, 3, 3, 3, 3, 3, 4, 3, 4, 3, 4, 3,
-            4, 3, 4, 3, 3,
-          ].map((item, index) => (
-            <li>
-              <a>
-                <img src={categoryIcon} />
-                <label>Fish & carry </label>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div> */}
     </>
   );
 };

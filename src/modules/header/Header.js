@@ -3,13 +3,15 @@ import logo from "../../asset/image/logo/logo.png";
 import categoryIcon from "../../asset/image/icon/categoryIcon.png";
 import { FormControl, InputGroup } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 const Header = () => {
   const navigate = useNavigate();
+  const categoryList = useSelector((state) => state.categoryInfo.categoryList);
   const [isCategoryHover, setIsCategoryHover] = useState(false);
   const [isMobileCategory, setIsMobileCategory] = useState(false);
 
-  const hanldeAllProduct = () => {
-    navigate("/all-products");
+  const hanldeAllProduct = (id) => {
+    navigate(`/all-products/${id}`);
   };
   return (
     <>
@@ -123,16 +125,17 @@ const Header = () => {
             {isCategoryHover && (
               <div className="hover_categories ">
                 <ul>
-                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 3, 4, 5, 6, 3, 4, 6].map(
-                    (item, index) => (
+                  {categoryList &&
+                    categoryList !== null &&
+                    categoryList.length > 0 &&
+                    categoryList.map((item, index) => (
                       <li>
-                        <a onClick={() => hanldeAllProduct()}>
+                        <a onClick={() => hanldeAllProduct(item._id)}>
                           <img src={categoryIcon} />
-                          <span>Fish and carry</span>
+                          <span>{item.categoryName}</span>
                         </a>
                       </li>
-                    )
-                  )}
+                    ))}
                 </ul>
               </div>
             )}
@@ -197,17 +200,17 @@ const Header = () => {
       {isMobileCategory && (
         <div className="mobile_category">
           <ul>
-            {[
-              1, 2, 3, 4, 5, 6, 7, 8, 9, 2, 5, 4, 3, 3, 3, 3, 3, 4, 3, 4, 3, 4,
-              3, 4, 3, 4, 3, 3,
-            ].map((item, index) => (
-              <li>
-                <a onClick={() => hanldeAllProduct()}>
-                  <img src={categoryIcon} />
-                  <label>Fish & carry </label>
-                </a>
-              </li>
-            ))}
+            {categoryList &&
+              categoryList !== null &&
+              categoryList.length > 0 &&
+              categoryList.map((item, index) => (
+                <li>
+                  <a onClick={() => hanldeAllProduct(item._id)}>
+                    <img src={categoryIcon} />
+                    <label>{item.categoryName}</label>
+                  </a>
+                </li>
+              ))}
           </ul>
         </div>
       )}

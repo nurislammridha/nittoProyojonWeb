@@ -1,0 +1,1 @@
+export const HOME_PRODUCTS_LIST = "HOME_PRODUCTS_LIST";

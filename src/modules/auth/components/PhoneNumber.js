@@ -12,8 +12,8 @@ const PhoneNumber = () => {
               placeholder="Enter your active phonr number"
             />
           </div>
-          <div className="mt-4 clearfix">
-            <a className="float-right btn btn-outline-success btn-sm ">
+          <div className="mt-3 d-flex justify-content-end">
+            <a className="btn btn-outline-success btn-sm ">
               SUBMIT
             </a>
           </div>

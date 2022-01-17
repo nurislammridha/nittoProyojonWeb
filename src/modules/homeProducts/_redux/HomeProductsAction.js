@@ -12,3 +12,16 @@ export const GetHomeProductsList = () => async (dispatch) => {
     });
   } catch (error) {}
 };
+
+export const isCartAdded=(id)=>{
+  let isAlreadyAdded=false
+  const cartList = JSON.parse(localStorage.getItem('cartList')) || []
+  if(cartList.length > 0){
+    cartList.forEach(item => {
+      if(item._id === id){
+        isAlreadyAdded =true
+      }
+    });
+  }
+return isAlreadyAdded
+}

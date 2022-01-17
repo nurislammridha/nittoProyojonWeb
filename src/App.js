@@ -6,6 +6,8 @@ import Header from "./modules/header/Header";
 import AllProducts from "./modules/allProducts/AllProducts";
 import HomeProductsContainer from "./modules/homeProducts/views/HomeProductsContainer";
 import { Routes, Route, Link } from "react-router-dom";
+import PhoneNumberContainer from "./modules/auth/views/PhoneNumberContainer";
+import PasswordContainer from "./modules/auth/views/PasswordContainer";
 function App() {
   let option = {
     responsive: {
@@ -31,6 +33,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomeProductsContainer />} />
         <Route path="all-products/:id" element={<AllProducts />} />
+        <Route path="phone-number" element={<PhoneNumberContainer />} />
+        <Route path="password" element={<PasswordContainer />} />
       </Routes>
       <Footer />
       <Cart />

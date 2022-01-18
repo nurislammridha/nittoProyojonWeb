@@ -18,9 +18,9 @@ const Cart = () => {
   useEffect(() => {
     if (window.innerWidth > 600 && openCart) {
       setIsCart(true);
-      setLocalCart(JSON.parse(localStorage.getItem("cartList")));
-      dispatch(OpenCart(false));
     }
+    setLocalCart(JSON.parse(localStorage.getItem("cartList")));
+    dispatch(OpenCart(false));
   }, [openCart]);
   useEffect(() => {
     setLocalCart(JSON.parse(localStorage.getItem("cartList")) || []);
@@ -129,17 +129,27 @@ const Cart = () => {
           </div>
         </>
       )}
-      <div className="cart_mobile" onClick={() => setIsCart(true)}>
+      <div className="cart_mobile">
         <div className="message_fb">
           <i className="fa fa-facebook"></i>
         </div>
-        <div className="place_order">
+        <div className="place_order" onClick={() => setIsCart(true)}>
           <a>
-            <h6 className="text-center">Order Now</h6>
+            <h6 className="text-center">
+              Order Now{" "}
+              {localCart.length > 0 && (
+                <span className="badge_mobile">
+                  Total ${TotalCartPrice(localCart)}
+                </span>
+              )}
+            </h6>
           </a>
         </div>
-        <div className="mobile_cart">
+        <div className="mobile_cart" onClick={() => setIsCart(true)}>
           <img src={shoppingBag} />
+          {localCart.length > 0 && (
+            <div className="cart_badge">{localCart.length}</div>
+          )}
         </div>
       </div>
     </>

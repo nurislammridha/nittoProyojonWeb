@@ -12,6 +12,10 @@ const HomeProducts = () => {
   const homeProductsList = useSelector(
     (state) => state.homeProductsInfo.homeProductsList
   );
+  const afterRemoveCart = useSelector(
+    (state) => state.homeProductsInfo.afterRemoveCart
+  );
+  
   const [instantCart, setInstantCart] = useState([])
   const navigate = useNavigate();
   const hanldeAllProduct = (id) => {
@@ -19,16 +23,26 @@ const HomeProducts = () => {
   };
   useEffect(() => {
     dispatch(GetHomeProductsList());
+    const cartList =JSON.parse(localStorage.getItem('cartList')) || []
+    setInstantCart(cartList)
   }, []);
   const handleCart=(data)=>{
     const cartList =JSON.parse(localStorage.getItem('cartList')) || []
+    data.quantity = 1
     cartList.push(data)
+    setInstantCart(cartList)
     localStorage.setItem('cartList',JSON.stringify(cartList))
-    const cart =[...instantCart]
-    cart.push(data._id)	
-    setInstantCart(cart)
+    
+    // const cart =[...instantCart]
+    // cart.push(data._id)	
+    // setInstantCart(cart)
     dispatch(OpenCart(true))
   }
+  useEffect(() => {
+    if(afterRemoveCart.length>0){
+      setInstantCart(afterRemoveCart)
+    }
+  }, [afterRemoveCart])
   console.log(`homeProductsList`, homeProductsList);
   return (
     <>
@@ -83,17 +97,13 @@ const HomeProducts = () => {
                         <div className="add_cart">
                         {instantCart.length> 0 && isCartAdded2(item2._id,instantCart)? (
                           <a className="btn btn-success d-block">
-                            Added In Card
+                            Already Added
                           </a>
-                        ):
-                        isCartAdded(item2._id) ?(
-                          <a className="btn btn-success d-block">
-                            Added In Card
-                          </a>
-                          ):(
+                        ):(
                             <a className="btn btn-outline-success d-block" onClick={()=>handleCart(item2)}>
                             Add to Card
                           </a>)
+                       
                           }
                           
                         </div>

@@ -1,1 +1,2 @@
 export const HOME_PRODUCTS_LIST = "HOME_PRODUCTS_LIST";
+export const OPEN_CART = "OPEN_CART";

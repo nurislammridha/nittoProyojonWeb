@@ -1,19 +1,38 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import shoppingBag from "../../asset/image/icon/shoppingBag.jpg";
 import deletesvg from "../../asset/image/icon/delete.svg";
 import plus from "../../asset/image/icon/plus.svg";
 import minus from "../../asset/image/icon/minus.svg";
 import productImg from "../../asset/image/product/bike.png";
+import { useDispatch, useSelector } from "react-redux";
+import { OpenCart, TotalCartPrice } from "../homeProducts/_redux/HomeProductsAction";
 const Cart = () => {
   const [isCart, setIsCart] = useState(false);
+  const [localCart, setLocalCart] = useState([])
+  const dispatch = useDispatch()
+  const openCart = useSelector((state) => state.homeProductsInfo.openCart);
+  useEffect(() => {
+    if(window.innerWidth > 600 && openCart){
+      setIsCart(true)
+    }
+  }, [openCart])
+  useEffect(() => {
+    setLocalCart(JSON.parse(localStorage.getItem('cartList')) || [])
+  }, [])
+  const removeFromCart=(id)=>{
+let removeCart =[...localCart]
+removeCart = removeCart.filter(item => item._id !== id)
+setLocalCart(removeCart)
+localStorage.setItem('cartList',JSON.stringify(removeCart))
+  }
   return (
     <>
       <div className="cart_sm" onClick={() => setIsCart(true)}>
-        <div className="top">0 Items</div>
+        <div className="top">{localCart.length} Items</div>
         <div className="middle">
           <img src={shoppingBag} />
         </div>
-        <div className="bottom">$1238</div>
+        <div className="bottom">${TotalCartPrice(localCart)}</div>
       </div>
       {isCart && (
         <>
@@ -21,9 +40,12 @@ const Cart = () => {
             <div className="top">
               <div>
                 <img src={shoppingBag} />
-                <span>8 Items</span>
+                <span>{localCart.length} Items</span>
               </div>
-              <div className="cross" onClick={() => setIsCart(false)}>
+              <div className="cross" onClick={() => {
+               dispatch(OpenCart(false))
+                setIsCart(false)
+              }}>
                 <a>
                   {" "}
                   <i className="fa fa-times"></i>
@@ -32,7 +54,7 @@ const Cart = () => {
             </div>
             <div className="middle">
               <ul className="">
-                {[1, 2, 3, 4, 5, 6, 7, 7, 3].map((item, index) => (
+                {localCart.length>0 && localCart.map((item, index) => (
                   <li>
                     <div className="single_cart">
                       <div className="cart_img">
@@ -40,9 +62,9 @@ const Cart = () => {
                       </div>
                       <div className="cart_title">
                         <h6>
-                          Aci Salt 1kg asci salt 1 kg example products example
+                          {item.productName}
                         </h6>
-                        <span>$40X3 = $123</span>
+                        <span>${item.discountPrice}X2 = ${parseInt(item.discountPrice)*2}</span>
                       </div>
                       <div className="cart_counter">
                         <div className="cart_counter_inner">
@@ -62,7 +84,7 @@ const Cart = () => {
                       </div>
 
                       <div className="cart_close">
-                        <a>
+                        <a onClick={()=>removeFromCart(item._id)}>
                           <img src={deletesvg} alt="" />
                         </a>
                       </div>
@@ -73,7 +95,7 @@ const Cart = () => {
             </div>
             <div className="bottom">
               <a className="btn btn-success btn-sm">Order Now</a>{" "}
-              <span>Total $1234</span>
+              <span>Total ${TotalCartPrice(localCart)}</span>
             </div>
           </div>
         </>

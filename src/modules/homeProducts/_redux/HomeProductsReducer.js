@@ -2,6 +2,7 @@ import * as Types from "./Types";
 
 const initialState = {
   homeProductsList: null,
+  openCart:false
 };
 const HomeProductsReducer = (state = initialState, action) => {
   const newState = { ...state };
@@ -10,6 +11,11 @@ const HomeProductsReducer = (state = initialState, action) => {
       return {
         ...state,
         homeProductsList: HomeProductsUser(action.payload),
+      };
+    case Types.OPEN_CART:
+      return {
+        ...state,
+        openCart:action.payload,
       };
 
     default:

@@ -13,6 +13,10 @@ export const GetHomeProductsList = () => async (dispatch) => {
   } catch (error) {}
 };
 
+export const OpenCart = (data) => async (dispatch) => {
+  dispatch({ type: Types.OPEN_CART, payload:data});
+};
+
 export const isCartAdded=(id)=>{
   let isAlreadyAdded=false
   const cartList = JSON.parse(localStorage.getItem('cartList')) || []
@@ -24,4 +28,24 @@ export const isCartAdded=(id)=>{
     });
   }
 return isAlreadyAdded
+}
+export const isCartAdded2=(id,arr)=>{
+  let isAlreadyAdded=false
+  if(arr.length > 0){
+    arr.forEach(item => {
+      if(item === id){
+        isAlreadyAdded =true
+      }
+    });
+  }
+return isAlreadyAdded
+}
+export const TotalCartPrice=(arr)=>{
+  let total = 0
+  if(arr.length > 0){
+    arr.forEach(item => {
+      total = total + parseInt(item.discountPrice)
+    });
+  }
+return total
 }

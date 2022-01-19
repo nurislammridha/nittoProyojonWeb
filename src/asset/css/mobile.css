@@ -298,4 +298,37 @@
     color: #28a745;
     font-weight: bold;
   }
+  /* user dashboard design  */
+  .user_dashboard {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    display: block;
+    padding-bottom: 10px;
+  }
+  .user_dashboard .up {
+    text-align: center;
+  }
+  .user_dashboard .down {
+    margin-top: 10px;
+    height: auto;
+  }
+  .user_dashboard ul {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+  .user_dashboard ul li {
+    border-bottom: 1px solid #ddd;
+    padding-left: 0px;
+    text-align: center;
+  }
+  .user_dashboard .d_header {
+    margin-top: 10px;
+  }
+  .user_dashboard .d_info {
+    display: block;
+  }
+  .user_dashboard .d_info > div {
+    margin-bottom: 10px;
+  }
 }

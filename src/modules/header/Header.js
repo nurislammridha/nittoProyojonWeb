@@ -79,8 +79,9 @@ const Header = () => {
                 </div>
                 <div className="col-sm-6 m-0 p-0">
                   <div className="profile text-center">
-                    <i className="fa fa-user"></i>
-                    <label className="ml-2">Login</label>
+                    <i className="fa fa-user f_user"></i>
+                    <label className="ml-2">Dashboard</label>
+                    {/* <i className="fa fa-angle-down f_down"></i> */}
                   </div>
                 </div>
               </div>

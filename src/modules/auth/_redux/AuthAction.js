@@ -28,3 +28,13 @@ export const CheckPhoneNumber = (number) => async (dispatch) => {
     });
   } catch (error) {}
 };
+export const ChangeUserInput = (name, value) => (dispatch) => {
+  const data = {
+    name,
+    value,
+  };
+  dispatch({
+    type: Types.CHANGE_USER_INPUT,
+    payload: data,
+  });
+};

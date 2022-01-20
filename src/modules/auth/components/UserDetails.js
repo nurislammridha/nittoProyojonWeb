@@ -24,7 +24,7 @@ const UserDetails = () => {
   };
   useEffect(() => {
     if (isLoggedIn) {
-      navigate("/user-dashboard/erer");
+      navigate("/user-dashboard/account");
     }
   }, [isLoggedIn]);
 

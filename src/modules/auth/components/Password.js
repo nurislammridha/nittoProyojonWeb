@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { UserLogin } from "../_redux/AuthAction";
 
 const Password = () => {
   const [password, setPassword] = useState("");
@@ -7,6 +9,8 @@ const Password = () => {
   const [isPhoneNumber, setIsPhoneNumber] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state) => state.authInfo.isLoggedIn);
   useEffect(() => {
     setIsPhoneNumber(localStorage.getItem("isPhoneNumber"));
     setPhoneNumber(localStorage.getItem("phoneNumber"));
@@ -16,9 +20,19 @@ const Password = () => {
       localStorage.setItem("password", password);
       navigate("/user-details");
     } else {
-      navigate("user-dashboard/erer");
+      // navigate("user-dashboard/erer");
+      const data = {
+        phoneNumber,
+        password,
+      };
+      dispatch(UserLogin(data));
     }
   };
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/user-dashboard/account");
+    }
+  }, [isLoggedIn]);
   return (
     <>
       <div className="middle_vrhr">

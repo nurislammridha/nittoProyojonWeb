@@ -54,6 +54,21 @@ export const SubmitUserInput = (data) => async (dispatch) => {
     });
   } catch (error) {}
 };
+export const UserLogin = (data) => async (dispatch) => {
+  const url = `${process.env.REACT_APP_API_URL}user/login`;
+  try {
+    axios.post(url, data).then((res) => {
+      if (res.data.status) {
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("userInfo", res.data.result);
+        dispatch({
+          type: Types.IS_LOGGED_IN,
+          payload: true,
+        });
+      }
+    });
+  } catch (error) {}
+};
 export const ChangeUserInput = (name, value) => (dispatch) => {
   const data = {
     name,

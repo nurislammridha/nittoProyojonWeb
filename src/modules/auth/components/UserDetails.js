@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Select from "react-select";
 import Form from "react-bootstrap/Form";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { ChangeUserInput } from "../_redux/AuthAction";
+import { ChangeUserInput, SubmitUserInput } from "../_redux/AuthAction";
+import { useNavigate } from "react-router-dom";
 const UserDetails = () => {
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.authInfo.userInfo);
+  const isLoggedIn = useSelector((state) => state.authInfo.isLoggedIn);
+  const navigate = useNavigate();
   const options = [
     { label: "Bagmara", value: "Bagmara" },
     { label: "Bagmara", value: "Bagmara" },
@@ -16,6 +19,15 @@ const UserDetails = () => {
   const handleChangeText = (name, value) => {
     dispatch(ChangeUserInput(name, value));
   };
+  const handleSubmit = () => {
+    dispatch(SubmitUserInput(userInfo));
+  };
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/user-dashboard/erer");
+    }
+  }, [isLoggedIn]);
+
   return (
     <>
       <div className="middle_vrhr user_details">
@@ -97,7 +109,12 @@ const UserDetails = () => {
             />
           </div>
           <div className="mt-3 d-flex justify-content-end">
-            <a className="btn btn-outline-success btn-sm ">SUBMIT</a>
+            <a
+              className="btn btn-outline-success btn-sm "
+              onClick={() => handleSubmit()}
+            >
+              SUBMIT
+            </a>
           </div>
         </div>
       </div>

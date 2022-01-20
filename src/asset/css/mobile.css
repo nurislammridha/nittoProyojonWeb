@@ -331,4 +331,42 @@
   .user_dashboard .d_info > div {
     margin-bottom: 10px;
   }
+  /* order   */
+
+  .order_info .order_header {
+    padding-bottom: 10px;
+  }
+  .order_info .order_header h5 {
+    font-size: 16px;
+  }
+  .order_info .order_header a {
+    padding: 0px 5px !important;
+  }
+  .order_info .status p {
+    font-size: 15px;
+  }
+  .order_info .status_circle > div {
+    background-color: #28a745;
+  }
+  .order_info .status_circle > div i {
+    color: #fff;
+  }
+
+  .d_product {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+
+  .d_single_product {
+    height: 250px;
+  }
+  .d_img {
+    height: 150px;
+  }
+  .d_content {
+    font-size: 16px;
+  }
+  .d_price {
+    font-size: 18px;
+  }
 }

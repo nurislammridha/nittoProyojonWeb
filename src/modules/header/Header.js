@@ -13,6 +13,9 @@ const Header = () => {
   const hanldeAllProduct = (id) => {
     navigate(`/all-products/${id}`);
   };
+  const handleDashboard = (id) => {
+    navigate(`/phone-number`);
+  };
   return (
     <>
       <div className="header sticky-top">
@@ -78,7 +81,10 @@ const Header = () => {
                   </div>
                 </div>
                 <div className="col-sm-6 m-0 p-0">
-                  <div className="profile text-center">
+                  <div
+                    className="profile text-center"
+                    onClick={() => handleDashboard()}
+                  >
                     <i className="fa fa-user f_user"></i>
                     <label className="ml-2">Dashboard</label>
                     {/* <i className="fa fa-angle-down f_down"></i> */}

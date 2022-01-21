@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../asset/image/logo/logo.png";
 import categoryIcon from "../../asset/image/icon/categoryIcon.png";
 import { FormControl, InputGroup } from "react-bootstrap";
@@ -9,13 +9,22 @@ const Header = () => {
   const categoryList = useSelector((state) => state.categoryInfo.categoryList);
   const [isCategoryHover, setIsCategoryHover] = useState(false);
   const [isMobileCategory, setIsMobileCategory] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState("false");
 
   const hanldeAllProduct = (id) => {
     navigate(`/all-products/${id}`);
   };
   const handleDashboard = (id) => {
-    navigate(`/phone-number`);
+    if (isLoggedIn === "false") {
+      navigate(`/phone-number`);
+    } else {
+      navigate(`/user-dashboard/order`);
+    }
   };
+  useEffect(() => {
+    setIsLoggedIn(localStorage.getItem("isLoggedIn") || "false");
+  }, []);
+
   return (
     <>
       <div className="header sticky-top">
@@ -86,7 +95,11 @@ const Header = () => {
                     onClick={() => handleDashboard()}
                   >
                     <i className="fa fa-user f_user"></i>
-                    <label className="ml-2">Dashboard</label>
+                    <label className="ml-2">
+                      {isLoggedIn === "false"
+                        ? "Login/Registration"
+                        : JSON.parse(localStorage.getItem("userInfo")).fullName}
+                    </label>
                     {/* <i className="fa fa-angle-down f_down"></i> */}
                   </div>
                 </div>

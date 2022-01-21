@@ -14,6 +14,7 @@ const initialState = {
     foundDescription: "",
   },
   isLoggedIn: false,
+  orderList: null,
 };
 const AuthReducer = (state = initialState, action) => {
   const newState = { ...state };
@@ -35,6 +36,11 @@ const AuthReducer = (state = initialState, action) => {
       return {
         ...state,
         userInfo: userInfo,
+      };
+    case Types.GET_ORDER_LIST:
+      return {
+        ...state,
+        orderList: action.payload,
       };
 
     default:

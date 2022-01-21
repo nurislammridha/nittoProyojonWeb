@@ -43,7 +43,7 @@ export const SubmitUserInput = (data) => async (dispatch) => {
         axios.post(url2, logiData).then((res2) => {
           if (res2.data.status) {
             localStorage.setItem("isLoggedIn", "true");
-            localStorage.setItem("userInfo", res2.data.result);
+            localStorage.setItem("userInfo", JSON.stringify(res2.data.result));
             dispatch({
               type: Types.IS_LOGGED_IN,
               payload: true,
@@ -60,7 +60,7 @@ export const UserLogin = (data) => async (dispatch) => {
     axios.post(url, data).then((res) => {
       if (res.data.status) {
         localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("userInfo", res.data.result);
+        localStorage.setItem("userInfo", JSON.stringify(res.data.result));
         dispatch({
           type: Types.IS_LOGGED_IN,
           payload: true,
@@ -77,5 +77,13 @@ export const ChangeUserInput = (name, value) => (dispatch) => {
   dispatch({
     type: Types.CHANGE_USER_INPUT,
     payload: data,
+  });
+};
+export const GetOrderList = (id) => (dispatch) => {
+  const url = `${process.env.REACT_APP_API_URL}order/user/${id}`;
+  axios.get(url).then((res) => {
+    if (res.data.status) {
+      dispatch({ type: Types.GET_ORDER_LIST, payload: res.data.result });
+    }
   });
 };

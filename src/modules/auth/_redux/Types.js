@@ -1,3 +1,4 @@
 export const CHECK_PHONE_NUMBER = "CHECK_PHONE_NUMBER";
 export const CHANGE_USER_INPUT = "CHANGE_USER_INPUT";
 export const IS_LOGGED_IN = "IS_LOGGED_IN";
+export const GET_ORDER_LIST = "GET_ORDER_LIST";

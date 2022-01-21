@@ -25,7 +25,7 @@ export const SubmitOrderData = (data) => async (dispatch) => {
   postData.isCreatedDate = moment(date).format("lll");
   postData.isCreated = true;
   try {
-    axios.get(url).then((res) => {
+    axios.post(url, postData).then((res) => {
       if (res.data.status) {
         dispatch({ type: Types.IS_ORDER_CREATED, payload: true });
       }

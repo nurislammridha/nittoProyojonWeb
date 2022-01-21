@@ -6,6 +6,7 @@ import productImg2 from "../../../asset/image/product/product2.jpg";
 import productImg3 from "../../../asset/image/product/banner1.jpg";
 
 const OrderProducts = (props) => {
+  const { orderProducts } = props;
   return (
     <>
       <Modal
@@ -21,54 +22,33 @@ const OrderProducts = (props) => {
         </Modal.Header>
         <Modal.Body>
           <div className="d_product">
-            {[1, 2, 3, 4, 5, 6, 8, 8, 8, 8].map((item, index) => (
-              <>
-                <div className="d_single_product">
-                  <div className="d_img">
-                    <img src={productImg} />
+            {orderProducts.length > 0 &&
+              orderProducts.map((item, index) => (
+                <>
+                  <div className="d_single_product">
+                    <div className="d_img">
+                      <img
+                        src={
+                          process.env.REACT_APP_IMG_URL +
+                          item.productImage.substring(2)
+                        }
+                      />
+                    </div>
+                    <div className="d_content">{item.productName}</div>
+                    <h6 className="text-center">Quantity: {item.quantity}</h6>
+                    <div className="d_price">
+                      <del>${item.productMRP}</del>
+                      <span>${item.discountPrice}</span>
+                    </div>
                   </div>
-                  <div className="d_content">hello product my product</div>
-                  <div className="d_price">
-                    <del>$123</del>
-                    <span>$123</span>
-                  </div>
-                </div>
-                <div className="d_single_product">
-                  <div className="d_img">
-                    <img src={productImg1} />
-                  </div>
-                  <div className="d_content">hello product my product</div>
-                  <div className="d_price">
-                    <del>$123</del>
-                    <span>$123</span>
-                  </div>
-                </div>
-                <div className="d_single_product">
-                  <div className="d_img">
-                    <img src={productImg2} />
-                  </div>
-                  <div className="d_content">hello product my product</div>
-                  <div className="d_price">
-                    <del>$123</del>
-                    <span>$123</span>
-                  </div>
-                </div>
-                <div className="d_single_product">
-                  <div className="d_img">
-                    <img src={productImg3} />
-                  </div>
-                  <div className="d_content">hello product my product</div>
-                  <div className="d_price">
-                    <del>$123</del>
-                    <span>$123</span>
-                  </div>
-                </div>
-              </>
-            ))}
+                </>
+              ))}
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <a onClick={props.onHide}>Close</a>
+          <a className="btn btn-success btn-sm" onClick={props.onHide}>
+            Close
+          </a>
         </Modal.Footer>
       </Modal>
     </>

@@ -6,6 +6,7 @@ import OrderProducts from "./OrderProducts";
 const OrderList = ({ userInfo }) => {
   const dispatch = useDispatch();
   const [modalShow, setModalShow] = useState(false);
+  const [orderProducts, setOrderProducts] = useState([]);
   const orderList = useSelector((state) => state.authInfo.orderList);
   useEffect(() => {
     if (userInfo) {
@@ -34,7 +35,10 @@ const OrderList = ({ userInfo }) => {
                 <span>
                   <a
                     className="btn btn-success btn-sm"
-                    onClick={() => setModalShow(true)}
+                    onClick={() => {
+                      setOrderProducts(item.productInfo);
+                      setModalShow(true);
+                    }}
                   >
                     View Products
                   </a>
@@ -45,53 +49,73 @@ const OrderList = ({ userInfo }) => {
                 <div className="status">
                   <div className="status_circle">
                     <div>
-                      <i className="fa fa-check"></i>
+                      <i className="fa fa-check"></i> {/* /close */}
                     </div>
                   </div>
                   <p className="text-center">Created</p>
-                  <p className="text-center">12-12-1212 12:34 AM</p>
+                  <p className="text-center">{item.isCreatedDate}</p>
                 </div>
                 <div className="status">
                   <div className="status_circle">
                     <div>
-                      <i className="fa fa-check"></i>
+                      {item.isAccepted ? (
+                        <i className="fa fa-check"></i>
+                      ) : (
+                        <i className="fa fa-close"></i>
+                      )}
                     </div>
                   </div>
                   <p className="text-center">Accepted</p>
-                  <p className="text-center">12-12-1212 12:34 AM</p>
+                  <p className="text-center">{item.isAcceptedDate}</p>
                 </div>
                 <div className="status">
                   <div className="status_circle">
                     <div>
-                      <i className="fa fa-check"></i>
+                      {item.isProcessing ? (
+                        <i className="fa fa-check"></i>
+                      ) : (
+                        <i className="fa fa-close"></i>
+                      )}
                     </div>
                   </div>
                   <p className="text-center">Precessing</p>
-                  <p className="text-center">12-12-1212 12:34 AM</p>
+                  <p className="text-center">{item.isProcessingDate}</p>
                 </div>
                 <div className="status">
                   <div className="status_circle">
                     <div>
-                      <i className="fa fa-check"></i>
+                      {item.isDelivering ? (
+                        <i className="fa fa-check"></i>
+                      ) : (
+                        <i className="fa fa-close"></i>
+                      )}
                     </div>
                   </div>
                   <p className="text-center">Delivering</p>
-                  <p className="text-center">12-12-1212 12:34 AM</p>
+                  <p className="text-center">{item.isDeliveringDate}</p>
                 </div>
                 <div className="status">
                   <div className="status_circle">
                     <div>
-                      <i className="fa fa-check"></i>
+                      {item.isDelivered ? (
+                        <i className="fa fa-check"></i>
+                      ) : (
+                        <i className="fa fa-close"></i>
+                      )}
                     </div>
                   </div>
                   <p className="text-center">Delivered</p>
-                  <p className="text-center">12-12-1212 12:34 AM</p>
+                  <p className="text-center">{item.isDeliveredDate}</p>
                 </div>
               </div>
             </div>
           ))}
       </div>
-      <OrderProducts show={modalShow} onHide={() => setModalShow(false)} />
+      <OrderProducts
+        orderProducts={orderProducts}
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
     </>
   );
 };

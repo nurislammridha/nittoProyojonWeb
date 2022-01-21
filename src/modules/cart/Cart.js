@@ -97,7 +97,13 @@ const Cart = () => {
                     <li>
                       <div className="single_cart">
                         <div className="cart_img">
-                          <img src={productImg} alt="image" />
+                          <img
+                            src={
+                              process.env.REACT_APP_IMG_URL +
+                              item.productImage.substring(2)
+                            }
+                            alt="image"
+                          />
                         </div>
                         <div className="cart_title">
                           <h6>{item.productName}</h6>

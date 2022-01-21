@@ -97,7 +97,7 @@ const Header = () => {
                     <i className="fa fa-user f_user"></i>
                     <label className="ml-2">
                       {isLoggedIn === "false"
-                        ? "Login/Registration"
+                        ? "Sign In/Up"
                         : JSON.parse(localStorage.getItem("userInfo")).fullName}
                     </label>
                     {/* <i className="fa fa-angle-down f_down"></i> */}

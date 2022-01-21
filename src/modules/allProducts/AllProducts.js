@@ -6,6 +6,9 @@ import ts1 from "../../asset/image/largeSlider/banner1.jpg";
 import ts2 from "../../asset/image/largeSlider/banner2.jpg";
 import ts3 from "../../asset/image/largeSlider/banner3.jpg";
 import productImg from "../../asset/image/product/bike.png";
+import productImg1 from "../../asset/image/product/product1.jpg";
+import productImg2 from "../../asset/image/product/product2.jpg";
+import productImg3 from "../../asset/image/product/banner1.jpg";
 import {
   isCartAdded2,
   OpenCart,
@@ -74,38 +77,43 @@ const AllProducts = () => {
                 productsByCategory !== null &&
                 productsByCategory.length > 0 &&
                 productsByCategory.map((item, index) => (
-                  <div className="single_product mb-1">
-                    <div className="product_img">
-                      <img
-                        src={
-                          process.env.REACT_APP_IMG_URL +
-                          item.productImage.substring(2)
-                        }
-                      />
-                    </div>
-                    <div className="product_content">
-                      <div className="product_title text-muted">
-                        {item.productName}
+                  <>
+                    <div className="single_product mb-1">
+                      <div className="product_img">
+                        <img
+                          src={
+                            productImg
+                            // process.env.REACT_APP_IMG_URL +
+                            // item.productImage.substring(2)
+                          }
+                        />
                       </div>
-                      <div className="product_price">
-                        <del className="mrp">${item.productMRP}</del>
-                        <div className="discount">${item.discountPrice}</div>
+                      <div className="product_content">
+                        <div className="product_title text-muted">
+                          {item.productName}
+                        </div>
+                        <div className="product_price">
+                          <del className="mrp">${item.productMRP}</del>
+                          <div className="discount">${item.discountPrice}</div>
+                        </div>
+                      </div>
+                      <div className="add_cart">
+                        {instantCart.length > 0 &&
+                        isCartAdded2(item._id, instantCart) ? (
+                          <a className="btn btn-success d-block">
+                            Already Added
+                          </a>
+                        ) : (
+                          <a
+                            className="btn btn-outline-success d-block"
+                            onClick={() => handleCart(item)}
+                          >
+                            Add to Card
+                          </a>
+                        )}
                       </div>
                     </div>
-                    <div className="add_cart">
-                      {instantCart.length > 0 &&
-                      isCartAdded2(item._id, instantCart) ? (
-                        <a className="btn btn-success d-block">Already Added</a>
-                      ) : (
-                        <a
-                          className="btn btn-outline-success d-block"
-                          onClick={() => handleCart(item)}
-                        >
-                          Add to Card
-                        </a>
-                      )}
-                    </div>
-                  </div>
+                  </>
                 ))}
             </div>
           </div>

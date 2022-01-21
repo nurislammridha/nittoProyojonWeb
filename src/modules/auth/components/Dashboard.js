@@ -9,7 +9,10 @@ const Dashboard = () => {
   useEffect(() => {
     setUserInfo(JSON.parse(localStorage.getItem("userInfo")));
   }, []);
-
+  const handleLogout = () => {
+    localStorage.setItem("isLoggedIn", "false");
+    navigate("/");
+  };
   return (
     <>
       <div className="user_dashboard">
@@ -30,6 +33,9 @@ const Dashboard = () => {
                 onClick={() => navigate("/user-dashboard/account")}
               >
                 <a>Your Account</a>
+              </li>
+              <li onClick={() => handleLogout()}>
+                <a>Logout</a>
               </li>
             </ul>
           </div>

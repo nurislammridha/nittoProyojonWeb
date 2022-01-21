@@ -369,4 +369,19 @@
   .d_price {
     font-size: 18px;
   }
+  .middle_vrhr {
+    min-height: 265px;
+  }
+  .vrhr_card {
+    width: 80%;
+  }
+  .user_details {
+    min-height: 660px;
+  }
+  .user_details h6 {
+    font-size: 13px;
+  }
+  .gender_align h6 {
+    font-size: 13px;
+  }
 }

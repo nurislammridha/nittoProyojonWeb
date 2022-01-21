@@ -1,5 +1,6 @@
 import * as Types from "./Types";
 import axios from "axios";
+import moment from "moment";
 // import { showToast } from "../../../../utils/ToastHelper";
 export const GetHomeProductsList = () => async (dispatch) => {
   const url = `${process.env.REACT_APP_API_URL}product/smart/home`;
@@ -8,6 +9,25 @@ export const GetHomeProductsList = () => async (dispatch) => {
     axios.get(url).then((res) => {
       if (res.data.status) {
         dispatch({ type: Types.HOME_PRODUCTS_LIST, payload: res.data.result });
+      }
+    });
+  } catch (error) {}
+};
+export const SubmitOrderData = (data) => async (dispatch) => {
+  const date = new Date();
+  const url = `${process.env.REACT_APP_API_URL}order`;
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  const postData = userInfo;
+  postData.userId = userInfo._id;
+  postData.orderDate = moment(date).format("dd-mm-yyyy");
+  postData.orderDateTime = moment(date).format("lll");
+  postData.productInfo = data;
+  postData.isCreatedDate = moment(date).format("lll");
+  postData.isCreated = true;
+  try {
+    axios.get(url).then((res) => {
+      if (res.data.status) {
+        dispatch({ type: Types.IS_ORDER_CREATED, payload: true });
       }
     });
   } catch (error) {}

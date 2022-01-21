@@ -2,8 +2,9 @@ import * as Types from "./Types";
 
 const initialState = {
   homeProductsList: null,
-  openCart:false,
-  afterRemoveCart:[]
+  openCart: false,
+  afterRemoveCart: [],
+  isOrderCreated: false,
 };
 const HomeProductsReducer = (state = initialState, action) => {
   const newState = { ...state };
@@ -16,12 +17,17 @@ const HomeProductsReducer = (state = initialState, action) => {
     case Types.OPEN_CART:
       return {
         ...state,
-        openCart:action.payload,
+        openCart: action.payload,
       };
     case Types.AFTER_REMOVE_CART:
       return {
         ...state,
-        afterRemoveCart:action.payload,
+        afterRemoveCart: action.payload,
+      };
+    case Types.IS_ORDER_CREATED:
+      return {
+        ...state,
+        isOrderCreated: action.payload,
       };
 
     default:

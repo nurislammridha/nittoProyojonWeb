@@ -8,13 +8,19 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   AfterRemoveCart,
   OpenCart,
+  SubmitOrderData,
   TotalCartPrice,
 } from "../homeProducts/_redux/HomeProductsAction";
+import { useNavigate } from "react-router-dom";
 const Cart = () => {
   const [isCart, setIsCart] = useState(false);
   const [localCart, setLocalCart] = useState([]);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const openCart = useSelector((state) => state.homeProductsInfo.openCart);
+  const isOrderCreated = useSelector(
+    (state) => state.homeProductsInfo.isOrderCreated
+  );
   useEffect(() => {
     if (window.innerWidth > 600 && openCart) {
       setIsCart(true);
@@ -25,6 +31,14 @@ const Cart = () => {
   useEffect(() => {
     setLocalCart(JSON.parse(localStorage.getItem("cartList")) || []);
   }, []);
+  const handleOrder = () => {
+    const isLoggedIn = localStorage.getItem("isLoggedIn") || "false";
+    if (isLoggedIn === "false") {
+      navigate("/phone-number");
+    } else {
+      dispatch(SubmitOrderData(localCart));
+    }
+  };
   const removeFromCart = (id) => {
     let removeCart = [...localCart];
     removeCart = removeCart.filter((item) => item._id !== id);
@@ -46,6 +60,12 @@ const Cart = () => {
       localStorage.setItem("cartList", JSON.stringify(cart));
     }
   };
+  useEffect(() => {
+    if (isOrderCreated) {
+      navigate("/user-dashboard/order");
+    }
+  }, [isOrderCreated]);
+
   return (
     <>
       <div className="cart_sm" onClick={() => setIsCart(true)}>
@@ -134,7 +154,7 @@ const Cart = () => {
           <i className="fa fa-facebook"></i>
         </div>
         <div className="place_order" onClick={() => setIsCart(true)}>
-          <a>
+          <a onClick={() => handleOrder()}>
             <h6 className="text-center">
               Order Now{" "}
               {localCart.length > 0 && (

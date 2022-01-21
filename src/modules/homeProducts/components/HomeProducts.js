@@ -74,11 +74,11 @@ const HomeProducts = () => {
                       <div className="single_product">
                         <div className="product_img">
                           <img
-                            src={productImg}
-                            // src={
-                            //   process.env.REACT_APP_IMG_URL +
-                            //   item2.productImage.substring(2)
-                            // }
+                            // src={productImg}
+                            src={
+                              process.env.REACT_APP_IMG_URL +
+                              item2.productImage.substring(2)
+                            }
                           />
                         </div>
                         <div className="product_content">

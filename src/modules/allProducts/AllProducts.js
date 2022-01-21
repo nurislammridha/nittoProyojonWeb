@@ -82,9 +82,9 @@ const AllProducts = () => {
                       <div className="product_img">
                         <img
                           src={
-                            productImg
-                            // process.env.REACT_APP_IMG_URL +
-                            // item.productImage.substring(2)
+                            // productImg
+                            process.env.REACT_APP_IMG_URL +
+                            item.productImage.substring(2)
                           }
                         />
                       </div>

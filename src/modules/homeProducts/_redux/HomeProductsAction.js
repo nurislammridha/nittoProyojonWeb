@@ -19,15 +19,17 @@ export const SubmitOrderData = (data) => async (dispatch) => {
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
   const postData = userInfo;
   postData.userId = userInfo._id;
-  postData.orderDate = moment(date).format("dd-mm-yyyy");
+  postData.orderDate = moment(date).format("DD-MM-YYYY");
   postData.orderDateTime = moment(date).format("lll");
   postData.productInfo = data;
   postData.isCreatedDate = moment(date).format("lll");
   postData.isCreated = true;
+  delete postData._id;
   try {
     axios.post(url, postData).then((res) => {
       if (res.data.status) {
         dispatch({ type: Types.IS_ORDER_CREATED, payload: true });
+        localStorage.setItem("cartList", "");
       }
     });
   } catch (error) {}

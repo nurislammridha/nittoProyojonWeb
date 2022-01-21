@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { TotalCartPrice } from "../../homeProducts/_redux/HomeProductsAction";
 import { GetOrderList } from "../_redux/AuthAction";
 import OrderProducts from "./OrderProducts";
 
@@ -27,10 +28,16 @@ const OrderList = ({ userInfo }) => {
                   <span className="badge bg-secondary">{item._id}</span>
                 </h5>
                 <h5>
-                  Item: <span className="badge bg-secondary">23</span>
+                  Item:{" "}
+                  <span className="badge bg-secondary">
+                    {item.productInfo.length}
+                  </span>
                 </h5>
                 <h5>
-                  Total: <span className="badge bg-secondary">$23</span>
+                  Total:{" "}
+                  <span className="badge bg-secondary">
+                    ${TotalCartPrice(item.productInfo)}
+                  </span>
                 </h5>
                 <span>
                   <a

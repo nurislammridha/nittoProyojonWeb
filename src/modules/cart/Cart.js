@@ -143,7 +143,12 @@ const Cart = () => {
               </ul>
             </div>
             <div className="bottom">
-              <a className="btn btn-success btn-sm">Order Now</a>{" "}
+              <a
+                className="btn btn-success btn-sm"
+                onClick={() => handleOrder()}
+              >
+                Order Now
+              </a>{" "}
               <span>Total ${TotalCartPrice(localCart)}</span>
             </div>
           </div>

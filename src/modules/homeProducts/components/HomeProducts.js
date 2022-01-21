@@ -6,7 +6,12 @@ import productImg1 from "../../../asset/image/product/product1.jpg";
 import productImg2 from "../../../asset/image/product/product2.jpg";
 import productImg3 from "../../../asset/image/product/banner1.jpg";
 import categoryImage from "../../../asset/image/product/categoryImage.jpg";
-import { GetHomeProductsList, isCartAdded, isCartAdded2, OpenCart } from "../_redux/HomeProductsAction";
+import {
+  GetHomeProductsList,
+  isCartAdded,
+  isCartAdded2,
+  OpenCart,
+} from "../_redux/HomeProductsAction";
 const HomeProducts = () => {
   const dispatch = useDispatch();
   const homeProductsList = useSelector(
@@ -15,35 +20,30 @@ const HomeProducts = () => {
   const afterRemoveCart = useSelector(
     (state) => state.homeProductsInfo.afterRemoveCart
   );
-  
-  const [instantCart, setInstantCart] = useState([])
+
+  const [instantCart, setInstantCart] = useState([]);
   const navigate = useNavigate();
   const hanldeAllProduct = (id) => {
     navigate(`/all-products/${id}`);
   };
   useEffect(() => {
     dispatch(GetHomeProductsList());
-    const cartList =JSON.parse(localStorage.getItem('cartList')) || []
-    setInstantCart(cartList)
+    const cartList = JSON.parse(localStorage.getItem("cartList")) || [];
+    setInstantCart(cartList);
   }, []);
-  const handleCart=(data)=>{
-    const cartList =JSON.parse(localStorage.getItem('cartList')) || []
-    data.quantity = 1
-    cartList.push(data)
-    setInstantCart(cartList)
-    localStorage.setItem('cartList',JSON.stringify(cartList))
-    
-    // const cart =[...instantCart]
-    // cart.push(data._id)	
-    // setInstantCart(cart)
-    dispatch(OpenCart(true))
-  }
+  const handleCart = (data) => {
+    const cartList = JSON.parse(localStorage.getItem("cartList")) || [];
+    data.quantity = 1;
+    cartList.push(data);
+    setInstantCart(cartList);
+    localStorage.setItem("cartList", JSON.stringify(cartList));
+    dispatch(OpenCart(true));
+  };
   useEffect(() => {
-    if(afterRemoveCart.length>0){
-      setInstantCart(afterRemoveCart)
+    if (afterRemoveCart.length > 0) {
+      setInstantCart(afterRemoveCart);
     }
-  }, [afterRemoveCart])
-  console.log(`homeProductsList`, homeProductsList);
+  }, [afterRemoveCart]);
   return (
     <>
       <div className="product_list">
@@ -74,9 +74,7 @@ const HomeProducts = () => {
                       <div className="single_product">
                         <div className="product_img">
                           <img
-                            src={
-                              productImg
-                            }
+                            src={productImg}
                             // src={
                             //   process.env.REACT_APP_IMG_URL +
                             //   item2.productImage.substring(2)
@@ -95,22 +93,23 @@ const HomeProducts = () => {
                           </div>
                         </div>
                         <div className="add_cart">
-                        {instantCart.length> 0 && isCartAdded2(item2._id,instantCart)? (
-                          <a className="btn btn-success d-block">
-                            Already Added
-                          </a>
-                        ):(
-                            <a className="btn btn-outline-success d-block" onClick={()=>handleCart(item2)}>
-                            Add to Card
-                          </a>)
-                       
-                          }
-                          
+                          {instantCart.length > 0 &&
+                          isCartAdded2(item2._id, instantCart) ? (
+                            <a className="btn btn-success d-block">
+                              Already Added
+                            </a>
+                          ) : (
+                            <a
+                              className="btn btn-outline-success d-block"
+                              onClick={() => handleCart(item2)}
+                            >
+                              Add to Card
+                            </a>
+                          )}
                         </div>
                       </div>
                     )
                   )}
-               
                 </div>
               </div>
             </div>

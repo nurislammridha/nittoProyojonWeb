@@ -8,9 +8,11 @@ const OrderList = ({ userInfo }) => {
   const [modalShow, setModalShow] = useState(false);
   const orderList = useSelector((state) => state.authInfo.orderList);
   useEffect(() => {
-    dispatch(GetOrderList(userInfo._id));
-  }, []);
-
+    if (userInfo) {
+      dispatch(GetOrderList(userInfo._id));
+    }
+  }, [userInfo]);
+  console.log("userInfo", userInfo);
   return (
     <>
       <div className="order_parent">

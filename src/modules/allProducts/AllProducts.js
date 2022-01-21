@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -6,6 +6,10 @@ import ts1 from "../../asset/image/largeSlider/banner1.jpg";
 import ts2 from "../../asset/image/largeSlider/banner2.jpg";
 import ts3 from "../../asset/image/largeSlider/banner3.jpg";
 import productImg from "../../asset/image/product/bike.png";
+import {
+  isCartAdded2,
+  OpenCart,
+} from "../homeProducts/_redux/HomeProductsAction";
 import { GetProductsByCategory } from "./_redux/AllProductsAction";
 const AllProducts = () => {
   const dispatch = useDispatch();
@@ -13,11 +17,31 @@ const AllProducts = () => {
   const productsByCategory = useSelector(
     (state) => state.allProductsInfo.productsByCategory
   );
+  const afterRemoveCart = useSelector(
+    (state) => state.homeProductsInfo.afterRemoveCart
+  );
+
+  const [instantCart, setInstantCart] = useState([]);
   useEffect(() => {
     dispatch(GetProductsByCategory(id));
   }, [id]);
-
-  console.log(`productsByCategory`, productsByCategory);
+  useEffect(() => {
+    const cartList = JSON.parse(localStorage.getItem("cartList")) || [];
+    setInstantCart(cartList);
+  }, []);
+  const handleCart = (data) => {
+    const cartList = JSON.parse(localStorage.getItem("cartList")) || [];
+    data.quantity = 1;
+    cartList.push(data);
+    setInstantCart(cartList);
+    localStorage.setItem("cartList", JSON.stringify(cartList));
+    dispatch(OpenCart(true));
+  };
+  useEffect(() => {
+    if (afterRemoveCart.length > 0) {
+      setInstantCart(afterRemoveCart);
+    }
+  }, [afterRemoveCart]);
   return (
     <>
       <div className="all_product_page">
@@ -69,9 +93,17 @@ const AllProducts = () => {
                       </div>
                     </div>
                     <div className="add_cart">
-                      <a className="btn btn-outline-success d-block">
-                        Add to Card
-                      </a>
+                      {instantCart.length > 0 &&
+                      isCartAdded2(item._id, instantCart) ? (
+                        <a className="btn btn-success d-block">Already Added</a>
+                      ) : (
+                        <a
+                          className="btn btn-outline-success d-block"
+                          onClick={() => handleCart(item)}
+                        >
+                          Add to Card
+                        </a>
+                      )}
                     </div>
                   </div>
                 ))}

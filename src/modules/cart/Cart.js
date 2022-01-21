@@ -155,7 +155,7 @@ const Cart = () => {
               >
                 Order Now
               </a>{" "}
-              <span>Total, ${TotalCartPrice(localCart)}</span>
+              <span>Total ${TotalCartPrice(localCart)}</span>
             </div>
           </div>
         </>

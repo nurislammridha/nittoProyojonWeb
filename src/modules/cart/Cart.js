@@ -26,11 +26,13 @@ const Cart = () => {
     if (window.innerWidth > 600 && openCart) {
       setIsCart(true);
     }
-    setLocalCart(JSON.parse(localStorage.getItem("cartList")));
+    let ca = JSON.parse(localStorage.getItem("cartList")) || [];
+    setLocalCart(ca);
     dispatch(OpenCart(false));
   }, [openCart]);
   useEffect(() => {
-    setLocalCart(JSON.parse(localStorage.getItem("cartList")) || []);
+    let car = JSON.parse(localStorage.getItem("cartList")) || [];
+    setLocalCart(car);
   }, []);
   const handleOrder = () => {
     const isLoggedIn = localStorage.getItem("isLoggedIn") || "false";

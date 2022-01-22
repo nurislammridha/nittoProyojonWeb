@@ -31,7 +31,8 @@ export const SubmitOrderData = (data) => async (dispatch) => {
       if (res.data.status) {
         dispatch({ type: Types.IS_ORDER_CREATED, payload: true });
         dispatch({ type: Types.IS_ORDER_HIT, payload: false });
-        localStorage.setItem("cartList", "");
+        // localStorage.setItem("cartList", []);
+        localStorage.removeItem("cartList");
       }
     });
   } catch (error) {}

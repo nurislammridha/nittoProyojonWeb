@@ -35,6 +35,7 @@ const Cart = () => {
     const isLoggedIn = localStorage.getItem("isLoggedIn") || "false";
     if (isLoggedIn === "false") {
       navigate("/phone-number");
+      setIsCart(false);
     } else {
       dispatch(SubmitOrderData(localCart));
     }
@@ -164,7 +165,7 @@ const Cart = () => {
         <div className="message_fb">
           <i className="fa fa-facebook"></i>
         </div>
-        <div className="place_order" onClick={() => setIsCart(true)}>
+        <div className="place_order">
           <a onClick={() => handleOrder()}>
             <h6 className="text-center">
               Order Now{" "}

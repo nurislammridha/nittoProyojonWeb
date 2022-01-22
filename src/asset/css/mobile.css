@@ -6,9 +6,9 @@
     display: none;
   }
   .header_top .middle {
-    font-size: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    font-size: 9px;
+    padding-left: 0px;
+    padding-right: 0px;
   }
   .header_middle {
     display: none;
@@ -40,17 +40,23 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    text-align: center;
     color: #28a745;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .header_middle_mobile .user {
     background-color: #fff;
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    text-align: center;
     color: #28a745;
     margin-left: 4px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .header_bottom {
     display: none;
@@ -164,6 +170,17 @@
   }
   .footer_bottom {
     margin-bottom: 30px;
+  }
+  .footer_top .social_icon img {
+    width: 30px;
+    height: 30px;
+  }
+  .app_store img {
+    width: 80px;
+    height: 35px;
+  }
+  .follow_us {
+    font-size: 14px;
   }
   .cart_mobile {
     position: fixed;
@@ -383,5 +400,24 @@
   }
   .gender_align h6 {
     font-size: 13px;
+  }
+  .logout_mobile {
+    display: none;
+  }
+  .logout_mo {
+    display: block;
+    padding-bottom: 10px !important;
+  }
+  .d_header p {
+    font-size: 14px !important;
+  }
+  .change_info {
+    display: none;
+  }
+  .order_id {
+    display: none;
+  }
+  .order_id_mobile {
+    display: block;
   }
 }

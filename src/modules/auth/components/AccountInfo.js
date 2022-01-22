@@ -1,6 +1,6 @@
 import React from "react";
 
-const AccountInfo = ({ userInfo }) => {
+const AccountInfo = ({ userInfo, handleLogout }) => {
   return (
     <>
       <div className="d_info">
@@ -57,6 +57,11 @@ const AccountInfo = ({ userInfo }) => {
         <div>
           <h5>Gender</h5>
           <input className="form-control" disabled value={userInfo.gender} />
+        </div>
+        <div className="logout_mo">
+          <a className="btn btn-success d-block" onClick={() => handleLogout()}>
+            LOGOUT
+          </a>
         </div>
       </div>
     </>

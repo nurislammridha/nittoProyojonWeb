@@ -23,7 +23,7 @@ const OrderList = ({ userInfo }) => {
           orderList.map((item, index) => (
             <div className="order_info">
               <div className="d-flex justify-content-between order_header">
-                <h5>
+                <h5 className="order_id">
                   Order Id:{" "}
                   <span className="badge bg-secondary">{item._id}</span>
                 </h5>
@@ -51,7 +51,14 @@ const OrderList = ({ userInfo }) => {
                   </a>
                 </span>
               </div>
-              <h6 className="mt-3">Your Order Status</h6>
+              <div className="mt-2 d-flex justify-content-between">
+                <h6 className="">Your Order Status</h6>
+                <h6 className="order_id_mobile">
+                  Order Id:{" "}
+                  <span className="badge bg-secondary">{item._id}</span>
+                </h6>
+              </div>
+
               <div className="d-flex justify-content-between status_progress">
                 <div className="status">
                   <div className="status_circle">
@@ -73,7 +80,7 @@ const OrderList = ({ userInfo }) => {
                     </div>
                   </div>
                   <p className="text-center">Accepted</p>
-                  <p className="text-center">{item.isAcceptedDate}</p>
+                  <p className="text-center">{item.isAcceptedDate}&nbsp;</p>
                 </div>
                 <div className="status">
                   <div className="status_circle">
@@ -86,7 +93,7 @@ const OrderList = ({ userInfo }) => {
                     </div>
                   </div>
                   <p className="text-center">Precessing</p>
-                  <p className="text-center">{item.isProcessingDate}</p>
+                  <p className="text-center">{item.isProcessingDate}&nbsp;</p>
                 </div>
                 <div className="status">
                   <div className="status_circle">
@@ -99,7 +106,7 @@ const OrderList = ({ userInfo }) => {
                     </div>
                   </div>
                   <p className="text-center">Delivering</p>
-                  <p className="text-center">{item.isDeliveringDate}</p>
+                  <p className="text-center">{item.isDeliveringDate}&nbsp;</p>
                 </div>
                 <div className="status">
                   <div className="status_circle">
@@ -112,7 +119,7 @@ const OrderList = ({ userInfo }) => {
                     </div>
                   </div>
                   <p className="text-center">Delivered</p>
-                  <p className="text-center">{item.isDeliveredDate}</p>
+                  <p className="text-center">{item.isDeliveredDate}&nbsp;</p>
                 </div>
               </div>
             </div>

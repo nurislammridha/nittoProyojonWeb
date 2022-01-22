@@ -13,6 +13,8 @@ const Header = () => {
 
   const hanldeAllProduct = (id) => {
     navigate(`/all-products/${id}`);
+    setIsCategoryHover(false);
+    setIsMobileCategory(false);
   };
   const handleDashboard = (id) => {
     if (isLoggedIn === "false") {
@@ -125,8 +127,12 @@ const Header = () => {
             <div className="help">
               <i className="fa fa-question-circle"></i>
             </div>
-            <div className="user">
-              <i className="fa fa-user"></i>
+            <div className="user" onClick={() => handleDashboard()}>
+              {isLoggedIn === "false" ? (
+                <i className="fa fa-user"></i>
+              ) : (
+                JSON.parse(localStorage.getItem("userInfo")).fullName.charAt(0)
+              )}
             </div>
           </div>
         </div>

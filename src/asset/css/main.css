@@ -816,3 +816,12 @@
   justify-content: space-between;
   font-size: 16px;
 }
+.logout_mo {
+  display: none;
+}
+.change_info {
+  margin-left: 5px;
+}
+.order_id_mobile {
+  display: none;
+}

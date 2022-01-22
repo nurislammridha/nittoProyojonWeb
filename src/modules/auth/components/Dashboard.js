@@ -34,7 +34,7 @@ const Dashboard = () => {
               >
                 <a>Your Account</a>
               </li>
-              <li onClick={() => handleLogout()}>
+              <li className="logout_mobile" onClick={() => handleLogout()}>
                 <a>Logout</a>
               </li>
             </ul>
@@ -46,14 +46,20 @@ const Dashboard = () => {
               {id === "account" ? "Personal Information" : "Your Order List"}
             </p>
             {id === "account" ? (
-              <a className="btn btn-outline-success">Change Information</a>
+              <a className="btn btn-outline-success">
+                <i className="fa fa-pencil"></i>
+                <span className="change_info">Change Information</span>
+              </a>
             ) : (
               ""
             )}
           </div>
           <div className="user_info">
             {id === "account" ? (
-              <AccountInfo userInfo={userInfo} />
+              <AccountInfo
+                userInfo={userInfo}
+                handleLogout={() => handleLogout()}
+              />
             ) : (
               <OrderList userInfo={userInfo} />
             )}

@@ -80,7 +80,13 @@ const OrderList = ({ userInfo }) => {
                     </div>
                   </div>
                   <p className="text-center">Accepted</p>
-                  <p className="text-center">{item.isAcceptedDate}&nbsp;</p>
+                  <p className="text-center">
+                    {item.isAccepted ? (
+                      item.isAcceptedDate
+                    ) : (
+                      <span className="invisible">Jan 00, 0000 10:00 AM</span>
+                    )}
+                  </p>
                 </div>
                 <div className="status">
                   <div className="status_circle">
@@ -93,7 +99,13 @@ const OrderList = ({ userInfo }) => {
                     </div>
                   </div>
                   <p className="text-center">Precessing</p>
-                  <p className="text-center">{item.isProcessingDate}&nbsp;</p>
+                  <p className="text-center">
+                    {item.isProcessing ? (
+                      item.isProcessingDate
+                    ) : (
+                      <span className="invisible">Jan 00, 0000 10:00 AM</span>
+                    )}
+                  </p>
                 </div>
                 <div className="status">
                   <div className="status_circle">
@@ -106,7 +118,13 @@ const OrderList = ({ userInfo }) => {
                     </div>
                   </div>
                   <p className="text-center">Delivering</p>
-                  <p className="text-center">{item.isDeliveringDate}&nbsp;</p>
+                  <p className="text-center">
+                    {item.isDelivering ? (
+                      item.isDeliveringDate
+                    ) : (
+                      <span className="invisible">Jan 00, 0000 10:00 AM</span>
+                    )}
+                  </p>
                 </div>
                 <div className="status">
                   <div className="status_circle">
@@ -119,7 +137,13 @@ const OrderList = ({ userInfo }) => {
                     </div>
                   </div>
                   <p className="text-center">Delivered</p>
-                  <p className="text-center">{item.isDeliveredDate}&nbsp;</p>
+                  <p className="text-center">
+                    {item.isDelivered ? (
+                      item.isDeliveredDate
+                    ) : (
+                      <span className="invisible">Jan 00, 0000 10:00 AM</span>
+                    )}
+                  </p>
                 </div>
               </div>
             </div>

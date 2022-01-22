@@ -17,6 +17,7 @@ const UpdateUser = () => {
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.authInfo.userInfo);
   const isLoggedIn = useSelector((state) => state.authInfo.isLoggedIn);
+  const isDetailsHit = useSelector((state) => state.authInfo.isDetailsHit);
   const navigate = useNavigate();
 
   const handleChangeText = (name, value) => {
@@ -119,12 +120,22 @@ const UpdateUser = () => {
             />
           </div>
           <div className="mt-3 d-flex justify-content-end">
-            <a
-              className="btn btn-outline-success btn-sm "
-              onClick={() => handleSubmit()}
-            >
-              UPDATE
-            </a>
+            {isDetailsHit ? (
+              <a className="btn btn-outline-success btn-sm ">
+                <span
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+              </a>
+            ) : (
+              <a
+                className="btn btn-outline-success btn-sm "
+                onClick={() => handleSubmit()}
+              >
+                UPDATE
+              </a>
+            )}
           </div>
         </div>
       </div>

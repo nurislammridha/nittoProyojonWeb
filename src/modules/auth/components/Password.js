@@ -11,6 +11,7 @@ const Password = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.authInfo.isLoggedIn);
+  const isLoggedHit = useSelector((state) => state.authInfo.isLoggedHit);
   useEffect(() => {
     setIsPhoneNumber(localStorage.getItem("isPhoneNumber"));
     setPhoneNumber(localStorage.getItem("phoneNumber"));
@@ -60,12 +61,22 @@ const Password = () => {
             </div>
           )}
           <div className="mt-3 d-flex justify-content-end">
-            <a
-              className="btn btn-outline-success btn-sm "
-              onClick={() => handleLogin()}
-            >
-              SUBMIT
-            </a>
+            {isLoggedHit ? (
+              <a className="btn btn-outline-success btn-sm ">
+                <span
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+              </a>
+            ) : (
+              <a
+                className="btn btn-outline-success btn-sm "
+                onClick={() => handleLogin()}
+              >
+                SUBMIT
+              </a>
+            )}
           </div>
         </div>
       </div>

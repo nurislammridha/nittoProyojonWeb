@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { isLogout } from "../_redux/AuthAction";
 import AccountInfo from "./AccountInfo";
 import OrderList from "./OrderList";
 const Dashboard = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [userInfo, setUserInfo] = useState("");
   useEffect(() => {
     setUserInfo(JSON.parse(localStorage.getItem("userInfo")));
@@ -12,6 +15,7 @@ const Dashboard = () => {
   const handleLogout = () => {
     localStorage.setItem("isLoggedIn", "false");
     navigate("/");
+    dispatch(isLogout(true));
   };
   const handelUpdateUser = () => {
     navigate(`/user-update`);

@@ -15,6 +15,10 @@ const initialState = {
   },
   isLoggedIn: false,
   orderList: null,
+  isLoadNumber: false,
+  isLoggedHit: false,
+  isDetailsHit: false,
+  isLogout: false,
 };
 const AuthReducer = (state = initialState, action) => {
   const newState = { ...state };
@@ -48,6 +52,26 @@ const AuthReducer = (state = initialState, action) => {
       return {
         ...state,
         userInfo: data,
+      };
+    case Types.IS_LOAD_NUMBER:
+      return {
+        ...state,
+        isLoadNumber: action.payload,
+      };
+    case Types.IS_LOGGIN_HIT:
+      return {
+        ...state,
+        isLoggedHit: action.payload,
+      };
+    case Types.IS_DETAILS_HIT:
+      return {
+        ...state,
+        isDetailsHit: action.payload,
+      };
+    case Types.IS_LOGOUT:
+      return {
+        ...state,
+        isLogout: action.payload,
       };
 
     default:

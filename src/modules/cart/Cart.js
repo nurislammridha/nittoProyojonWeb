@@ -18,6 +18,7 @@ const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const openCart = useSelector((state) => state.homeProductsInfo.openCart);
+  const isOrderHit = useSelector((state) => state.homeProductsInfo.isOrderHit);
   const isOrderCreated = useSelector(
     (state) => state.homeProductsInfo.isOrderCreated
   );
@@ -64,6 +65,8 @@ const Cart = () => {
   useEffect(() => {
     if (isOrderCreated) {
       navigate("/user-dashboard/order");
+      setIsCart(false);
+      setLocalCart([]);
     }
   }, [isOrderCreated]);
 
@@ -150,12 +153,24 @@ const Cart = () => {
               </ul>
             </div>
             <div className="bottom">
-              <a
-                className="btn btn-success btn-sm"
-                onClick={() => handleOrder()}
-              >
-                Order Now
-              </a>{" "}
+              {isOrderHit ? (
+                <a className="btn btn-success btn-sm">
+                  <span
+                    class="spinner-border spinner-border-sm"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                  Ordering..
+                </a>
+              ) : (
+                <a
+                  className="btn btn-success btn-sm"
+                  onClick={() => handleOrder()}
+                >
+                  Order Now
+                </a>
+              )}
+
               <span>Total ${TotalCartPrice(localCart)}</span>
             </div>
           </div>
@@ -166,16 +181,34 @@ const Cart = () => {
           <i className="fa fa-facebook"></i>
         </div>
         <div className="place_order">
-          <a onClick={() => handleOrder()}>
-            <h6 className="text-center">
-              Order Now{" "}
-              {localCart.length > 0 && (
-                <span className="badge_mobile">
-                  Total ${TotalCartPrice(localCart)}
-                </span>
-              )}
-            </h6>
-          </a>
+          {isOrderHit ? (
+            <a onClick={() => handleOrder()}>
+              <h6 className="text-center">
+                <span
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+                Ordering..
+                {localCart.length > 0 && (
+                  <span className="badge_mobile">
+                    Total ${TotalCartPrice(localCart)}
+                  </span>
+                )}
+              </h6>
+            </a>
+          ) : (
+            <a onClick={() => handleOrder()}>
+              <h6 className="text-center">
+                Order Now{" "}
+                {localCart.length > 0 && (
+                  <span className="badge_mobile">
+                    Total ${TotalCartPrice(localCart)}
+                  </span>
+                )}
+              </h6>
+            </a>
+          )}
         </div>
         <div className="mobile_cart" onClick={() => setIsCart(true)}>
           <img src={shoppingBag} />

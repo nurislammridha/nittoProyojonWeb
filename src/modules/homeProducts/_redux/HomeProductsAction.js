@@ -25,10 +25,12 @@ export const SubmitOrderData = (data) => async (dispatch) => {
   postData.isCreatedDate = moment(date).format("lll");
   postData.isCreated = true;
   delete postData._id;
+  dispatch({ type: Types.IS_ORDER_HIT, payload: true });
   try {
     axios.post(url, postData).then((res) => {
       if (res.data.status) {
         dispatch({ type: Types.IS_ORDER_CREATED, payload: true });
+        dispatch({ type: Types.IS_ORDER_HIT, payload: false });
         localStorage.setItem("cartList", "");
       }
     });

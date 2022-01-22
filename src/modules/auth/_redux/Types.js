@@ -3,3 +3,7 @@ export const CHANGE_USER_INPUT = "CHANGE_USER_INPUT";
 export const IS_LOGGED_IN = "IS_LOGGED_IN";
 export const GET_ORDER_LIST = "GET_ORDER_LIST";
 export const GET_EDITABLE_DATA = "GET_EDITABLE_DATA";
+export const IS_LOAD_NUMBER = "IS_LOAD_NUMBER";
+export const IS_LOGGIN_HIT = "IS_LOGGIN_HIT";
+export const IS_DETAILS_HIT = "IS_DETAILS_HIT";
+export const IS_LOGOUT = "IS_LOGOUT";

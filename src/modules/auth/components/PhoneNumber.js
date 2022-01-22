@@ -10,6 +10,7 @@ const PhoneNumber = () => {
   const checkPhoneNumber = useSelector(
     (state) => state.authInfo.checkPhoneNumber
   );
+  const isLoadNumber = useSelector((state) => state.authInfo.isLoadNumber);
   const handlePhone = () => {
     dispatch(CheckPhoneNumber(phone));
   };
@@ -37,12 +38,22 @@ const PhoneNumber = () => {
             />
           </div>
           <div className="mt-3 d-flex justify-content-end">
-            <a
-              className="btn btn-outline-success btn-sm "
-              onClick={() => handlePhone()}
-            >
-              SUBMIT
-            </a>
+            {isLoadNumber ? (
+              <a className="btn btn-outline-success btn-sm ">
+                <span
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+              </a>
+            ) : (
+              <a
+                className="btn btn-outline-success btn-sm "
+                onClick={() => handlePhone()}
+              >
+                SUBMIT
+              </a>
+            )}
           </div>
         </div>
       </div>

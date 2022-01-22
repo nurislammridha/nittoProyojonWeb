@@ -17,6 +17,7 @@ export const CheckPhoneNumber = (number) => async (dispatch) => {
   const postData = {
     phoneNumber: number,
   };
+  dispatch({ type: Types.IS_LOAD_NUMBER, payload: true });
   try {
     axios.post(url, postData).then((res) => {
       if (res.data.status) {
@@ -24,6 +25,7 @@ export const CheckPhoneNumber = (number) => async (dispatch) => {
           type: Types.CHECK_PHONE_NUMBER,
           payload: res.data,
         });
+        dispatch({ type: Types.IS_LOAD_NUMBER, payload: false });
       }
     });
   } catch (error) {}
@@ -37,6 +39,7 @@ export const SubmitUserInput = (data) => async (dispatch) => {
     phoneNumber: data.phoneNumber,
     password: data.password,
   };
+  dispatch({ type: Types.IS_DETAILS_HIT, payload: true });
   try {
     axios.post(url, data).then((res) => {
       if (res.data.status) {
@@ -48,6 +51,7 @@ export const SubmitUserInput = (data) => async (dispatch) => {
               type: Types.IS_LOGGED_IN,
               payload: true,
             });
+            dispatch({ type: Types.IS_DETAILS_HIT, payload: false });
           }
         });
       }
@@ -64,6 +68,7 @@ export const UpdateUserInput = (data) => async (dispatch) => {
     password: data.password,
   };
   delete data._id;
+  dispatch({ type: Types.IS_DETAILS_HIT, payload: true });
   try {
     axios.put(url, data).then((res) => {
       if (res.data.status) {
@@ -75,6 +80,7 @@ export const UpdateUserInput = (data) => async (dispatch) => {
               type: Types.IS_LOGGED_IN,
               payload: true,
             });
+            dispatch({ type: Types.IS_DETAILS_HIT, payload: false });
           }
         });
       }
@@ -83,11 +89,13 @@ export const UpdateUserInput = (data) => async (dispatch) => {
 };
 export const UserLogin = (data) => async (dispatch) => {
   const url = `${process.env.REACT_APP_API_URL}user/login`;
+  dispatch({ type: Types.IS_LOGGIN_HIT, payload: true });
   try {
     axios.post(url, data).then((res) => {
       if (res.data.status) {
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("userInfo", JSON.stringify(res.data.result));
+        dispatch({ type: Types.IS_LOGGIN_HIT, payload: false });
         dispatch({
           type: Types.IS_LOGGED_IN,
           payload: true,
@@ -116,6 +124,9 @@ export const GetOrderList = (id) => (dispatch) => {
 };
 export const GetEditableData = (data) => (dispatch) => {
   dispatch({ type: Types.GET_EDITABLE_DATA, payload: data });
+};
+export const isLogout = (data) => (dispatch) => {
+  dispatch({ type: Types.IS_LOGOUT, payload: data });
 };
 export const VillageList = () => {
   return [

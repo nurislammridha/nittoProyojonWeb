@@ -3,14 +3,18 @@ import logo from "../../asset/image/logo/logo.png";
 import categoryIcon from "../../asset/image/icon/categoryIcon.png";
 import { FormControl, InputGroup } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { isLogout } from "../auth/_redux/AuthAction";
 const Header = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const categoryList = useSelector((state) => state.categoryInfo.categoryList);
   const [isCategoryHover, setIsCategoryHover] = useState(false);
   const [isMobileCategory, setIsMobileCategory] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState("false");
-
+  const [userName, setUserName] = useState("");
+  const isLoggedInAfter = useSelector((state) => state.authInfo.isLoggedIn);
+  const isLogoutAfter = useSelector((state) => state.authInfo.isLogout);
   const hanldeAllProduct = (id) => {
     navigate(`/all-products/${id}`);
     setIsCategoryHover(false);
@@ -24,8 +28,26 @@ const Header = () => {
     }
   };
   useEffect(() => {
-    setIsLoggedIn(localStorage.getItem("isLoggedIn") || "false");
+    let login = localStorage.getItem("isLoggedIn") || "false";
+    setIsLoggedIn(login);
+    if (login === "false") {
+      setUserName("sts");
+    } else {
+      setUserName(JSON.parse(localStorage.getItem("userInfo")).fullName);
+    }
   }, []);
+  useEffect(() => {
+    if (isLoggedInAfter) {
+      setUserName(JSON.parse(localStorage.getItem("userInfo")).fullName);
+      setIsLoggedIn("true");
+    }
+  }, [isLoggedInAfter]);
+  useEffect(() => {
+    if (isLogoutAfter) {
+      setIsLoggedIn("false");
+      dispatch(isLogout(false));
+    }
+  }, [isLogoutAfter]);
 
   return (
     <>
@@ -98,9 +120,7 @@ const Header = () => {
                   >
                     <i className="fa fa-user f_user"></i>
                     <label className="ml-2">
-                      {isLoggedIn === "false"
-                        ? "Sign In/Up"
-                        : JSON.parse(localStorage.getItem("userInfo")).fullName}
+                      {isLoggedIn === "false" ? "Sign In/Up" : userName}
                     </label>
                     {/* <i className="fa fa-angle-down f_down"></i> */}
                   </div>
@@ -131,7 +151,7 @@ const Header = () => {
               {isLoggedIn === "false" ? (
                 <i className="fa fa-user"></i>
               ) : (
-                JSON.parse(localStorage.getItem("userInfo")).fullName.charAt(0)
+                userName.charAt(0)
               )}
             </div>
           </div>

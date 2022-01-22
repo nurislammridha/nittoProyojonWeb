@@ -42,6 +42,13 @@ const AuthReducer = (state = initialState, action) => {
         ...state,
         orderList: action.payload,
       };
+    case Types.GET_EDITABLE_DATA:
+      let data = state.userInfo;
+      data = action.payload;
+      return {
+        ...state,
+        userInfo: data,
+      };
 
     default:
       break;

@@ -172,8 +172,8 @@
     margin-bottom: 30px;
   }
   .footer_top .social_icon img {
-    width: 30px;
-    height: 30px;
+    width: 27px;
+    height: 27px;
   }
   .app_store img {
     width: 80px;
@@ -360,7 +360,7 @@
     padding: 0px 5px !important;
   }
   .order_info .status p {
-    font-size: 15px;
+    font-size: 10px;
   }
   .order_info .status_circle > div {
     background-color: #28a745;
@@ -381,7 +381,11 @@
     height: 150px;
   }
   .d_content {
-    font-size: 16px;
+    font-size: 12px;
+  }
+  .d_quantity {
+    font-size: 12px;
+    margin-top: 5px;
   }
   .d_price {
     font-size: 18px;
@@ -417,7 +421,14 @@
   .order_id {
     display: none;
   }
+  .order_status {
+    font-size: 13px;
+  }
   .order_id_mobile {
     display: block;
+    font-size: 13px;
+  }
+  .order_id_mobile span {
+    font-size: 9px;
   }
 }

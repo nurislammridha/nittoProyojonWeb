@@ -13,6 +13,9 @@ const Dashboard = () => {
     localStorage.setItem("isLoggedIn", "false");
     navigate("/");
   };
+  const handelUpdateUser = () => {
+    navigate(`/user-update`);
+  };
   return (
     <>
       <div className="user_dashboard">
@@ -46,7 +49,10 @@ const Dashboard = () => {
               {id === "account" ? "Personal Information" : "Your Order List"}
             </p>
             {id === "account" ? (
-              <a className="btn btn-outline-success">
+              <a
+                className="btn btn-outline-success"
+                onClick={() => handelUpdateUser()}
+              >
                 <i className="fa fa-pencil"></i>
                 <span className="change_info">Change Information</span>
               </a>

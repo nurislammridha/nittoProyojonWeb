@@ -35,7 +35,9 @@ const OrderProducts = (props) => {
                       />
                     </div>
                     <div className="d_content">{item.productName}</div>
-                    <h6 className="text-center">Quantity: {item.quantity}</h6>
+                    <h6 className="text-center d_quantity">
+                      Quantity: {item.quantity}
+                    </h6>
                     <div className="d_price">
                       <del>${item.productMRP}</del>
                       <span>${item.discountPrice}</span>

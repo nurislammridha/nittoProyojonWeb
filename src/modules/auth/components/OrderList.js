@@ -52,7 +52,7 @@ const OrderList = ({ userInfo }) => {
                 </span>
               </div>
               <div className="mt-2 d-flex justify-content-between">
-                <h6 className="">Your Order Status</h6>
+                <h6 className="order_status">Your Order Status</h6>
                 <h6 className="order_id_mobile">
                   Order Id:{" "}
                   <span className="badge bg-secondary">{item._id}</span>

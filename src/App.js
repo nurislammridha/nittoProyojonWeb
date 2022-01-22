@@ -10,6 +10,7 @@ import PhoneNumberContainer from "./modules/auth/views/PhoneNumberContainer";
 import PasswordContainer from "./modules/auth/views/PasswordContainer";
 import UserDetailsContainer from "./modules/auth/views/UserDetailsContainer";
 import DashboardContainer from "./modules/auth/views/DashboardContainer";
+import UpdateUserContainer from "./modules/auth/views/UpdateUserContainer";
 function App() {
   let option = {
     responsive: {
@@ -38,6 +39,7 @@ function App() {
         <Route path="phone-number" element={<PhoneNumberContainer />} />
         <Route path="password" element={<PasswordContainer />} />
         <Route path="user-details" element={<UserDetailsContainer />} />
+        <Route path="user-update" element={<UpdateUserContainer />} />
         <Route path="user-dashboard/:id" element={<DashboardContainer />} />
       </Routes>
       <Footer />

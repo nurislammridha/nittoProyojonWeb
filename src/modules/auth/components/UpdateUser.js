@@ -1,16 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import Form from "react-bootstrap/Form";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import {
   ChangeUserInput,
+  GetEditableData,
   SubmitUserInput,
+  UpdateUserInput,
   VillageAreaList,
   VillageList,
 } from "../_redux/AuthAction";
 import { useNavigate } from "react-router-dom";
-const UserDetails = () => {
+const UpdateUser = () => {
+  const [userInfoLo, setUserInfoLo] = useState("");
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.authInfo.userInfo);
   const isLoggedIn = useSelector((state) => state.authInfo.isLoggedIn);
@@ -20,13 +23,17 @@ const UserDetails = () => {
     dispatch(ChangeUserInput(name, value));
   };
   const handleSubmit = () => {
-    dispatch(SubmitUserInput(userInfo));
+    dispatch(UpdateUserInput(userInfo));
   };
   useEffect(() => {
     if (isLoggedIn) {
       navigate("/user-dashboard/account");
     }
   }, [isLoggedIn]);
+  useEffect(() => {
+    dispatch(GetEditableData(JSON.parse(localStorage.getItem("userInfo"))));
+    setUserInfoLo(JSON.parse(localStorage.getItem("userInfo")));
+  }, []);
 
   return (
     <>
@@ -116,7 +123,7 @@ const UserDetails = () => {
               className="btn btn-outline-success btn-sm "
               onClick={() => handleSubmit()}
             >
-              SUBMIT
+              UPDATE
             </a>
           </div>
         </div>
@@ -125,4 +132,4 @@ const UserDetails = () => {
   );
 };
 
-export default UserDetails;
+export default UpdateUser;

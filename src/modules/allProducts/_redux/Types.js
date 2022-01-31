@@ -1,1 +1,2 @@
 export const PRODUCTS_BY_CATEGORY = "PRODUCTS_BY_CATEGORY";
+export const IS_PAGE_LOAD = "IS_PAGE_LOAD";

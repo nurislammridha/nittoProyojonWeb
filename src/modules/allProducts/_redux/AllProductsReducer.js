@@ -2,6 +2,7 @@ import * as Types from "./Types";
 
 const initialState = {
   productsByCategory: null,
+  isPageLoad: false,
 };
 const AllProductsReducer = (state = initialState, action) => {
   const newState = { ...state };
@@ -10,6 +11,11 @@ const AllProductsReducer = (state = initialState, action) => {
       return {
         ...state,
         productsByCategory: action.payload,
+      };
+    case Types.IS_PAGE_LOAD:
+      return {
+        ...state,
+        isPageLoad: action.payload,
       };
 
     default:

@@ -1,5 +1,6 @@
 import * as Types from "./Types";
 import axios from "axios";
+import { showToast } from "../../../utils/ToastHelper";
 
 // export const GetHomeProductsList = () => async (dispatch) => {
 //   const url = `${process.env.REACT_APP_API_URL}product/smart/home`;
@@ -13,6 +14,16 @@ import axios from "axios";
 //   } catch (error) {}
 // };
 export const CheckPhoneNumber = (number) => async (dispatch) => {
+  if (number.length === 0) {
+    showToast("error", "Phone number should not be empty");
+    return 0;
+  } else if (number.substring(0, 2) !== "01") {
+    showToast("error", "Phone number should start with 01");
+    return 0;
+  } else if (number.length !== 11) {
+    showToast("error", "In valid phone number");
+    return 0;
+  }
   const url = `${process.env.REACT_APP_API_URL}user/phone`;
   const postData = {
     phoneNumber: number,
@@ -31,6 +42,25 @@ export const CheckPhoneNumber = (number) => async (dispatch) => {
   } catch (error) {}
 };
 export const SubmitUserInput = (data) => async (dispatch) => {
+  if (data.fullName.length === 0) {
+    showToast("error", "Full name should not be empty");
+    return 0;
+  } else if (data.nickName.length === 0) {
+    showToast("error", "Nick name should not be empty");
+    return 0;
+  } else if (data.profession.length === 0) {
+    showToast("error", "Profession should not be empty");
+    return 0;
+  } else if (data.village.length === 0) {
+    showToast("error", "Please select your village");
+    return 0;
+  } else if (data.villageArea.length === 0) {
+    showToast("error", "Please select your village area");
+    return 0;
+  } else if (data.gender.length === 0) {
+    showToast("error", "Please select your gender");
+    return 0;
+  }
   data.phoneNumber = localStorage.getItem("phoneNumber");
   data.password = localStorage.getItem("password");
   const url = `${process.env.REACT_APP_API_URL}user`;
@@ -59,6 +89,25 @@ export const SubmitUserInput = (data) => async (dispatch) => {
   } catch (error) {}
 };
 export const UpdateUserInput = (data) => async (dispatch) => {
+  if (data.fullName.length === 0) {
+    showToast("error", "Full name should not be empty");
+    return 0;
+  } else if (data.nickName.length === 0) {
+    showToast("error", "Nick name should not be empty");
+    return 0;
+  } else if (data.profession.length === 0) {
+    showToast("error", "Profession should not be empty");
+    return 0;
+  } else if (data.village.length === 0) {
+    showToast("error", "Please select your village");
+    return 0;
+  } else if (data.villageArea.length === 0) {
+    showToast("error", "Please select your village area");
+    return 0;
+  } else if (data.gender.length === 0) {
+    showToast("error", "Please select your gender");
+    return 0;
+  }
   data.phoneNumber = localStorage.getItem("phoneNumber");
   data.password = localStorage.getItem("password");
   const url = `${process.env.REACT_APP_API_URL}user/${data._id}`;

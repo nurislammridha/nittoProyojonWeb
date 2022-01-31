@@ -20,6 +20,7 @@ const HomeProducts = () => {
   const afterRemoveCart = useSelector(
     (state) => state.homeProductsInfo.afterRemoveCart
   );
+  const isPageLoad = useSelector((state) => state.homeProductsInfo.isPageLoad);
 
   const [instantCart, setInstantCart] = useState([]);
   const navigate = useNavigate();
@@ -46,8 +47,16 @@ const HomeProducts = () => {
   }, [afterRemoveCart]);
   return (
     <>
+      {isPageLoad && (
+        <div class="d-flex justify-content-center  mt-5 mt-5 mt-5">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      )}
       <div className="product_list">
-        {homeProductsList &&
+        {!isPageLoad &&
+          homeProductsList &&
           homeProductsList !== null &&
           homeProductsList.length > 0 &&
           homeProductsList.map((item, index) => (

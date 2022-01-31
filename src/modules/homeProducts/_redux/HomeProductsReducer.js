@@ -6,6 +6,7 @@ const initialState = {
   afterRemoveCart: [],
   isOrderCreated: false,
   isOrderHit: false,
+  isPageLoad: false,
 };
 const HomeProductsReducer = (state = initialState, action) => {
   const newState = { ...state };
@@ -34,6 +35,11 @@ const HomeProductsReducer = (state = initialState, action) => {
       return {
         ...state,
         isOrderHit: action.payload,
+      };
+    case Types.IS_PAGE_LOAD:
+      return {
+        ...state,
+        isPageLoad: action.payload,
       };
 
     default:

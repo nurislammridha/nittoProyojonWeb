@@ -20,6 +20,7 @@ const AllProducts = () => {
   const productsByCategory = useSelector(
     (state) => state.allProductsInfo.productsByCategory
   );
+  const isPageLoad = useSelector((state) => state.allProductsInfo.isPageLoad);
   const afterRemoveCart = useSelector(
     (state) => state.homeProductsInfo.afterRemoveCart
   );
@@ -61,63 +62,74 @@ const AllProducts = () => {
             </div>
           </div>
         </div>
-        <div className="all_product">
-          <div className="category_product">
-            <div className="category_name">
-              {productsByCategory &&
-                productsByCategory !== null &&
-                productsByCategory.length > 0 &&
-                productsByCategory[0].categoryName}
-            </div>
-            <div className="border_top_all">
-              <p></p>
-            </div>
-            <div className="product_parent_all">
-              {productsByCategory &&
-                productsByCategory !== null &&
-                productsByCategory.length > 0 &&
-                productsByCategory.map((item, index) => (
-                  <>
-                    <div className="single_product mb-1">
-                      <div className="product_img">
-                        <img
-                          src={
-                            // productImg
-                            process.env.REACT_APP_IMG_URL +
-                            item.productImage.substring(2)
-                          }
-                        />
-                      </div>
-                      <div className="product_content">
-                        <div className="product_title text-muted">
-                          {item.productName}
-                        </div>
-                        <div className="product_price">
-                          <del className="mrp">${item.productMRP}</del>
-                          <div className="discount">${item.discountPrice}</div>
-                        </div>
-                      </div>
-                      <div className="add_cart">
-                        {instantCart.length > 0 &&
-                        isCartAdded2(item._id, instantCart) ? (
-                          <a className="btn btn-success d-block">
-                            Already Added
-                          </a>
-                        ) : (
-                          <a
-                            className="btn btn-outline-success d-block"
-                            onClick={() => handleCart(item)}
-                          >
-                            Add to Card
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  </>
-                ))}
+        {isPageLoad && (
+          <div class="d-flex justify-content-center  mt-5 mt-5 mt-5">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
             </div>
           </div>
-        </div>
+        )}
+        {!isPageLoad && (
+          <div className="all_product">
+            <div className="category_product">
+              <div className="category_name">
+                {productsByCategory &&
+                  productsByCategory !== null &&
+                  productsByCategory.length > 0 &&
+                  productsByCategory[0].categoryName}
+              </div>
+              <div className="border_top_all">
+                <p></p>
+              </div>
+              <div className="product_parent_all">
+                {productsByCategory &&
+                  productsByCategory !== null &&
+                  productsByCategory.length > 0 &&
+                  productsByCategory.map((item, index) => (
+                    <>
+                      <div className="single_product mb-1">
+                        <div className="product_img">
+                          <img
+                            src={
+                              // productImg
+                              process.env.REACT_APP_IMG_URL +
+                              item.productImage.substring(2)
+                            }
+                          />
+                        </div>
+                        <div className="product_content">
+                          <div className="product_title text-muted">
+                            {item.productName}
+                          </div>
+                          <div className="product_price">
+                            <del className="mrp">${item.productMRP}</del>
+                            <div className="discount">
+                              ${item.discountPrice}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="add_cart">
+                          {instantCart.length > 0 &&
+                          isCartAdded2(item._id, instantCart) ? (
+                            <a className="btn btn-success d-block">
+                              Already Added
+                            </a>
+                          ) : (
+                            <a
+                              className="btn btn-outline-success d-block"
+                              onClick={() => handleCart(item)}
+                            >
+                              Add to Card
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    </>
+                  ))}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

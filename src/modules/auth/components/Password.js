@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { showToast } from "../../../utils/ToastHelper";
 import { UserLogin } from "../_redux/AuthAction";
 
 const Password = () => {
@@ -18,9 +19,32 @@ const Password = () => {
   }, []);
   const handleLogin = () => {
     if (isPhoneNumber === "false") {
+      if (password.length === 0) {
+        showToast("error", "Password should not be empty");
+        return 0;
+      } else if (password.length < 6) {
+        showToast("error", "Password should at least six character");
+        return 0;
+      } else if (cPassword.length === 0) {
+        showToast("error", "Confirm password should not be empty");
+        return 0;
+      } else if (cPassword.length < 6) {
+        showToast("error", "Confirm Password should at least six character");
+        return 0;
+      } else if (password !== cPassword) {
+        showToast("error", "Password and Confirm password should be matched");
+        return 0;
+      }
       localStorage.setItem("password", password);
       navigate("/user-details");
     } else {
+      if (password.length === 0) {
+        showToast("error", "Password should not be empty");
+        return 0;
+      } else if (password.length < 6) {
+        showToast("error", "Password should at least six character");
+        return 0;
+      }
       // navigate("user-dashboard/erer");
       const data = {
         phoneNumber,

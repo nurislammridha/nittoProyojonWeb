@@ -7,6 +7,7 @@ import productImg from "../../asset/image/product/bike.png";
 import { useDispatch, useSelector } from "react-redux";
 import {
   AfterRemoveCart,
+  FalseOrderCreated,
   OpenCart,
   SubmitOrderData,
   TotalCartPrice,
@@ -67,6 +68,7 @@ const Cart = () => {
   useEffect(() => {
     if (isOrderCreated) {
       navigate("/user-dashboard/order");
+      dispatch(FalseOrderCreated());
       setIsCart(false);
       setLocalCart([]);
     }

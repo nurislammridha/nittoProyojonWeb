@@ -1,7 +1,7 @@
 import * as Types from "./Types";
 import axios from "axios";
 import moment from "moment";
-// import { showToast } from "../../../../utils/ToastHelper";
+import { showToast } from "../../../utils/ToastHelper";
 export const GetHomeProductsList = () => async (dispatch) => {
   const url = `${process.env.REACT_APP_API_URL}product/smart/home`;
   dispatch({ type: Types.IS_PAGE_LOAD, payload: true });
@@ -15,6 +15,10 @@ export const GetHomeProductsList = () => async (dispatch) => {
   } catch (error) {}
 };
 export const SubmitOrderData = (data) => async (dispatch) => {
+  if (data.length === 0) {
+    showToast("error", "Please atleast one product add to cart!");
+    return 0;
+  }
   const date = new Date();
   const url = `${process.env.REACT_APP_API_URL}order`;
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -39,6 +43,9 @@ export const SubmitOrderData = (data) => async (dispatch) => {
   } catch (error) {}
 };
 
+export const FalseOrderCreated = () => async (dispatch) => {
+  dispatch({ type: Types.IS_ORDER_CREATED, payload: false });
+};
 export const OpenCart = (data) => async (dispatch) => {
   dispatch({ type: Types.OPEN_CART, payload: data });
 };

@@ -20,6 +20,7 @@ const Cart = () => {
   const navigate = useNavigate();
   const openCart = useSelector((state) => state.homeProductsInfo.openCart);
   const isOrderHit = useSelector((state) => state.homeProductsInfo.isOrderHit);
+  const language = useSelector((state) => state.categoryInfo.language);
   const isOrderCreated = useSelector(
     (state) => state.homeProductsInfo.isOrderCreated
   );
@@ -89,7 +90,10 @@ const Cart = () => {
             <div className="top">
               <div>
                 <img src={shoppingBag} />
-                <span>{localCart.length} Items</span>
+                <span>
+                  {localCart.length}{" "}
+                  {language === "Bangla" ? "Items" : "টি পন্য"}
+                </span>
               </div>
               <div className="cross" onClick={() => setIsCart(false)}>
                 <a>
@@ -114,7 +118,11 @@ const Cart = () => {
                           />
                         </div>
                         <div className="cart_title">
-                          <h6>{item.productName}</h6>
+                          <h6>
+                            {language === "Bangla"
+                              ? item.productName
+                              : item.productNameBn}
+                          </h6>
                           <span>
                             ${item.discountPrice}X{item.quantity} = $
                             {parseInt(item.discountPrice) *
@@ -164,18 +172,21 @@ const Cart = () => {
                     role="status"
                     aria-hidden="true"
                   ></span>
-                  Ordering..
+                  {language === "Bangla" ? "Ordering..." : "অর্ডার হচ্ছে..."}
                 </a>
               ) : (
                 <a
                   className="btn btn-success btn-sm"
                   onClick={() => handleOrder()}
                 >
-                  Order Now
+                  {language === "Bangla" ? "Order Now" : "অর্ডার করুন"}
                 </a>
               )}
 
-              <span>Total ${TotalCartPrice(localCart)}</span>
+              <span>
+                {language === "Bangla" ? "Total" : "মোট"} $
+                {TotalCartPrice(localCart)}
+              </span>
             </div>
           </div>
         </>
@@ -193,10 +204,11 @@ const Cart = () => {
                   role="status"
                   aria-hidden="true"
                 ></span>
-                Ordering..
+                {language === "Bangla" ? "Ordering..." : "অর্ডার হচ্ছে..."}
                 {localCart.length > 0 && (
                   <span className="badge_mobile">
-                    Total ${TotalCartPrice(localCart)}
+                    {language === "Bangla" ? "Total" : "মোট"} $
+                    {TotalCartPrice(localCart)}
                   </span>
                 )}
               </h6>
@@ -204,10 +216,11 @@ const Cart = () => {
           ) : (
             <a onClick={() => handleOrder()}>
               <h6 className="text-center">
-                Order Now{" "}
+                {language === "Bangla" ? "Order Now" : "অর্ডার করুন"}{" "}
                 {localCart.length > 0 && (
                   <span className="badge_mobile">
-                    Total ${TotalCartPrice(localCart)}
+                    {language === "Bangla" ? "Total" : "মোট"} $
+                    {TotalCartPrice(localCart)}
                   </span>
                 )}
               </h6>

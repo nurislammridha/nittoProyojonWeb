@@ -100,7 +100,11 @@ const Header = () => {
             <div className="col-sm-7 m-0 pl-2">
               <InputGroup className="search_bar_topNav">
                 <FormControl
-                  placeholder="Search For..."
+                  placeholder={
+                    language === "Bangla"
+                      ? "type product name"
+                      : "পন্যের নাম লিখুন"
+                  }
                   aria-label="Recipient's username"
                   aria-describedby="basic-addon2"
                   // value={search}
@@ -115,7 +119,8 @@ const Header = () => {
                   className="search_group_btn"
                   // onClick={() => handleSearch(search)}
                 >
-                  <i className="fa fa-search"></i> <span>Search</span>
+                  <i className="fa fa-search"></i>{" "}
+                  <span>{language === "Bangla" ? "Search" : "খুজুন"}</span>
                 </InputGroup.Text>
               </InputGroup>
             </div>
@@ -167,7 +172,7 @@ const Header = () => {
               style={{ cursor: "pointer" }}
             >
               {/* <i className="fa fa-question-circle"></i> */}
-              {language === "Bangla" ? "B" : "E"}
+              {language === "Bangla" ? "বাং" : "ইং"}
             </div>
             <div className="user" onClick={() => handleDashboard()}>
               {isLoggedIn === "false" ? (
@@ -248,7 +253,9 @@ const Header = () => {
         <div className="header_bottom_mobile">
           <InputGroup className="search_bar_topNav">
             <FormControl
-              placeholder="Search For..."
+              placeholder={
+                language === "Bangla" ? "type product name" : "পন্যের নাম লিখুন"
+              }
               aria-label="Recipient's username"
               aria-describedby="basic-addon2"
               // value={search}
@@ -263,7 +270,8 @@ const Header = () => {
               className="search_group_btn"
               // onClick={() => handleSearch(search)}
             >
-              <i className="fa fa-search"></i> <span>Search</span>
+              <i className="fa fa-search"></i>{" "}
+              <span>{language === "Bangla" ? "Search" : "খুজুন"}</span>
             </InputGroup.Text>
           </InputGroup>
         </div>

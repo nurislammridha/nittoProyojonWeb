@@ -49,11 +49,18 @@ const HomeProducts = () => {
   return (
     <>
       {isPageLoad && (
-        <div class="d-flex justify-content-center  mt-5 mt-5 mt-5">
-          <div class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
+        <>
+          <div class="d-flex justify-content-center  mt-5 mt-5 mt-5">
+            <div class="spinner-border" role="status">
+              <span class="sr-only"> </span>
+            </div>
           </div>
-        </div>
+          <div className="d-flex justify-content-center ">
+            {language === "Bangla"
+              ? "Please! Wait.."
+              : "কিছুক্ষন অপেক্ষা করুন.."}
+          </div>
+        </>
       )}
       <div className="product_list">
         {!isPageLoad &&
@@ -76,7 +83,7 @@ const HomeProducts = () => {
                       className="btn view_all"
                       onClick={() => hanldeAllProduct(item[0].categoryId)}
                     >
-                      View All
+                      {language === "Bangla" ? "View All" : "সকল পন্য দেখুন"}
                     </a>
                   </a>
                 </div>
@@ -120,14 +127,18 @@ const HomeProducts = () => {
                           {instantCart.length > 0 &&
                           isCartAdded2(item2._id, instantCart) ? (
                             <a className="btn btn-success d-block">
-                              Already Added
+                              {language === "Bangla"
+                                ? "Already Added"
+                                : "থলেতে রাখা হয়েছে"}
                             </a>
                           ) : (
                             <a
                               className="btn btn-outline-success d-block"
                               onClick={() => handleCart(item2)}
                             >
-                              Add to Card
+                              {language === "Bangla"
+                                ? "Add to Bag"
+                                : "থলেতে রাখুন"}
                             </a>
                           )}
                         </div>

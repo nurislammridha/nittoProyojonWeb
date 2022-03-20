@@ -5,14 +5,17 @@ import { FormControl, InputGroup } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { isLogout } from "../auth/_redux/AuthAction";
+import { GlobalLanguage } from "../categories/_redux/CategoryAction";
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const categoryList = useSelector((state) => state.categoryInfo.categoryList);
+  const language = useSelector((state) => state.categoryInfo.language);
   const [isCategoryHover, setIsCategoryHover] = useState(false);
   const [isMobileCategory, setIsMobileCategory] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState("false");
   const [userName, setUserName] = useState("");
+  // const [language, setLanguage] = useState("");
   const isLoggedInAfter = useSelector((state) => state.authInfo.isLoggedIn);
   const isLogoutAfter = useSelector((state) => state.authInfo.isLogout);
   const hanldeAllProduct = (id) => {
@@ -35,6 +38,8 @@ const Header = () => {
     } else {
       setUserName(JSON.parse(localStorage.getItem("userInfo")).fullName);
     }
+    // const lang = localStorage.getItem("language") || "English";
+    // setLanguage(lang);
   }, []);
   useEffect(() => {
     if (isLoggedInAfter) {
@@ -48,7 +53,16 @@ const Header = () => {
       dispatch(isLogout(false));
     }
   }, [isLogoutAfter]);
-
+  const handleLanguage = () => {
+    dispatch(GlobalLanguage(language));
+    // if (language === "Bangla") {
+    //   localStorage.setItem("language", "English");
+    //   setLanguage("English");
+    // } else {
+    //   localStorage.setItem("language", "Bangla");
+    //   setLanguage("Bangla");
+    // }
+  };
   return (
     <>
       <div className="header sticky-top">
@@ -107,10 +121,13 @@ const Header = () => {
             </div>
             <div className="col-sm-3 m-0 p-0">
               <div className="row m-0 p-0">
-                <div className="col-sm-6 m-0 p-0">
+                <div
+                  className="col-sm-6 m-0 p-0"
+                  onClick={() => handleLanguage()}
+                >
                   <div className="help text-center">
                     <i className="fa fa-question-circle"></i>
-                    <span>Help</span>
+                    <span>{language}</span>
                   </div>
                 </div>
                 <div className="col-sm-6 m-0 p-0">
@@ -144,8 +161,13 @@ const Header = () => {
             </a>
           </div>
           <div className="right">
-            <div className="help">
-              <i className="fa fa-question-circle"></i>
+            <div
+              className="help"
+              onClick={() => handleLanguage()}
+              style={{ cursor: "pointer" }}
+            >
+              {/* <i className="fa fa-question-circle"></i> */}
+              {language === "Bangla" ? "B" : "E"}
             </div>
             <div className="user" onClick={() => handleDashboard()}>
               {isLoggedIn === "false" ? (
@@ -178,7 +200,11 @@ const Header = () => {
                       <li>
                         <a onClick={() => hanldeAllProduct(item._id)}>
                           <img src={categoryIcon} />
-                          <span>{item.categoryName}</span>
+                          <span>
+                            {language === "Bangla"
+                              ? item.categoryName
+                              : item.categoryNameBn}
+                          </span>
                         </a>
                       </li>
                     ))}
@@ -253,7 +279,11 @@ const Header = () => {
                 <li>
                   <a onClick={() => hanldeAllProduct(item._id)}>
                     <img src={categoryIcon} />
-                    <label>{item.categoryName}</label>
+                    <label>
+                      {language === "Bangla"
+                        ? item.categoryName
+                        : item.categoryNameBn}
+                    </label>
                   </a>
                 </li>
               ))}

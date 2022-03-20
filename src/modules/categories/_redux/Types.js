@@ -1,1 +1,2 @@
 export const CATEGORY_LIST = "CATEGORY_LIST";
+export const GLOBAL_LANGUAGE = "GLOBAL_LANGUAGE";

@@ -17,6 +17,7 @@ import { GetProductsByCategory } from "./_redux/AllProductsAction";
 const AllProducts = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const language = useSelector((state) => state.categoryInfo.language);
   const productsByCategory = useSelector(
     (state) => state.allProductsInfo.productsByCategory
   );
@@ -75,8 +76,13 @@ const AllProducts = () => {
               <div className="category_name">
                 {productsByCategory &&
                   productsByCategory !== null &&
-                  productsByCategory.length > 0 &&
-                  productsByCategory[0].categoryName}
+                  productsByCategory.length > 0 && (
+                    <span>
+                      {language === "Bangla"
+                        ? productsByCategory[0].categoryName
+                        : productsByCategory[0].categoryNameBn}
+                    </span>
+                  )}
               </div>
               <div className="border_top_all">
                 <p></p>
@@ -99,12 +105,22 @@ const AllProducts = () => {
                         </div>
                         <div className="product_content">
                           <div className="product_title text-muted">
-                            {item.productName}
+                            {language === "Bangla"
+                              ? item.productName
+                              : item.productNameBn}
                           </div>
                           <div className="product_price">
-                            <del className="mrp">${item.productMRP}</del>
+                            <del className="mrp">
+                              $
+                              {language === "Bangla"
+                                ? item.productMRP
+                                : item.productMRPBn}
+                            </del>
                             <div className="discount">
-                              ${item.discountPrice}
+                              $
+                              {language === "Bangla"
+                                ? item.discountPrice
+                                : item.discountPriceBn}
                             </div>
                           </div>
                         </div>

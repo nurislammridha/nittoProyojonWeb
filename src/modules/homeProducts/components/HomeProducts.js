@@ -14,6 +14,7 @@ import {
 } from "../_redux/HomeProductsAction";
 const HomeProducts = () => {
   const dispatch = useDispatch();
+  const language = useSelector((state) => state.categoryInfo.language);
   const homeProductsList = useSelector(
     (state) => state.homeProductsInfo.homeProductsList
   );
@@ -61,7 +62,11 @@ const HomeProducts = () => {
           homeProductsList.length > 0 &&
           homeProductsList.map((item, index) => (
             <div className="category_product">
-              <div className="category_name">{item[0].categoryName}</div>
+              <div className="category_name">
+                {language === "Bangla"
+                  ? item[0].categoryName
+                  : item[0].categoryNameBn}
+              </div>
               <div className="product_parent">
                 <div className="category_img">
                   <a>
@@ -92,12 +97,22 @@ const HomeProducts = () => {
                         </div>
                         <div className="product_content">
                           <div className="product_title text-muted">
-                            {item2.productName}
+                            {language === "Bangla"
+                              ? item2.productName
+                              : item2.productNameBn}
                           </div>
                           <div className="product_price">
-                            <del className="mrp">${item2.productMRP}</del>
+                            <del className="mrp">
+                              $
+                              {language === "Bangla"
+                                ? item2.productMRP
+                                : item2.productMRPBn}
+                            </del>
                             <div className="discount">
-                              ${item2.discountPrice}
+                              $
+                              {language === "Bangla"
+                                ? item2.discountPrice
+                                : item2.discountPriceBn}
                             </div>
                           </div>
                         </div>

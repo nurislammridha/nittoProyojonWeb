@@ -12,3 +12,12 @@ export const GetCategoryList = () => async (dispatch) => {
     });
   } catch (error) {}
 };
+export const GlobalLanguage = (language) => async (dispatch) => {
+  if (language === "Bangla") {
+    localStorage.setItem("language", "English");
+    dispatch({ type: Types.GLOBAL_LANGUAGE, payload: "English" });
+  } else {
+    localStorage.setItem("language", "Bangla");
+    dispatch({ type: Types.GLOBAL_LANGUAGE, payload: "Bangla" });
+  }
+};

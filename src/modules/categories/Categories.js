@@ -5,6 +5,7 @@ import categoryIcon from "../../asset/image/icon/categoryIcon.png";
 import { GetCategoryList } from "./_redux/CategoryAction";
 const Categories = () => {
   const categoryList = useSelector((state) => state.categoryInfo.categoryList);
+  const language = useSelector((state) => state.categoryInfo.language);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const hanldeAllProduct = (id) => {
@@ -25,7 +26,11 @@ const Categories = () => {
               <li>
                 <a onClick={() => hanldeAllProduct(item._id)}>
                   <img src={categoryIcon} />
-                  <label>{item.categoryName}</label>
+                  <label>
+                    {language === "Bangla"
+                      ? item.categoryName
+                      : item.categoryNameBn}
+                  </label>
                 </a>
               </li>
             ))}

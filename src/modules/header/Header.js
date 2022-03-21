@@ -72,7 +72,9 @@ const Header = () => {
               <a className="" href="" target="_blank">
                 {" "}
                 <i className="fa fa-download"></i>
-                <span className="">NittoProyojon App</span>
+                <span className="">
+                  {language === "Bangla" ? "Panahar App" : "পানাহার অ্যাপ"}
+                </span>
               </a>
             </div>
             <div className="middle">

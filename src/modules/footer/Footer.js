@@ -6,7 +6,9 @@ import youtube from "../../asset/image/icon/youtube.png";
 import instagram from "../../asset/image/icon/instagram.png";
 import appStore from "../../asset/image/icon/appStore.png";
 import googlePlay from "../../asset/image/icon/googlePlay.png";
+import { useSelector } from "react-redux";
 const Footer = () => {
+  const language = useSelector((state) => state.categoryInfo.language);
   return (
     <>
       <div className="footer">
@@ -18,7 +20,7 @@ const Footer = () => {
                 <h6>Customer Services</h6>
               </li>
               <li>
-                <a>NittoProyojon Store</a>
+                <a>Panahar Store</a>
               </li>
               <li>
                 <a>Frequently Asked Questions</a>
@@ -34,10 +36,10 @@ const Footer = () => {
           <div className="">
             <ul>
               <li>
-                <h6>NittoProyojon</h6>
+                <h6>Panahar</h6>
               </li>
               <li>
-                <a>About NittoProyojon</a>
+                <a>About Panahar</a>
               </li>
               <li>
                 <a>Shipping and Delivery</a>
@@ -63,12 +65,12 @@ const Footer = () => {
               </li>
               <li>
                 <a>
-                  <i className="fa fa-envelope"></i>info@nittoProyojon.com
+                  <i className="fa fa-envelope"></i>info@panahar.com
                 </a>
               </li>
               <li>
                 <a>
-                  <i className="fa fa-rss"></i>blog.nittoProyojon.com
+                  <i className="fa fa-rss"></i>blog.panahar.com
                 </a>
               </li>
             </ul>
@@ -108,7 +110,8 @@ const Footer = () => {
         <div className="footer_bottom">
           <h6 className="text-center">
             <span className="text-center">
-              &copy; 2022 All right reserved by NittoProyojon
+              &copy; 2022 All right reserved by Panahar ।।{" "}
+              <span style={{ fontSize: 10 }}>Developed By Nurislam Mridha</span>
             </span>
             {/* <span>Design & Developed By Mridha Tech</span> */}
           </h6>

@@ -64,11 +64,18 @@ const AllProducts = () => {
           </div>
         </div>
         {isPageLoad && (
-          <div class="d-flex justify-content-center  mt-5 mt-5 mt-5">
-            <div class="spinner-border" role="status">
-              <span class="sr-only">Loading...</span>
+          <>
+            <div class="d-flex justify-content-center  mt-5 mt-5 mt-5">
+              <div class="spinner-border" role="status">
+                <span class="sr-only"> </span>
+              </div>
             </div>
-          </div>
+            <div className="d-flex justify-content-center ">
+              {language === "Bangla"
+                ? "Please! Wait.."
+                : "কিছুক্ষন অপেক্ষা করুন.."}
+            </div>
+          </>
         )}
         {!isPageLoad && (
           <div className="all_product">
@@ -111,13 +118,13 @@ const AllProducts = () => {
                           </div>
                           <div className="product_price">
                             <del className="mrp">
-                              $
+                              &#2547;
                               {language === "Bangla"
                                 ? item.productMRP
                                 : item.productMRPBn}
                             </del>
                             <div className="discount">
-                              $
+                              &#2547;
                               {language === "Bangla"
                                 ? item.discountPrice
                                 : item.discountPriceBn}
@@ -128,14 +135,18 @@ const AllProducts = () => {
                           {instantCart.length > 0 &&
                           isCartAdded2(item._id, instantCart) ? (
                             <a className="btn btn-success d-block">
-                              Already Added
+                              {language === "Bangla"
+                                ? "Already Added"
+                                : "থলেতে রাখা হয়েছে"}
                             </a>
                           ) : (
                             <a
                               className="btn btn-outline-success d-block"
                               onClick={() => handleCart(item)}
                             >
-                              Add to Card
+                              {language === "Bangla"
+                                ? "Add to Bag"
+                                : "থলেতে রাখুন"}
                             </a>
                           )}
                         </div>

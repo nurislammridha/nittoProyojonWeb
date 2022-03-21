@@ -17,47 +17,72 @@ const Footer = () => {
           <div className="">
             <ul>
               <li>
-                <h6>Customer Services</h6>
+                <h6>
+                  {language === "Bangla" ? "Customer Services" : "গ্রাহক সেবা"}
+                </h6>
               </li>
               <li>
-                <a>Panahar Store</a>
+                <a>
+                  {language === "Bangla" ? "Panahar Store" : "নিজস্ব দোকান"}
+                </a>
               </li>
               <li>
-                <a>Frequently Asked Questions</a>
+                <a>
+                  {" "}
+                  {language === "Bangla"
+                    ? "Frequently Asked Questions"
+                    : "প্রশ্ন ও উত্তর"}
+                </a>
               </li>
               <li>
-                <a>Terms and Conditions</a>
+                <a>
+                  {" "}
+                  {language === "Bangla" ? "Terms and Conditions" : "শর্তাবলী"}
+                </a>
               </li>
               <li>
-                <a>Provacy Policy</a>
+                <a>
+                  {" "}
+                  {language === "Bangla" ? "Provacy Policy" : "গোপনীয়তা নীতি"}
+                </a>
               </li>
             </ul>
           </div>
           <div className="">
             <ul>
               <li>
-                <h6>Panahar</h6>
+                <h6>{language === "Bangla" ? "Panahar" : "পানাহার"}</h6>
               </li>
               <li>
-                <a>About Panahar</a>
+                <a>
+                  {language === "Bangla" ? "About Panahar" : "পানাহার সম্পর্কে"}
+                </a>
               </li>
               <li>
-                <a>Shipping and Delivery</a>
+                <a>
+                  {language === "Bangla"
+                    ? "Shipping and Delivery"
+                    : "শিপিং এবং ডেলিভারি"}
+                </a>
               </li>
               <li>
-                <a>Customer Care</a>
+                <a>{language === "Bangla" ? "Customer Care" : "গ্রাহক সেবা"}</a>
               </li>
               <li>
-                <a>Careers</a>
+                <a>{language === "Bangla" ? "Career" : "কর্মজীবন"}</a>
               </li>
             </ul>
           </div>
           <div className="">
             <ul>
               <li>
-                <h6>Contact Us</h6>
+                <h6>{language === "Bangla" ? "Contact Us" : "যোগাযোগ করুন"}</h6>
               </li>
-              <li>Mograbazar, Bagerhat</li>
+              <li>
+                {language === "Bangla"
+                  ? "Mograbazar, Bagerhat"
+                  : "মগরাবাজার, বাগেরহাট"}
+              </li>
               <li>
                 <a>
                   <i className="fa fa-phone"></i>+8801753109207
@@ -76,7 +101,9 @@ const Footer = () => {
             </ul>
           </div>
           <div className="">
-            <h6 className="follow_us">Follow Us</h6>
+            <h6 className="follow_us">
+              {language === "Bangla" ? "Follow Us" : "আমাদের অনুসরণ করুন"}
+            </h6>
             <div className="social_icon">
               <a>
                 <img src={facebook} />
@@ -94,7 +121,11 @@ const Footer = () => {
                 <img src={twitter} />
               </a>
             </div>
-            <h6 className="follow_us mt-1">Download Our Mobile Apps</h6>
+            <h6 className="follow_us mt-1">
+              {language === "Bangla"
+                ? "Download Our Mobile Apps"
+                : "অ্যাপস ডাউনলোড করুন"}
+            </h6>
             <div className="app_store">
               <a>
                 <img src={appStore} />
@@ -110,8 +141,12 @@ const Footer = () => {
         <div className="footer_bottom">
           <h6 className="text-center">
             <span className="text-center">
-              &copy; 2022 All right reserved by Panahar ।।{" "}
-              <span style={{ fontSize: 10 }}>Developed By Nurislam Mridha</span>
+              &copy;
+              {language === "Bangla"
+                ? "2022 All right reserved by Panahar"
+                : "2022 সমস্ত অধিকার পানাহার দ্বারা সংরক্ষিত"}{" "}
+              ।।{" "}
+              <span style={{ fontSize: 8 }}>Developed By Nurislam Mridha</span>
             </span>
             {/* <span>Design & Developed By Mridha Tech</span> */}
           </h6>

@@ -193,7 +193,7 @@ const Header = () => {
           >
             <div className="categories">
               <i className="fa fa-bars"></i>
-              <a>Categories</a>
+              <a>{language === "Bangla" ? "Categories" : "ক্যাটাগরি"}</a>
               <i className="fa fa-arrow-down"></i>
             </div>
             {/* ==========Hover categories  for pc=============*/}

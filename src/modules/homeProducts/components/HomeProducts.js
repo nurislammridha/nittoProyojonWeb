@@ -110,13 +110,13 @@ const HomeProducts = () => {
                           </div>
                           <div className="product_price">
                             <del className="mrp">
-                              $
+                              &#2547;
                               {language === "Bangla"
                                 ? item2.productMRP
                                 : item2.productMRPBn}
                             </del>
                             <div className="discount">
-                              $
+                              &#2547;
                               {language === "Bangla"
                                 ? item2.discountPrice
                                 : item2.discountPriceBn}

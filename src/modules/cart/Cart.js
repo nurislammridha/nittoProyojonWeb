@@ -78,11 +78,13 @@ const Cart = () => {
   return (
     <>
       <div className="cart_sm" onClick={() => setIsCart(true)}>
-        <div className="top">{localCart.length} Items</div>
+        <div className="top">
+          {localCart.length} {language === "Bangla" ? "Items" : "টি পন্য"}
+        </div>
         <div className="middle">
           <img src={shoppingBag} />
         </div>
-        <div className="bottom">${TotalCartPrice(localCart)}</div>
+        <div className="bottom">&#2547;{TotalCartPrice(localCart)}</div>
       </div>
       {isCart && (
         <>
@@ -207,7 +209,7 @@ const Cart = () => {
                 {language === "Bangla" ? "Ordering..." : "অর্ডার হচ্ছে..."}
                 {localCart.length > 0 && (
                   <span className="badge_mobile">
-                    {language === "Bangla" ? "Total" : "মোট"} $
+                    {language === "Bangla" ? "Total" : "মোট"} &#2547;
                     {TotalCartPrice(localCart)}
                   </span>
                 )}

@@ -221,7 +221,7 @@ const Cart = () => {
                 {language === "Bangla" ? "Order Now" : "অর্ডার করুন"}{" "}
                 {localCart.length > 0 && (
                   <span className="badge_mobile">
-                    {language === "Bangla" ? "Total" : "মোট"} $
+                    {language === "Bangla" ? "Total" : "মোট"} &#2547;
                     {TotalCartPrice(localCart)}
                   </span>
                 )}

@@ -10,6 +10,7 @@ const PhoneNumber = () => {
   const checkPhoneNumber = useSelector(
     (state) => state.authInfo.checkPhoneNumber
   );
+  const language = useSelector((state) => state.categoryInfo.language);
   const isLoadNumber = useSelector((state) => state.authInfo.isLoadNumber);
   const handlePhone = () => {
     dispatch(CheckPhoneNumber(phone));
@@ -22,13 +23,16 @@ const PhoneNumber = () => {
     }
   }, [checkPhoneNumber]);
 
-  console.log("checkPhoneNumber", checkPhoneNumber);
   return (
     <>
       <div className="middle_vrhr">
         <div className="vrhr_card">
           <div>
-            <h6>Your Active Phone Number</h6>
+            <h6>
+              {language === "Bangla"
+                ? "Your Active Phone Number"
+                : "আপনার ব্যবহ্রত ফোন নম্বর"}
+            </h6>
             <input
               className="form-control mt-3"
               placeholder="01XXXXXXXXX"
@@ -51,7 +55,7 @@ const PhoneNumber = () => {
                 className="btn btn-outline-success btn-sm "
                 onClick={() => handlePhone()}
               >
-                SUBMIT
+                {language === "Bangla" ? "SUBMIT" : "জমা দিন"}
               </a>
             )}
           </div>

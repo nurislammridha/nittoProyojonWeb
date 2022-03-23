@@ -4,9 +4,11 @@ import productImg from "../../../asset/image/product/bike.png";
 import productImg1 from "../../../asset/image/product/product1.jpg";
 import productImg2 from "../../../asset/image/product/product2.jpg";
 import productImg3 from "../../../asset/image/product/banner1.jpg";
+import { useSelector } from "react-redux";
 
 const OrderProducts = (props) => {
   const { orderProducts } = props;
+  const language = useSelector((state) => state.categoryInfo.language);
   return (
     <>
       <Modal
@@ -17,7 +19,7 @@ const OrderProducts = (props) => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Product List
+            {language === "Bangla" ? "Product List" : "পন্যের তালিকা"}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -36,11 +38,12 @@ const OrderProducts = (props) => {
                     </div>
                     <div className="d_content">{item.productName}</div>
                     <h6 className="text-center d_quantity">
-                      Quantity: {item.quantity}
+                      {language === "Bangla" ? "Quantity" : "পন্যের সংখ্যা"}:{" "}
+                      {item.quantity}
                     </h6>
                     <div className="d_price">
-                      <del>${item.productMRP}</del>
-                      <span>${item.discountPrice}</span>
+                      <del>&#2547;{item.productMRP}</del>
+                      <span>&#2547;{item.discountPrice}</span>
                     </div>
                   </div>
                 </>
@@ -49,7 +52,7 @@ const OrderProducts = (props) => {
         </Modal.Body>
         <Modal.Footer>
           <a className="btn btn-success btn-sm" onClick={props.onHide}>
-            Close
+            {language === "Bangla" ? "Close" : "বন্ধ করুন"}
           </a>
         </Modal.Footer>
       </Modal>

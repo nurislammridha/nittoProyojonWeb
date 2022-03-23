@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { isLogout } from "../_redux/AuthAction";
 import AccountInfo from "./AccountInfo";
@@ -9,6 +9,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [userInfo, setUserInfo] = useState("");
+  const language = useSelector((state) => state.categoryInfo.language);
   useEffect(() => {
     setUserInfo(JSON.parse(localStorage.getItem("userInfo")));
   }, []);
@@ -25,7 +26,10 @@ const Dashboard = () => {
       <div className="user_dashboard">
         <div className="left">
           <div className="up">
-            <h4>Hello {userInfo && userInfo.fullName}</h4>
+            <h4>
+              {language === "Bangla" ? "Hello" : "হ্যালো"}{" "}
+              {userInfo && userInfo.fullName}
+            </h4>
           </div>
           <div className="down">
             <ul>
@@ -33,16 +37,22 @@ const Dashboard = () => {
                 className={id === "order" ? "d_active" : ""}
                 onClick={() => navigate("/user-dashboard/order")}
               >
-                <a>Your Order List</a>
+                <a>
+                  {language === "Bangla"
+                    ? "Your Order List"
+                    : "আপনার অর্ডারের তালিকা"}
+                </a>
               </li>
               <li
                 className={id === "account" ? "d_active" : ""}
                 onClick={() => navigate("/user-dashboard/account")}
               >
-                <a>Your Account</a>
+                <a>
+                  {language === "Bangla" ? "Your Account" : "আপনার অ্যাকাউন্ট"}
+                </a>
               </li>
               <li className="logout_mobile" onClick={() => handleLogout()}>
-                <a>Logout</a>
+                <a>{language === "Bangla" ? "Logout" : "প্রস্থান"}</a>
               </li>
             </ul>
           </div>
@@ -50,7 +60,13 @@ const Dashboard = () => {
         <div className="right">
           <div className="d_header">
             <p>
-              {id === "account" ? "Personal Information" : "Your Order List"}
+              {id === "account"
+                ? language === "Bangla"
+                  ? "Personal Information"
+                  : "ব্যক্তিগত তথ্য"
+                : language === "Bangla"
+                ? "Your Order List"
+                : "আপনার অর্ডার তালিকা"}
             </p>
             {id === "account" ? (
               <a
@@ -58,7 +74,11 @@ const Dashboard = () => {
                 onClick={() => handelUpdateUser()}
               >
                 <i className="fa fa-pencil"></i>
-                <span className="change_info">Change Information</span>
+                <span className="change_info">
+                  {language === "Bangla"
+                    ? "Change Information"
+                    : "তথ্য পরিবর্তন"}
+                </span>
               </a>
             ) : (
               ""

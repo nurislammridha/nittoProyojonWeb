@@ -13,6 +13,7 @@ const Password = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.authInfo.isLoggedIn);
   const isLoggedHit = useSelector((state) => state.authInfo.isLoggedHit);
+  const language = useSelector((state) => state.categoryInfo.language);
   useEffect(() => {
     setIsPhoneNumber(localStorage.getItem("isPhoneNumber"));
     setPhoneNumber(localStorage.getItem("phoneNumber"));
@@ -20,29 +21,64 @@ const Password = () => {
   const handleLogin = () => {
     if (isPhoneNumber === "false") {
       if (password.length === 0) {
-        showToast("error", "Password should not be empty");
+        showToast(
+          "error",
+          language === "Bangla"
+            ? "Password should not be empty"
+            : "পাসওয়ার্ড খালি রাখা উচিত নয়"
+        );
         return 0;
       } else if (password.length < 6) {
-        showToast("error", "Password should at least six character");
+        showToast(
+          "error",
+          language === "Bangla"
+            ? "Password should at least six character"
+            : "পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হওয়া উচিত"
+        );
         return 0;
       } else if (cPassword.length === 0) {
-        showToast("error", "Confirm password should not be empty");
+        showToast(
+          "error",
+          language === "Bangla"
+            ? "Confirm password should not be empty"
+            : "নিশ্চিত করন পাসওয়ার্ড খালি রাখা উচিত নয়"
+        );
         return 0;
       } else if (cPassword.length < 6) {
-        showToast("error", "Confirm Password should at least six character");
+        showToast(
+          "error",
+          language === "Bangla"
+            ? "Confirm Password should at least six character"
+            : "নিশ্চিত করন পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হওয়া উচিত"
+        );
         return 0;
       } else if (password !== cPassword) {
-        showToast("error", "Password and Confirm password should be matched");
+        showToast(
+          "error",
+          language === "Bangla"
+            ? "Password and Confirm password should be matched"
+            : "পাসওয়ার্ড ও নিশ্চিত পাসওয়ার্ড অনুরুপ হওয়া উচিত"
+        );
         return 0;
       }
       localStorage.setItem("password", password);
       navigate("/user-details");
     } else {
       if (password.length === 0) {
-        showToast("error", "Password should not be empty");
+        showToast(
+          "error",
+          language === "Bangla"
+            ? "Password should not be empty"
+            : "পাসওয়ার্ড খালি রাখা উচিত নয়"
+        );
         return 0;
       } else if (password.length < 6) {
-        showToast("error", "Password should at least six character");
+        showToast(
+          "error",
+          language === "Bangla"
+            ? "Password should at least six character"
+            : "পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হওয়া উচিত"
+        );
         return 0;
       }
       // navigate("user-dashboard/erer");
@@ -63,10 +99,14 @@ const Password = () => {
       <div className="middle_vrhr">
         <div className="vrhr_card">
           <div>
-            <h6>Your Password</h6>
+            <h6>{language === "Bangla" ? "Your Password" : "পাসওয়ার্ড"}</h6>
             <input
               className="form-control mt-3"
-              placeholder="Enter your active phonr number"
+              placeholder={
+                language === "Bangla"
+                  ? "Type password here"
+                  : "এখানে পাসওয়ার্ড লিখুন"
+              }
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -74,10 +114,18 @@ const Password = () => {
           </div>
           {isPhoneNumber === "false" && (
             <div className="mt-3">
-              <h6>Confirm Password</h6>
+              <h6>
+                {language === "Bangla"
+                  ? "Confirm Password"
+                  : "পাসওয়ার্ড নিশ্চিত করুন"}
+              </h6>
               <input
                 className="form-control mt-3"
-                placeholder="Enter your active phonr number"
+                placeholder={
+                  language === "Bangla"
+                    ? "Type confirm password here"
+                    : "এখানে নিশ্চিত করন পাসওয়ার্ড লিখুন"
+                }
                 type="password"
                 value={cPassword}
                 onChange={(e) => setCPassword(e.target.value)}
@@ -98,7 +146,7 @@ const Password = () => {
                 className="btn btn-outline-success btn-sm "
                 onClick={() => handleLogin()}
               >
-                SUBMIT
+                {language === "Bangla" ? "SUBMIT" : "জমা দিন"}
               </a>
             )}
           </div>

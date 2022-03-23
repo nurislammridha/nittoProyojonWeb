@@ -9,12 +9,13 @@ const OrderList = ({ userInfo }) => {
   const [modalShow, setModalShow] = useState(false);
   const [orderProducts, setOrderProducts] = useState([]);
   const orderList = useSelector((state) => state.authInfo.orderList);
+  const language = useSelector((state) => state.categoryInfo.language);
   useEffect(() => {
     if (userInfo) {
       dispatch(GetOrderList(userInfo._id));
     }
   }, [userInfo]);
-  console.log("userInfo", userInfo);
+
   return (
     <>
       <div className="order_parent">
@@ -28,19 +29,19 @@ const OrderList = ({ userInfo }) => {
               <div className="order_info">
                 <div className="d-flex justify-content-between order_header">
                   <h5 className="order_id">
-                    Order Id:{" "}
+                    {language === "Bangla" ? "Order Id" : "অর্ডার আইডি"}:{" "}
                     <span className="badge bg-secondary">{item._id}</span>
                   </h5>
                   <h5>
-                    Item:{" "}
+                    {language === "Bangla" ? "Item" : "পন্যের সংখ্যা"}:{" "}
                     <span className="badge bg-secondary">
                       {item.productInfo.length}
                     </span>
                   </h5>
                   <h5>
-                    Total:{" "}
+                    {language === "Bangla" ? "Total" : "মোট"}:{" "}
                     <span className="badge bg-secondary">
-                      ${TotalCartPrice(item.productInfo)}
+                      &#2547;{TotalCartPrice(item.productInfo)}
                     </span>
                   </h5>
                   <span>
@@ -51,14 +52,19 @@ const OrderList = ({ userInfo }) => {
                         setModalShow(true);
                       }}
                     >
-                      View Products
+                      {language === "Bangla" ? "View Products" : "পন্য দেখুন"}
                     </a>
                   </span>
                 </div>
                 <div className="mt-2 d-flex justify-content-between">
-                  <h6 className="order_status">Your Order Status</h6>
+                  <h6 className="order_status">
+                    {" "}
+                    {language === "Bangla"
+                      ? "Your Order Status"
+                      : "আপনার অর্ডারের বর্তমান অবস্থা"}
+                  </h6>
                   <h6 className="order_id_mobile">
-                    Order Id:{" "}
+                    {language === "Bangla" ? "Order Id" : "অর্ডার আইডি"}:{" "}
                     <span className="badge bg-secondary">{item._id}</span>
                   </h6>
                 </div>
@@ -70,7 +76,10 @@ const OrderList = ({ userInfo }) => {
                         <i className="fa fa-check"></i> {/* /close */}
                       </div>
                     </div>
-                    <p className="text-center">Created</p>
+                    <p className="text-center">
+                      {" "}
+                      {language === "Bangla" ? "Created" : "তৈরি"}
+                    </p>
                     <p className="text-center">{item.isCreatedDate}</p>
                   </div>
                   <div className="status">
@@ -83,7 +92,10 @@ const OrderList = ({ userInfo }) => {
                         )}
                       </div>
                     </div>
-                    <p className="text-center">Accepted</p>
+                    <p className="text-center">
+                      {" "}
+                      {language === "Bangla" ? "Accepted" : "গৃহীত"}
+                    </p>
                     <p className="text-center">
                       {item.isAccepted ? (
                         item.isAcceptedDate
@@ -102,7 +114,10 @@ const OrderList = ({ userInfo }) => {
                         )}
                       </div>
                     </div>
-                    <p className="text-center">Precessing</p>
+                    <p className="text-center">
+                      {" "}
+                      {language === "Bangla" ? "Precessing" : "প্রস্তুত হচ্ছে"}
+                    </p>
                     <p className="text-center">
                       {item.isProcessing ? (
                         item.isProcessingDate
@@ -121,7 +136,10 @@ const OrderList = ({ userInfo }) => {
                         )}
                       </div>
                     </div>
-                    <p className="text-center">Delivering</p>
+                    <p className="text-center">
+                      {" "}
+                      {language === "Bangla" ? "Delivering" : "পৌছানো হচ্ছে"}
+                    </p>
                     <p className="text-center">
                       {item.isDelivering ? (
                         item.isDeliveringDate
@@ -140,7 +158,10 @@ const OrderList = ({ userInfo }) => {
                         )}
                       </div>
                     </div>
-                    <p className="text-center">Delivered</p>
+                    <p className="text-center">
+                      {" "}
+                      {language === "Bangla" ? "Delivered" : "পৌছানো হয়েছে"}
+                    </p>
                     <p className="text-center">
                       {item.isDelivered ? (
                         item.isDeliveredDate

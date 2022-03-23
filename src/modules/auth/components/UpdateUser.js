@@ -17,6 +17,7 @@ const UpdateUser = () => {
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.authInfo.userInfo);
   const isLoggedIn = useSelector((state) => state.authInfo.isLoggedIn);
+  const language = useSelector((state) => state.categoryInfo.language);
   const isDetailsHit = useSelector((state) => state.authInfo.isDetailsHit);
   const navigate = useNavigate();
 
@@ -41,37 +42,60 @@ const UpdateUser = () => {
       <div className="middle_vrhr user_details">
         <div className="vrhr_card">
           <div>
-            <h6>Your Full Name</h6>
+            <h6>
+              {" "}
+              {language === "Bangla" ? "Your Full Name" : "আপনার সম্পূর্ণ নাম"}
+            </h6>
             <input
               className="form-control mt-2"
-              placeholder="Enter your full name"
+              placeholder={
+                language === "Bangla"
+                  ? "Enter your full name"
+                  : "আপনার সম্পূর্ন নাম লিখুন"
+              }
               type="text"
               value={userInfo.fullName}
               onChange={(e) => handleChangeText("fullName", e.target.value)}
             />
           </div>
           <div className="mt-2">
-            <h6>Your Nick Name</h6>
+            <h6>
+              {" "}
+              {language === "Bangla" ? "Your Nick Name" : "আপনার ডাকনাম"}
+            </h6>
             <input
               className="form-control mt-2"
-              placeholder="Enter your nick name"
+              placeholder={
+                language === "Bangla"
+                  ? "Enter your nick name"
+                  : "আপনার ডাকনাম লিখুন"
+              }
               type="text"
               value={userInfo.nickName}
               onChange={(e) => handleChangeText("nickName", e.target.value)}
             />
           </div>
           <div className="mt-2">
-            <h6>Your Profession</h6>
+            <h6> {language === "Bangla" ? "Your Profession" : "আপনার পেশা"}</h6>
             <input
               className="form-control mt-2"
-              placeholder="Enter your profession"
+              placeholder={
+                language === "Bangla"
+                  ? "Enter your profession"
+                  : "আপনার পেশা লিখুন"
+              }
               type="text"
               value={userInfo.profession}
               onChange={(e) => handleChangeText("profession", e.target.value)}
             />
           </div>
           <div className="mt-2">
-            <h6>Select Your Village</h6>
+            <h6>
+              {" "}
+              {language === "Bangla"
+                ? "Select Your Village"
+                : "আপনার গ্রাম বাছাই করুন"}
+            </h6>
             <Select
               options={VillageList()}
               value={{ label: userInfo.village }}
@@ -82,7 +106,12 @@ const UpdateUser = () => {
             />
           </div>
           <div className="mt-2">
-            <h6>Select, Which area near your village?</h6>
+            <h6>
+              {" "}
+              {language === "Bangla"
+                ? "Select your area in your village?"
+                : "আপনার নিকটস্থ্ এলাকা বাছাই করুন"}
+            </h6>
             <Select
               options={VillageAreaList(userInfo.village)}
               value={{ label: userInfo.villageArea }}
@@ -90,11 +119,17 @@ const UpdateUser = () => {
             />
           </div>
           <div className="mt-3 gender_align">
-            <h6 className="">Select Your Gender:</h6>
+            <h6 className="">
+              {" "}
+              {language === "Bangla"
+                ? "Select Your Gender"
+                : "আপনার লিংগ বাছাই করুন"}
+              :
+            </h6>
             <Form.Group className="" controlId="formBasicCheckbox">
               <Form.Check
                 type="checkbox"
-                label="Male"
+                label={language === "Bangla" ? "Male" : "পুরুষ"}
                 checked={userInfo.gender === "Male"}
                 onChange={(e) => handleChangeText("gender", "Male")}
               />
@@ -102,14 +137,18 @@ const UpdateUser = () => {
             <Form.Group className="" controlId="formBasicCheckbox2">
               <Form.Check
                 type="checkbox"
-                label="Female"
+                label={language === "Bangla" ? "Female" : "মহিলা"}
                 checked={userInfo.gender === "Female"}
                 onChange={(e) => handleChangeText("gender", "Female")}
               />
             </Form.Group>
           </div>
           <div className="mt-3">
-            <h6>How we found you easily?</h6>
+            <h6>
+              {language === "Bangla"
+                ? "How we found you easily?"
+                : "আপনাকে সহজে খুজে পাওয়ার উপায়"}
+            </h6>
             <textarea
               className="form-control"
               placeholder="Short brief about your self or your location or both"

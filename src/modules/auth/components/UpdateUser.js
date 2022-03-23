@@ -151,7 +151,11 @@ const UpdateUser = () => {
             </h6>
             <textarea
               className="form-control"
-              placeholder="Short brief about your self or your location or both"
+              placeholder={
+                language === "Bangla"
+                  ? "Write a short way to find you easily"
+                  : "আপনাকে সহজে খুজে পাওয়ার উপায় সংক্ষেপে লিখুন"
+              }
               value={userInfo.foundDescription}
               onChange={(e) =>
                 handleChangeText("foundDescription", e.target.value)
@@ -172,7 +176,7 @@ const UpdateUser = () => {
                 className="btn btn-outline-success btn-sm "
                 onClick={() => handleSubmit()}
               >
-                UPDATE
+                {language === "Bangla" ? "UPDATE" : "আপডেট"}
               </a>
             )}
           </div>

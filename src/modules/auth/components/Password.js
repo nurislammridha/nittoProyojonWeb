@@ -110,6 +110,11 @@ const Password = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              onKeyPress={(event) => {
+                if (event.key === "Enter" && isPhoneNumber !== "false") {
+                  handleLogin();
+                }
+              }}
             />
           </div>
           {isPhoneNumber === "false" && (
@@ -129,6 +134,11 @@ const Password = () => {
                 type="password"
                 value={cPassword}
                 onChange={(e) => setCPassword(e.target.value)}
+                onKeyPress={(event) => {
+                  if (event.key === "Enter") {
+                    handleLogin();
+                  }
+                }}
               />
             </div>
           )}

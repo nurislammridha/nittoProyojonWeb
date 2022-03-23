@@ -31,7 +31,7 @@ const PhoneNumber = () => {
             <h6>
               {language === "Bangla"
                 ? "Your Active Phone Number"
-                : "আপনার ব্যবহ্রত ফোন নম্বর"}
+                : "আপনার ব্যবহ্রত ফোন নাম্বার"}
             </h6>
             <input
               className="form-control mt-3"
@@ -39,6 +39,11 @@ const PhoneNumber = () => {
               type="number"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
+              onKeyPress={(event) => {
+                if (event.key === "Enter") {
+                  handlePhone();
+                }
+              }}
             />
           </div>
           <div className="mt-3 d-flex justify-content-end">

@@ -144,7 +144,11 @@ const Header = () => {
                   >
                     <i className="fa fa-user f_user"></i>
                     <label className="ml-2">
-                      {isLoggedIn === "false" ? "Sign In/Up" : userName}
+                      {isLoggedIn === "false"
+                        ? language === "Bangla"
+                          ? "Sign In/Up"
+                          : "সাইন ইন"
+                        : userName}
                     </label>
                     {/* <i className="fa fa-angle-down f_down"></i> */}
                   </div>

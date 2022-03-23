@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { TotalCartPrice } from "../../homeProducts/_redux/HomeProductsAction";
+import {
+  getBdNumber,
+  TotalCartPrice,
+} from "../../homeProducts/_redux/HomeProductsAction";
 import { GetOrderList } from "../_redux/AuthAction";
 import OrderProducts from "./OrderProducts";
 
@@ -35,13 +38,19 @@ const OrderList = ({ userInfo }) => {
                   <h5>
                     {language === "Bangla" ? "Item" : "পন্যের সংখ্যা"}:{" "}
                     <span className="badge bg-secondary">
-                      {item.productInfo.length}
+                      {language === "Bangla"
+                        ? item.productInfo.length
+                        : getBdNumber(item.productInfo.length)}
                     </span>
                   </h5>
                   <h5>
                     {language === "Bangla" ? "Total" : "মোট"}:{" "}
                     <span className="badge bg-secondary">
-                      &#2547;{TotalCartPrice(item.productInfo)}
+                      &#2547;
+                      {language === "Bangla"
+                        ? TotalCartPrice(item.productInfo)
+                        : getBdNumber(TotalCartPrice(item.productInfo))}
+                      {}
                     </span>
                   </h5>
                   <span>

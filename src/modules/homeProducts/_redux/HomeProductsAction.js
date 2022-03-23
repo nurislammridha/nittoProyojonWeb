@@ -14,9 +14,14 @@ export const GetHomeProductsList = () => async (dispatch) => {
     });
   } catch (error) {}
 };
-export const SubmitOrderData = (data) => async (dispatch) => {
+export const SubmitOrderData = (data, language) => async (dispatch) => {
   if (data.length === 0) {
-    showToast("error", "Please atleast one product add to cart!");
+    showToast(
+      "error",
+      language === "Bangla"
+        ? "Please atleast one product add to cart!"
+        : "ন্যূনতম একটি পন্য কার্টে যোগ করা উচিত"
+    );
     return 0;
   }
   const date = new Date();
@@ -84,4 +89,49 @@ export const TotalCartPrice = (arr) => {
     });
   }
   return total;
+};
+export const getBdNumber = (number) => {
+  let bdNumber = "";
+  let myArr = String(number)
+    .split("")
+    .map((num) => {
+      return Number(num);
+    });
+  myArr.forEach((e) => {
+    switch (e) {
+      case 1:
+        bdNumber = bdNumber + "১";
+        break;
+      case 2:
+        bdNumber = bdNumber + "২";
+        break;
+      case 3:
+        bdNumber = bdNumber + "৩";
+        break;
+      case 4:
+        bdNumber = bdNumber + "৪";
+        break;
+      case 5:
+        bdNumber = bdNumber + "৫";
+        break;
+      case 6:
+        bdNumber = bdNumber + "৬";
+        break;
+      case 7:
+        bdNumber = bdNumber + "৭";
+        break;
+      case 8:
+        bdNumber = bdNumber + "৮";
+        break;
+      case 9:
+        bdNumber = bdNumber + "৯";
+        break;
+      case 0:
+        bdNumber = bdNumber + "০";
+        break;
+      default:
+        break;
+    }
+  });
+  return bdNumber;
 };

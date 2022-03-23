@@ -8,11 +8,13 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   AfterRemoveCart,
   FalseOrderCreated,
+  getBdNumber,
   OpenCart,
   SubmitOrderData,
   TotalCartPrice,
 } from "../homeProducts/_redux/HomeProductsAction";
 import { useNavigate } from "react-router-dom";
+var convertToBanglaNumber = require("engnumber-to-banglanumber");
 const Cart = () => {
   const [isCart, setIsCart] = useState(false);
   const [localCart, setLocalCart] = useState([]);
@@ -42,7 +44,7 @@ const Cart = () => {
       navigate("/phone-number");
       setIsCart(false);
     } else {
-      dispatch(SubmitOrderData(localCart));
+      dispatch(SubmitOrderData(localCart, language));
     }
   };
   const removeFromCart = (id) => {
@@ -55,6 +57,7 @@ const Cart = () => {
   const handlePlus = (number, index) => {
     const cart = [...localCart];
     cart[index].quantity = number + 1;
+    cart[index].quantityBn = getBdNumber(number + 1);
     setLocalCart(cart);
     localStorage.setItem("cartList", JSON.stringify(cart));
   };
@@ -62,6 +65,7 @@ const Cart = () => {
     if (number > 1) {
       const cart = [...localCart];
       cart[index].quantity = number - 1;
+      cart[index].quantityBn = getBdNumber(number - 1);
       setLocalCart(cart);
       localStorage.setItem("cartList", JSON.stringify(cart));
     }
@@ -79,7 +83,10 @@ const Cart = () => {
     <>
       <div className="cart_sm" onClick={() => setIsCart(true)}>
         <div className="top">
-          {localCart.length} {language === "Bangla" ? "Items" : "টি পন্য"}
+          {language === "Bangla"
+            ? localCart.length
+            : getBdNumber(localCart.length)}{" "}
+          {language === "Bangla" ? "Items" : "টি পন্য"}
         </div>
         <div className="middle">
           <img src={shoppingBag} />
@@ -93,7 +100,9 @@ const Cart = () => {
               <div>
                 <img src={shoppingBag} />
                 <span>
-                  {localCart.length}{" "}
+                  {language === "Bangla"
+                    ? localCart.length
+                    : getBdNumber(localCart.length)}{" "}
                   {language === "Bangla" ? "Items" : "টি পন্য"}
                 </span>
               </div>
@@ -126,9 +135,22 @@ const Cart = () => {
                               : item.productNameBn}
                           </h6>
                           <span>
-                            ${item.discountPrice}X{item.quantity} = $
-                            {parseInt(item.discountPrice) *
-                              parseInt(item.quantity)}
+                            &#2547;{" "}
+                            {language === "Bangla"
+                              ? item.discountPrice
+                              : item.discountPriceBn}
+                            X{" "}
+                            {language === "Bangla"
+                              ? item.quantity
+                              : item.quantityBn}{" "}
+                            = &#2547;
+                            {language === "Bangla"
+                              ? parseInt(item.discountPrice) *
+                                parseInt(item.quantity)
+                              : getBdNumber(
+                                  parseInt(item.discountPrice) *
+                                    parseInt(item.quantity)
+                                )}
                           </span>
                         </div>
                         <div className="cart_counter">
@@ -186,8 +208,10 @@ const Cart = () => {
               )}
 
               <span>
-                {language === "Bangla" ? "Total" : "মোট"} $
-                {TotalCartPrice(localCart)}
+                {language === "Bangla" ? "Total" : "মোট"} &#2547;
+                {language === "Bangla"
+                  ? TotalCartPrice(localCart)
+                  : getBdNumber(TotalCartPrice(localCart))}
               </span>
             </div>
           </div>

@@ -36,14 +36,28 @@ const OrderProducts = (props) => {
                         }
                       />
                     </div>
-                    <div className="d_content">{item.productName}</div>
+                    <div className="d_content">
+                      {language === "Bangla"
+                        ? item.productName
+                        : item.productNameBn}
+                    </div>
                     <h6 className="text-center d_quantity">
                       {language === "Bangla" ? "Quantity" : "পন্যের সংখ্যা"}:{" "}
-                      {item.quantity}
+                      {language === "Bangla" ? item.quantity : item.quantityBn}
                     </h6>
                     <div className="d_price">
-                      <del>&#2547;{item.productMRP}</del>
-                      <span>&#2547;{item.discountPrice}</span>
+                      <del>
+                        &#2547;
+                        {language === "Bangla"
+                          ? item.productMRP
+                          : item.productMRPBn}
+                      </del>
+                      <span>
+                        &#2547;
+                        {language === "Bangla"
+                          ? item.discountPrice
+                          : item.discountPriceBn}
+                      </span>
                     </div>
                   </div>
                 </>

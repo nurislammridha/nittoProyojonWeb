@@ -36,6 +36,7 @@ const HomeProducts = () => {
   const handleCart = (data) => {
     const cartList = JSON.parse(localStorage.getItem("cartList")) || [];
     data.quantity = 1;
+    data.quantityBn = "১";
     cartList.push(data);
     setInstantCart(cartList);
     localStorage.setItem("cartList", JSON.stringify(cartList));

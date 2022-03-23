@@ -14,7 +14,6 @@ import {
   TotalCartPrice,
 } from "../homeProducts/_redux/HomeProductsAction";
 import { useNavigate } from "react-router-dom";
-var convertToBanglaNumber = require("engnumber-to-banglanumber");
 const Cart = () => {
   const [isCart, setIsCart] = useState(false);
   const [localCart, setLocalCart] = useState([]);

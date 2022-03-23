@@ -21,3 +21,9 @@ export const GlobalLanguage = (language) => async (dispatch) => {
     dispatch({ type: Types.GLOBAL_LANGUAGE, payload: "Bangla" });
   }
 };
+// export const catImgVariable = (catName) => {
+//   let re=""
+//   if(catName === "Baby Care"){
+
+//   }
+// };

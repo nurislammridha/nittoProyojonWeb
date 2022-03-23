@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import categoryIcon from "../../asset/image/icon/categoryIcon.png";
-import { GetCategoryList } from "./_redux/CategoryAction";
+import CatLogo from "./CatLogo";
+import { catImgVariable, GetCategoryList } from "./_redux/CategoryAction";
+
 const Categories = () => {
   const categoryList = useSelector((state) => state.categoryInfo.categoryList);
   const language = useSelector((state) => state.categoryInfo.language);
@@ -11,9 +13,9 @@ const Categories = () => {
   const hanldeAllProduct = (id) => {
     navigate(`/all-products/${id}`);
   };
-  useEffect(() => {
-    dispatch(GetCategoryList());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(GetCategoryList());
+  // }, []);
   console.log(`categoryList`, categoryList);
   return (
     <>
@@ -25,7 +27,8 @@ const Categories = () => {
             categoryList.map((item, index) => (
               <li>
                 <a onClick={() => hanldeAllProduct(item._id)}>
-                  <img src={categoryIcon} />
+                  {/* <img src={catImgVariable(item.categoryName)} /> */}
+                  <CatLogo catName={item.categoryName} />
                   <label>
                     {language === "Bangla"
                       ? item.categoryName

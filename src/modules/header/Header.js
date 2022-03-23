@@ -5,7 +5,11 @@ import { FormControl, InputGroup } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { isLogout } from "../auth/_redux/AuthAction";
-import { GlobalLanguage } from "../categories/_redux/CategoryAction";
+import {
+  GetCategoryList,
+  GlobalLanguage,
+} from "../categories/_redux/CategoryAction";
+import CatLogo from "../categories/CatLogo";
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -38,6 +42,7 @@ const Header = () => {
     } else {
       setUserName(JSON.parse(localStorage.getItem("userInfo")).fullName);
     }
+    dispatch(GetCategoryList());
     // const lang = localStorage.getItem("language") || "English";
     // setLanguage(lang);
   }, []);
@@ -210,7 +215,8 @@ const Header = () => {
                     categoryList.map((item, index) => (
                       <li>
                         <a onClick={() => hanldeAllProduct(item._id)}>
-                          <img src={categoryIcon} />
+                          {/* <img src={categoryIcon} /> */}
+                          <CatLogo catName={item.categoryName} />
                           <span>
                             {language === "Bangla"
                               ? item.categoryName
@@ -292,7 +298,8 @@ const Header = () => {
               categoryList.map((item, index) => (
                 <li>
                   <a onClick={() => hanldeAllProduct(item._id)}>
-                    <img src={categoryIcon} />
+                    {/* <img src={categoryIcon} /> */}
+                    <CatLogo catName={item.categoryName} />
                     <label>
                       {language === "Bangla"
                         ? item.categoryName

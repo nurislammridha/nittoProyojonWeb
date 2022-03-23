@@ -12,6 +12,7 @@ import {
   isCartAdded2,
   OpenCart,
 } from "../_redux/HomeProductsAction";
+import CatImg from "./CatImg";
 const HomeProducts = () => {
   const dispatch = useDispatch();
   const language = useSelector((state) => state.categoryInfo.language);
@@ -79,7 +80,8 @@ const HomeProducts = () => {
                 <div className="category_img">
                   <a>
                     {" "}
-                    <img src={categoryImage} />
+                    {/* <img src={categoryImage} /> */}
+                    <CatImg catName={item[0].categoryName} />
                     <a
                       className="btn view_all"
                       onClick={() => hanldeAllProduct(item[0].categoryId)}

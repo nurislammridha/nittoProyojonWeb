@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import logo from "../../asset/image/logo/logo.png";
-import categoryIcon from "../../asset/image/icon/categoryIcon.png";
+import logobn from "../../asset/image/logo/logobn.png";
+import logoen from "../../asset/image/logo/logoen.png";
 import { FormControl, InputGroup } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -100,7 +100,10 @@ const Header = () => {
             <div className="col-sm-2 m-0 p-0">
               <div className="logo">
                 <a onClick={() => navigate("/")}>
-                  <img src={logo} className="" />
+                  <img
+                    src={language === "Bangla" ? logoen : logobn}
+                    className=""
+                  />
                 </a>
               </div>
             </div>
@@ -173,7 +176,7 @@ const Header = () => {
           <div className="logo">
             <a onClick={() => navigate("/")}>
               {" "}
-              <img src={logo} className="" />
+              <img src={language === "Bangla" ? logoen : logobn} className="" />
             </a>
           </div>
           <div className="right">

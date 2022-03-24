@@ -3,7 +3,6 @@ import shoppingBag from "../../asset/image/icon/shoppingBag.jpg";
 import deletesvg from "../../asset/image/icon/delete.svg";
 import plus from "../../asset/image/icon/plus.svg";
 import minus from "../../asset/image/icon/minus.svg";
-import productImg from "../../asset/image/product/bike.png";
 import { useDispatch, useSelector } from "react-redux";
 import {
   AfterRemoveCart,

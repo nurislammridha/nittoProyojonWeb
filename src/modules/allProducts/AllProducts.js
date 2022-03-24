@@ -2,13 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import ts1 from "../../asset/image/largeSlider/banner1.jpg";
+
 import ts2 from "../../asset/image/largeSlider/banner2.jpg";
-import ts3 from "../../asset/image/largeSlider/banner3.jpg";
-import productImg from "../../asset/image/product/bike.png";
-import productImg1 from "../../asset/image/product/product1.jpg";
-import productImg2 from "../../asset/image/product/product2.jpg";
-import productImg3 from "../../asset/image/product/banner1.jpg";
+import ts3 from "../../asset/image/largeSlider/banner4.jpg";
+
 import {
   isCartAdded2,
   OpenCart,

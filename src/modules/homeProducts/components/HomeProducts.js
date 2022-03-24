@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import productImg from "../../../asset/image/product/bike.png";
-import productImg1 from "../../../asset/image/product/product1.jpg";
-import productImg2 from "../../../asset/image/product/product2.jpg";
-import productImg3 from "../../../asset/image/product/banner1.jpg";
-import categoryImage from "../../../asset/image/product/categoryImage.jpg";
+
 import {
   GetHomeProductsList,
   isCartAdded,

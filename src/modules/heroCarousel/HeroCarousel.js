@@ -5,9 +5,9 @@ import { Carousel } from "react-responsive-carousel";
 import ts1 from "../../asset/image/largeSlider/banner1.jpg";
 import ts2 from "../../asset/image/largeSlider/banner2.jpg";
 import ts3 from "../../asset/image/largeSlider/banner3.jpg";
-import ts4 from "../../asset/image/largeSlider/banner1.jpg";
-import ts5 from "../../asset/image/largeSlider/banner2.jpg";
-import ts6 from "../../asset/image/largeSlider/banner3.jpg";
+import ts4 from "../../asset/image/largeSlider/banner4.jpg";
+import ts5 from "../../asset/image/largeSlider/banner1.jpg";
+import ts6 from "../../asset/image/largeSlider/banner2.jpg";
 const HeroCarousel = () => {
   return (
     <>

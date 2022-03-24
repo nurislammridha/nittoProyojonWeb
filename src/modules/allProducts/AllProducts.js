@@ -15,8 +15,7 @@ import {
 } from "../homeProducts/_redux/HomeProductsAction";
 import { GetProductsByCategory } from "./_redux/AllProductsAction";
 import BigBanner from "./BigBanner";
-import SmallBanner1 from "./SmallBanner1";
-import SmallBanner2 from "./SmallBanner2";
+
 const AllProducts = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -65,20 +64,10 @@ const AllProducts = () => {
           </div>
           <div className="right">
             <div className="top">
-              {/* <img src={ts2} /> */}
-              {productsByCategory &&
-                productsByCategory !== null &&
-                productsByCategory.length > 0 && (
-                  <SmallBanner1 catName={productsByCategory[0].categoryName} />
-                )}
+              <img src={ts2} />
             </div>
             <div className="bottom">
-              {/* <img src={ts3} /> */}
-              {productsByCategory &&
-                productsByCategory !== null &&
-                productsByCategory.length > 0 && (
-                  <SmallBanner2 catName={productsByCategory[0].categoryName} />
-                )}
+              <img src={ts3} />
             </div>
           </div>
         </div>

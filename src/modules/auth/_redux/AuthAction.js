@@ -179,65 +179,53 @@ export const isLogout = (data) => (dispatch) => {
 };
 export const VillageList = () => {
   return [
-    { label: "Mograbazar", value: "Mograbazar" },
-    { label: "Bagmara", value: "Bagmara" },
-    { label: "Rajapur", value: "Rajapur" },
-    { label: "Badokhali", value: "Badokhali" },
-    { label: "Rahimabad", value: "Rahimabad" },
-    { label: "Chapatola", value: "Chapatola" },
-    { label: "Mogra", value: "Mogra" },
-    { label: "Shatgumbuj", value: "Shatgumbuj" },
+    { label: "বাগমারা", value: "বাগমারা" },
+    { label: "রাজাপুর", value: "রাজাপুর" },
+    { label: "মগরা", value: "মগরা" },
+    { label: "বাদোখালি", value: "বাদোখালি" },
+    { label: "রহিমাবাদ", value: "রহিমাবাদ" },
   ];
 };
 export const VillageAreaList = (data) => {
   let arr = [];
-  if (data === "Mograbazar") {
+  if (data === "বাগমারা") {
     arr = [
-      { label: "Mograbazar School", value: "Mograbazar School" },
-      { label: "Mograbazar Mosjid", value: "Mograbazar Mosjid" },
-      { label: "Mograbazar Hospital", value: "Mograbazar Hospital" },
+      { label: "উত্তর পাড়া", value: "উত্তর পাড়া" },
+      { label: "পূর্ব পাড়া", value: "পূর্ব পাড়া" },
+      { label: "দক্ষিন পাড়া", value: "দক্ষিন পাড়া" },
+      { label: "মধ্য পাড়া", value: "মধ্য পাড়া" },
+      { label: "পাল পাড়া", value: "পাল পাড়া" },
     ];
-  } else if (data === "Bagmara") {
+  } else if (data === "রাজাপুর") {
     arr = [
-      { label: "Bagmara School", value: "Bagmara School" },
-      { label: "Bagmara Mosjid", value: "Bagmara Mosjid" },
-      { label: "Bagmara Hospital", value: "Bagmara Hospital" },
+      { label: "মোল্লা বাড়ি", value: "মোল্লা বাড়ি" },
+      { label: "সেখ বাড়ি", value: "সেখ বাড়ি" },
+      { label: "পশ্চিম পাড়া", value: "পশ্চিম পাড়া" },
     ];
-  } else if (data === "Rajapur") {
+  } else if (data === "মগরা") {
     arr = [
-      { label: "Rajapur School", value: "Rajapur School" },
-      { label: "Rajapur Mosjid", value: "Rajapur Mosjid" },
-      { label: "Rajapur Hospital", value: "Rajapur Hospital" },
+      { label: "দো-সিমানা", value: "দো-সিমানা" },
+      { label: "হালদার পাড়া", value: "হালদার পাড়া" },
+      { label: "পাল পাড়া", value: "পাল পাড়া" },
+      { label: "বান্দাঘাট পাল পাড়া", value: "বান্দাঘাট পাল পাড়া" },
+      { label: "মগরা স্কুল সংলগ্ন", value: "মগরা স্কুল সংলগ্ন" },
     ];
-  } else if (data === "Badokhali") {
+  } else if (data === "বাদোখালি") {
     arr = [
-      { label: "Badokhali School", value: "Badokhali School" },
-      { label: "Badokhali Mosjid", value: "Badokhali Mosjid" },
-      { label: "Badokhali Hospital", value: "Badokhali Hospital" },
+      { label: "দাস পাড়া", value: "দাস পাড়া" },
+      { label: "বাদখালি স্কুল সংলগ্ন", value: "বাদখালি স্কুল সংলগ্ন" },
+      { label: "সরকারি পুকুর পাড়", value: "সরকারি পুকুর পাড়" },
     ];
-  } else if (data === "Rahimabad") {
+  } else if (data === "রহিমাবাদ") {
     arr = [
-      { label: "Rahimabad School", value: "Rahimabad School" },
-      { label: "Rahimabad Mosjid", value: "Rahimabad Mosjid" },
-      { label: "Rahimabad Hospital", value: "Rahimabad Hospital" },
-    ];
-  } else if (data === "Chapatola") {
-    arr = [
-      { label: "Chapatola School", value: "Chapatola School" },
-      { label: "Chapatola Mosjid", value: "Chapatola Mosjid" },
-      { label: "Chapatola Hospital", value: "Chapatola Hospital" },
-    ];
-  } else if (data === "Mogra") {
-    arr = [
-      { label: "Mogra School", value: "Mogra School" },
-      { label: "Mogra Mosjid", value: "Mogra Mosjid" },
-      { label: "Mogra Hospital", value: "Mogra Hospital" },
-    ];
-  } else if (data === "Shatgumbuj") {
-    arr = [
-      { label: "Shatgumbuj School", value: "Shatgumbuj School" },
-      { label: "Shatgumbuj Mosjid", value: "Shatgumbuj Mosjid" },
-      { label: "Shatgumbuj Hospital", value: "Shatgumbuj Hospital" },
+      { label: "শিকদার পাড়া", value: "শিকদার পাড়া" },
+      { label: "পশ্চিম পাড়া", value: "পশ্চিম পাড়া" },
+      { label: "ভাঙর", value: "ভাঙর" },
+      { label: "হাইস্কুল সংলগ্ন", value: "হাইস্কুল সংলগ্ন" },
+      { label: "উচু পোল", value: "উচু পোল" },
+      { label: "নাথ পাড়া", value: "নাথ পাড়া" },
+      { label: "চৌধুরী বাড়ি", value: "চৌধুরী বাড়ি" },
+      { label: "খা বাড়ি", value: "খা বাড়ি" },
     ];
   }
   return arr;

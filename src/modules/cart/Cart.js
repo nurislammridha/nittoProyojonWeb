@@ -89,7 +89,7 @@ const Cart = () => {
         <div className="middle">
           <img src={shoppingBag} />
         </div>
-        <div className="bottom">&#2547;{TotalCartPrice(localCart)}</div>
+        <div className="bottom">&#2547; {TotalCartPrice(localCart)}</div>
       </div>
       {isCart && (
         <>

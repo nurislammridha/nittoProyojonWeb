@@ -40,7 +40,7 @@ const Header = () => {
     if (login === "false") {
       setUserName("sts");
     } else {
-      setUserName(JSON.parse(localStorage.getItem("userInfo")).fullName);
+      setUserName(JSON.parse(localStorage.getItem("userInfo")).nickName);
     }
     dispatch(GetCategoryList());
     // const lang = localStorage.getItem("language") || "English";
@@ -48,7 +48,7 @@ const Header = () => {
   }, []);
   useEffect(() => {
     if (isLoggedInAfter) {
-      setUserName(JSON.parse(localStorage.getItem("userInfo")).fullName);
+      setUserName(JSON.parse(localStorage.getItem("userInfo")).nickName);
       setIsLoggedIn("true");
     }
   }, [isLoggedInAfter]);

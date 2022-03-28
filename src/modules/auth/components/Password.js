@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { showToast } from "../../../utils/ToastHelper";
 import { UserLogin } from "../_redux/AuthAction";
+import Form from "react-bootstrap/Form";
 
 const Password = () => {
   const [password, setPassword] = useState("");
   const [cPassword, setCPassword] = useState("");
   const [isPhoneNumber, setIsPhoneNumber] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [isShowPassword, setIsShowPassword] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.authInfo.isLoggedIn);
@@ -107,7 +109,7 @@ const Password = () => {
                   ? "Type password here"
                   : "এখানে পাসওয়ার্ড লিখুন"
               }
-              type="password"
+              type={isShowPassword ? "text" : "password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               onKeyPress={(event) => {
@@ -131,7 +133,7 @@ const Password = () => {
                     ? "Type confirm password here"
                     : "এখানে নিশ্চিত করন পাসওয়ার্ড লিখুন"
                 }
-                type="password"
+                type={isShowPassword ? "text" : "password"}
                 value={cPassword}
                 onChange={(e) => setCPassword(e.target.value)}
                 onKeyPress={(event) => {
@@ -142,6 +144,16 @@ const Password = () => {
               />
             </div>
           )}
+          <Form.Group className="" controlId="formBasicCheckbox">
+            <Form.Check
+              type="checkbox"
+              label={
+                language === "Bangla" ? "Show Password" : "পাসওয়ার্ড দেখুন"
+              }
+              checked={isShowPassword}
+              onChange={(e) => setIsShowPassword(!isShowPassword)}
+            />
+          </Form.Group>
           <div className="mt-3 d-flex justify-content-end">
             {isLoggedHit ? (
               <a className="btn btn-outline-success btn-sm ">

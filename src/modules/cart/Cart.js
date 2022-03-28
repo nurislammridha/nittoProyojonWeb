@@ -89,7 +89,12 @@ const Cart = () => {
         <div className="middle">
           <img src={shoppingBag} />
         </div>
-        <div className="bottom">&#2547; {TotalCartPrice(localCart)}</div>
+        <div className="bottom">
+          &#2547;{" "}
+          {language === "Bangla"
+            ? TotalCartPrice(localCart)
+            : getBdNumber(TotalCartPrice(localCart))}
+        </div>
       </div>
       {isCart && (
         <>
@@ -232,19 +237,26 @@ const Cart = () => {
                 {localCart.length > 0 && (
                   <span className="badge_mobile">
                     {language === "Bangla" ? "Total" : "মোট"} &#2547;
-                    {TotalCartPrice(localCart)}
+                    {language === "Bangla"
+                      ? TotalCartPrice(localCart)
+                      : getBdNumber(TotalCartPrice(localCart))}
                   </span>
                 )}
               </h6>
             </a>
           ) : (
-            <a onClick={() => handleOrder()}>
+            <a
+              // onClick={() => handleOrder()}
+              onClick={() => setIsCart(true)}
+            >
               <h6 className="text-center">
                 {language === "Bangla" ? "Order Now" : "অর্ডার করুন"}{" "}
                 {localCart.length > 0 && (
                   <span className="badge_mobile">
                     {language === "Bangla" ? "Total" : "মোট"} &#2547;
-                    {TotalCartPrice(localCart)}
+                    {language === "Bangla"
+                      ? TotalCartPrice(localCart)
+                      : getBdNumber(TotalCartPrice(localCart))}
                   </span>
                 )}
               </h6>

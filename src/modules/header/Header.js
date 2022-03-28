@@ -22,6 +22,7 @@ const Header = () => {
   // const [language, setLanguage] = useState("");
   const isLoggedInAfter = useSelector((state) => state.authInfo.isLoggedIn);
   const isLogoutAfter = useSelector((state) => state.authInfo.isLogout);
+  const isMenuBar = useSelector((state) => state.homeProductsInfo.isMenuBar);
   const hanldeAllProduct = (id) => {
     navigate(`/all-products/${id}`);
     setIsCategoryHover(false);
@@ -68,6 +69,11 @@ const Header = () => {
     //   setLanguage("Bangla");
     // }
   };
+  useEffect(() => {
+    if (isMenuBar) {
+      setIsMobileCategory(false);
+    }
+  }, [isMenuBar]);
   return (
     <>
       <div className="header sticky-top">

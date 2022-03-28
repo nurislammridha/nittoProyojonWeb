@@ -136,19 +136,29 @@ export const UpdateUserInput = (data) => async (dispatch) => {
     });
   } catch (error) {}
 };
-export const UserLogin = (data) => async (dispatch) => {
+export const UserLogin = (data, language) => async (dispatch) => {
   const url = `${process.env.REACT_APP_API_URL}user/login`;
   dispatch({ type: Types.IS_LOGGIN_HIT, payload: true });
   try {
     axios.post(url, data).then((res) => {
       if (res.data.status) {
-        localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("userInfo", JSON.stringify(res.data.result));
-        dispatch({ type: Types.IS_LOGGIN_HIT, payload: false });
-        dispatch({
-          type: Types.IS_LOGGED_IN,
-          payload: true,
-        });
+        if (res.data.isLogin) {
+          localStorage.setItem("isLoggedIn", "true");
+          localStorage.setItem("userInfo", JSON.stringify(res.data.result));
+          dispatch({ type: Types.IS_LOGGIN_HIT, payload: false });
+          dispatch({
+            type: Types.IS_LOGGED_IN,
+            payload: true,
+          });
+        } else {
+          dispatch({ type: Types.IS_LOGGIN_HIT, payload: false });
+          showToast(
+            "error",
+            language === "Bangla"
+              ? "Please try with valid password"
+              : "সঠিক পাসওয়ার্ড দিয়ে চেষ্টা করুন"
+          );
+        }
       }
     });
   } catch (error) {}

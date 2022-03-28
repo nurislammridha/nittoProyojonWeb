@@ -88,7 +88,7 @@ const Password = () => {
         phoneNumber,
         password,
       };
-      dispatch(UserLogin(data));
+      dispatch(UserLogin(data, language));
     }
   };
   useEffect(() => {

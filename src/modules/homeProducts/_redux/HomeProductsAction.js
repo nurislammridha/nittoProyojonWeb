@@ -57,6 +57,9 @@ export const OpenCart = (data) => async (dispatch) => {
 export const AfterRemoveCart = (data) => async (dispatch) => {
   dispatch({ type: Types.AFTER_REMOVE_CART, payload: data });
 };
+export const HandleMenuBar = (data) => async (dispatch) => {
+  dispatch({ type: Types.HANDLE_MENU_BAR, payload: data });
+};
 
 export const isCartAdded = (id) => {
   let isAlreadyAdded = false;

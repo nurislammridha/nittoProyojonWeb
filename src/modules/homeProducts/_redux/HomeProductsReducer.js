@@ -7,6 +7,7 @@ const initialState = {
   isOrderCreated: false,
   isOrderHit: false,
   isPageLoad: false,
+  ismenubar: false,
 };
 const HomeProductsReducer = (state = initialState, action) => {
   const newState = { ...state };
@@ -40,6 +41,11 @@ const HomeProductsReducer = (state = initialState, action) => {
       return {
         ...state,
         isPageLoad: action.payload,
+      };
+    case Types.HANDLE_MENU_BAR:
+      return {
+        ...state,
+        isMenuBar: action.payload,
       };
 
     default:

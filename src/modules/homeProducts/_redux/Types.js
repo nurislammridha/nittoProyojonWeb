@@ -4,3 +4,4 @@ export const AFTER_REMOVE_CART = "AFTER_REMOVE_CART";
 export const IS_ORDER_CREATED = "IS_ORDER_CREATED";
 export const IS_ORDER_HIT = "IS_ORDER_HIT";
 export const IS_PAGE_LOAD = "IS_PAGE_LOAD";
+export const HANDLE_MENU_BAR = "HANDLE_MENU_BAR";

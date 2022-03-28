@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import {
   GetHomeProductsList,
+  HandleMenuBar,
   isCartAdded,
   isCartAdded2,
   OpenCart,
@@ -19,6 +20,7 @@ const HomeProducts = () => {
     (state) => state.homeProductsInfo.afterRemoveCart
   );
   const isPageLoad = useSelector((state) => state.homeProductsInfo.isPageLoad);
+  const isMenuBar = useSelector((state) => state.homeProductsInfo.isMenuBar);
 
   const [instantCart, setInstantCart] = useState([]);
   const navigate = useNavigate();
@@ -44,6 +46,14 @@ const HomeProducts = () => {
       setInstantCart(afterRemoveCart);
     }
   }, [afterRemoveCart]);
+  useEffect(() => {
+    if (isMenuBar) {
+      dispatch(HandleMenuBar(false));
+    }
+  }, [isMenuBar]);
+  const handleMobileMenu = () => {
+    dispatch(HandleMenuBar(true));
+  };
   return (
     <>
       {isPageLoad && (
@@ -66,7 +76,10 @@ const HomeProducts = () => {
           homeProductsList !== null &&
           homeProductsList.length > 0 &&
           homeProductsList.map((item, index) => (
-            <div className="category_product">
+            <div
+              className="category_product"
+              onClick={() => handleMobileMenu()}
+            >
               <div className="category_name">
                 {language === "Bangla"
                   ? item[0].categoryName

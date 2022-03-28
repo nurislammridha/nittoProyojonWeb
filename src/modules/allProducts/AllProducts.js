@@ -7,6 +7,7 @@ import ts2 from "../../asset/image/largeSlider/banner2.jpg";
 import ts3 from "../../asset/image/largeSlider/banner4.jpg";
 
 import {
+  HandleMenuBar,
   isCartAdded2,
   OpenCart,
 } from "../homeProducts/_redux/HomeProductsAction";
@@ -17,6 +18,7 @@ const AllProducts = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const language = useSelector((state) => state.categoryInfo.language);
+  const isMenuBar = useSelector((state) => state.homeProductsInfo.isMenuBar);
   const productsByCategory = useSelector(
     (state) => state.allProductsInfo.productsByCategory
   );
@@ -47,9 +49,17 @@ const AllProducts = () => {
       setInstantCart(afterRemoveCart);
     }
   }, [afterRemoveCart]);
+  useEffect(() => {
+    if (isMenuBar) {
+      dispatch(HandleMenuBar(false));
+    }
+  }, [isMenuBar]);
+  const handleMobileMenu = () => {
+    dispatch(HandleMenuBar(true));
+  };
   return (
     <>
-      <div className="all_product_page">
+      <div className="all_product_page" onClick={() => handleMobileMenu()}>
         <div className="add_banner">
           <div className="left">
             {/* <img src={ts1} /> */}

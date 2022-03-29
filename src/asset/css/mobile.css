@@ -253,6 +253,7 @@
     background-color: #fff;
     overflow-y: scroll;
     z-index: 9;
+    padding-bottom: 180px;
   }
 
   .mobile_category ul {

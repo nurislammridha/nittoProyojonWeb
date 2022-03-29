@@ -85,7 +85,7 @@ const Footer = () => {
               </li>
               <li>
                 <a>
-                  <i className="fa fa-phone"></i>+8801753109207
+                  <i className="fa fa-phone"></i>+8801304571100
                 </a>
               </li>
               <li>

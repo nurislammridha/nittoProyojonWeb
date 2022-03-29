@@ -93,10 +93,10 @@ const Header = () => {
               "অনলাইন কেনাকাটায় প্রতারণা হতে সাবধান থাকুন-বাণিজ্য মন্ত্রণালয়"
             </div>
             <div class="right">
-              <a href="tel:+8801753109207">
+              <a href="tel:+8801304571100">
                 {" "}
                 <i className="fa fa-phone"></i>
-                <span className="">+8801753109207</span>{" "}
+                <span className="">+8801304571100</span>{" "}
               </a>
             </div>
           </div>

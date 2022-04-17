@@ -194,6 +194,7 @@ export const VillageList = () => {
     { label: "মগরা", value: "মগরা" },
     { label: "বাদোখালি", value: "বাদোখালি" },
     { label: "রহিমাবাদ", value: "রহিমাবাদ" },
+    { label: "চাপাতলা", value: "চাপাতলা" },
   ];
 };
 export const VillageAreaList = (data) => {
@@ -223,6 +224,9 @@ export const VillageAreaList = (data) => {
   } else if (data === "বাদোখালি") {
     arr = [
       { label: "দাস পাড়া", value: "দাস পাড়া" },
+      { label: "সাহা পাড়া", value: "সাহা পাড়া" },
+      { label: "মধ্য পাড়া", value: "মধ্য পাড়া" },
+      { label: "উত্তর পাড়া", value: "উত্তর পাড়া" },
       { label: "বাদখালি স্কুল সংলগ্ন", value: "বাদখালি স্কুল সংলগ্ন" },
       { label: "সরকারি পুকুর পাড়", value: "সরকারি পুকুর পাড়" },
     ];
@@ -230,12 +234,19 @@ export const VillageAreaList = (data) => {
     arr = [
       { label: "শিকদার পাড়া", value: "শিকদার পাড়া" },
       { label: "পশ্চিম পাড়া", value: "পশ্চিম পাড়া" },
+      { label: "পূর্ব পাড়া", value: "পূর্ব পাড়া" },
       { label: "ভাঙর", value: "ভাঙর" },
       { label: "হাইস্কুল সংলগ্ন", value: "হাইস্কুল সংলগ্ন" },
       { label: "উচু পোল", value: "উচু পোল" },
       { label: "নাথ পাড়া", value: "নাথ পাড়া" },
       { label: "চৌধুরী বাড়ি", value: "চৌধুরী বাড়ি" },
       { label: "খা বাড়ি", value: "খা বাড়ি" },
+    ];
+  } else if (data === "চাপাতলা") {
+    arr = [
+      { label: "ঈদগাহ", value: "ঈদগাহ" },
+      { label: "বোর্ড স্কুল", value: "বোর্ড স্কুল" },
+      { label: "মধ্য ডাঙ্গা", value: "মধ্য ডাঙ্গা" },
     ];
   }
   return arr;
